@@ -1,0 +1,25 @@
+module Decimation (
+    input clk, enable, input [7:0] pixel_in,
+    output reg [7:0] pixel_out, output reg [15:0] read_addr,
+    output reg [15:0] write_addr, output reg done
+);
+    localparam IMG_WIDTH_IN = 160, IMG_HEIGHT_IN = 120;
+    localparam IMG_WIDTH_OUT = 80, IMG_HEIGHT_OUT = 60;
+    localparam IMG_SIZE_OUT = IMG_WIDTH_OUT * IMG_HEIGHT_OUT;
+    reg [12:0] ptr;
+
+    always @(posedge clk) begin
+        if (!enable) {ptr, done} <= 0;
+        else begin
+            ptr <= ptr + 1;
+            reg [6:0] x_out = ptr % IMG_WIDTH_OUT;
+            reg [5:0] y_out = ptr / IMG_WIDTH_OUT;
+            reg [7:0] x_in = x_out << 1;
+            reg [6:0] y_in = y_out << 1;
+            read_addr <= y_in * IMG_WIDTH_IN + x_in;
+            write_addr <= ptr;
+            pixel_out <= pixel_in;
+            done <= (ptr == IMG_SIZE_OUT - 1);
+        end
+    end
+endmodule

@@ -1,0 +1,115 @@
+// Top-Level
+
+module Coprocessador (
+    // ---- Entradas Físicas da Placa ----
+    input           CLOCK_50,
+    input           KEY0,           // Usado como Reset
+    input           KEY1,           // Usado como Start
+    input   [3:0]   SW,
+
+    // ---- Saídas Físicas da Placa (VGA) ----
+    output          VGA_CLK,
+    output          VGA_HS,
+    output          VGA_VS,
+    output          VGA_BLANK_N,
+    output  [7:0]   VGA_R,
+    output  [7:0]   VGA_G,
+    output  [7:0]   VGA_B
+);
+
+    // --- Sinais de Controle Globais ---
+    wire reset = !KEY0;
+    wire start_key = !KEY1;
+    wire [1:0] algorithm_select = SW[1:0];
+
+    // --- Geração de Clock para VGA (Requer PLL) ---
+    wire vga_pixel_clk;
+    // Para um funcionamento correto, instancie um PLL aqui usando o IP Catalog do Quartus
+    // Ex: pll_vga my_pll (.inclk0(CLOCK_50), .c0(vga_pixel_clk));
+    assign vga_pixel_clk = CLOCK_50; // Usando CLOCK_50 para simplificar a simulação
+
+    // --- Lógica para (start_pulse) ---
+    reg prev_start_key;
+    wire start_pulse;
+    always @(posedge CLOCK_50 or posedge reset) begin
+        if (reset)
+            prev_start_key <= 1'b0;
+        else
+            prev_start_key <= start_key;
+    end
+    assign start_pulse = start_key & ~prev_start_key;
+
+    // --- Fios de Conexão entre Módulos ---
+    wire fsm_enable, controller_done;
+    wire [15:0] controller_read_addr, controller_write_addr;
+    wire [7:0]  controller_pixel_out;
+    wire [16:0] vga_read_addr;
+    wire [7:0]  ram_pixel_out;
+
+    // --- Leitura de 4 Pixels para Média de Blocos ---
+    wire [15:0] base_read_addr = controller_read_addr;
+    wire [7:0]  pixel_from_rom_p0, pixel_from_rom_p1, pixel_from_rom_p2, pixel_from_rom_p3;
+
+    // Instanciamos 4 ROMs para ler os 4 pixels de um bloco 2x2 simultaneamente.
+    // O Quartus otimizará isso para usar um único bloco de memória física.
+    image_rom rom0 (.clock(CLOCK_50), .address(base_read_addr), .q(pixel_from_rom_p0));
+    image_rom rom1 (.clock(CLOCK_50), .address(base_read_addr + 1), .q(pixel_from_rom_p1));
+    image_rom rom2 (.clock(CLOCK_50), .address(base_read_addr + 160), .q(pixel_from_rom_p2)); // 160 = Largura da Imagem
+    image_rom rom3 (.clock(CLOCK_50), .address(base_read_addr + 161), .q(pixel_from_rom_p3));
+
+    // =========================================================================
+    // INSTANCIAÇÃO DE TODOS OS MÓDULOS
+    // =========================================================================
+
+    // 1. Unidade de Controle (FSM)
+    control_unit fsm (
+        .clk(CLOCK_50),
+        .reset(reset),
+        .start(start_pulse),
+        .done(controller_done),
+        .enable(fsm_enable),
+        .wr_en() // Saída não utilizada, pois o controller gerencia a escrita
+    );
+
+    // 2. Gerenciador de Redimensionamento (NOVO)
+    resize_controller controller (
+        .clk(CLOCK_50),
+        .enable(fsm_enable),
+        .algorithm(algorithm_select),
+        .pixel_in_rom(pixel_from_rom_p0),
+        .pixel_in_rom_p1(pixel_from_rom_p1),
+        .pixel_in_rom_p2(pixel_from_rom_p2),
+        .pixel_in_rom_p3(pixel_from_rom_p3),
+        .pixel_out(controller_pixel_out),
+        .read_addr(controller_read_addr),
+        .write_addr(controller_write_addr),
+        .done(controller_done)
+    );
+
+    // 3. Memória de Exibição (Frame Buffer) - (CORRIGIDO)
+    video_ram ram (
+        .clock(CLOCK_50),
+        .wren(fsm_enable), // A escrita é habilitada sempre que o processamento está ativo
+        .wraddress(controller_write_addr), // Endereço de ESCRITA vindo do controller
+        .data(controller_pixel_out),       // Dado de ESCRITA vindo do controller
+        .rdaddress(vga_read_addr),         // Endereço de LEITURA vindo do VGA
+        .q(ram_pixel_out)                  // Saída de LEITURA para o VGA
+    );
+
+    // 4. Controlador VGA
+    vga_controller vga (
+        .pclk(vga_pixel_clk),
+        .reset(reset),
+        .h_sync(VGA_HS),
+        .v_sync(VGA_VS),
+        .video_on(VGA_BLANK_N),
+        .vga_clk(VGA_CLK),
+        .read_addr(vga_read_addr)
+    );
+
+    // Conecta a saída da RAM às portas RGB do VGA
+    assign VGA_R = (VGA_BLANK_N) ? ram_pixel_out : 8'h00;
+    assign VGA_G = (VGA_BLANK_N) ? ram_pixel_out : 8'h00;
+    assign VGA_B = (VGA_BLANK_N) ? ram_pixel_out : 8'h00;
+
+endmodule

@@ -1,0 +1,6 @@
+
+State Machine - |Coprocessador|Controller:main_fsm|current_state
+Name current_state.S_IDLE current_state.S_FINISH current_state.S_PROCESSING 
+current_state.S_IDLE 0 0 0 
+current_state.S_PROCESSING 1 0 1 
+current_state.S_FINISH 1 1 0 
