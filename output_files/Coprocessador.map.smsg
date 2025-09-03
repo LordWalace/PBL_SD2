@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at Decimation.v(11): always construct contains both blocking and non-blocking assignments File: C:/Users/Walace/Documents/PBL-Co-processador/Decimation.v Line: 11
+Warning (10268): Verilog HDL information at Controller.v(23): always construct contains both blocking and non-blocking assignments File: C:/Users/Walace/Documents/PBL_Co-processador/Controller.v Line: 23

@@ -1,41 +1,53 @@
-module PixelReplication (
+module PixelReplication(
     input           clk,
     input           enable,
+    input   [2:0]   zoom_level,
     input   [7:0]   pixel_in,
-    output  [7:0]   pixel_out,
-    output  [15:0]  read_addr,
-    output  [15:0]  write_addr,
-    output          done
+    output reg  [7:0]   pixel_out,
+    output reg  [14:0]  read_addr,
+    output reg  [16:0]  write_addr,
+    output reg          done
 );
-    // Parâmetros da imagem
-    localparam IMG_WIDTH_IN   = 160;
-    localparam IMG_HEIGHT_IN  = 120;
-    localparam IMG_WIDTH_OUT  = 320;
-    localparam IMG_HEIGHT_OUT = 240;
-    localparam IMG_SIZE_OUT   = IMG_WIDTH_OUT * IMG_HEIGHT_OUT;
+    localparam IMG_WIDTH_IN = 160;
+    reg [9:0] x_out_count, y_out_count;
+    reg [18:0] out_pixel_count;
 
-    // Registador de estado (ponteiro)
-    reg [16:0] ptr;
+    wire [9:0] IMG_WIDTH_OUT;
+    wire [9:0] IMG_HEIGHT_OUT;
+    wire [18:0] IMG_SIZE_OUT;
+    wire [1:0] shift_factor;
+    wire [8:0] x_in;
+    wire [8:0] y_in;
 
-    // Fios para cálculos intermediários
-    wire [8:0] x_out = ptr % IMG_WIDTH_OUT;
-    wire [8:0] y_out = ptr / IMG_WIDTH_OUT;
-    wire [7:0] x_in  = x_out >> 1;
-    wire [7:0] y_in  = y_out >> 1;
+    assign IMG_WIDTH_OUT  = (zoom_level == 3'd4) ? 640 : (zoom_level == 3'd3) ? 320 : 160;
+    assign IMG_HEIGHT_OUT = (zoom_level == 3'd4) ? 480 : (zoom_level == 3'd3) ? 240 : 120;
+    assign IMG_SIZE_OUT   = IMG_WIDTH_OUT * IMG_HEIGHT_OUT;
+    assign shift_factor   = zoom_level - 3'd2;
 
-    // Lógica sequencial
     always @(posedge clk) begin
         if (!enable) begin
-            ptr <= 0;
-        end else if (ptr < IMG_SIZE_OUT) begin
-            ptr <= ptr + 1;
+            x_out_count <= 0; y_out_count <= 0; out_pixel_count <= 0; done <= 1'b0;
+        end else begin
+            if (out_pixel_count >= IMG_SIZE_OUT - 1) begin
+                done <= 1'b1; out_pixel_count <= 0; x_out_count <= 0; y_out_count <= 0;
+            end else begin
+                done <= 1'b0;
+                out_pixel_count <= out_pixel_count + 1;
+                if (x_out_count == IMG_WIDTH_OUT - 1) begin
+                    x_out_count <= 0; y_out_count <= y_out_count + 1;
+                end else begin
+                    x_out_count <= x_out_count + 1;
+                end
+            end
         end
     end
-
-    // Lógica combinacional
-    assign read_addr  = y_in * IMG_WIDTH_IN + x_in;
-    assign write_addr = ptr;
-    assign pixel_out  = pixel_in;
-    assign done       = (ptr == IMG_SIZE_OUT);
-
+    
+    assign x_in = x_out_count >> shift_factor;
+    assign y_in = y_out_count >> shift_factor;
+    
+    always @(*) begin
+        pixel_out = pixel_in;
+        read_addr = y_in * IMG_WIDTH_IN + x_in;
+        write_addr = out_pixel_count;
+    end
 endmodule

@@ -1,45 +1,63 @@
-module BlockAveraging (
+// Esse algoritmo podera apresentar problemas entao ele deve ser corrigido 
+
+module BlockAveraging(
     input           clk,
     input           enable,
-    input   [7:0]   pixel_in_p0, // (x, y)
-    input   [7:0]   pixel_in_p1, // (x+1, y)
-    input   [7:0]   pixel_in_p2, // (x, y+1)
-    input   [7:0]   pixel_in_p3, // (x+1, y+1)
-    output  [7:0]   pixel_out,
-    output  [15:0]  read_addr,
-    output  [15:0]  write_addr,
-    output          done
+    input   [2:0]   zoom_level,
+    input   [7:0]   pixel_in_p0,
+    input   [7:0]   pixel_in_p1,
+    input   [7:0]   pixel_in_p2,
+    input   [7:0]   pixel_in_p3,
+    output reg  [7:0]   pixel_out,
+    output reg  [14:0]  read_addr,
+    output reg  [16:0]  write_addr,
+    output reg          done
 );
-    // Parâmetros da imagem
-    localparam IMG_WIDTH_IN   = 160;
-    localparam IMG_HEIGHT_IN  = 120;
-    localparam IMG_WIDTH_OUT  = 80;
-    localparam IMG_HEIGHT_OUT = 60;
-    localparam IMG_SIZE_OUT   = IMG_WIDTH_OUT * IMG_HEIGHT_OUT;
+    localparam IMG_WIDTH_IN = 160;
+    reg [7:0] x_out_count, y_out_count;
+    reg [16:0] out_pixel_count;
 
-    // Registador de estado (ponteiro)
-    reg [12:0] ptr;
+    wire [7:0] IMG_WIDTH_OUT;
+    wire [6:0] IMG_HEIGHT_OUT;
+    wire [13:0] IMG_SIZE_OUT;
+    wire [1:0] shift_factor;
+    wire [8:0] x_in;
+    wire [8:0] y_in;
 
-    // Fios para cálculos intermediários
-    wire [6:0] x_out = ptr % IMG_WIDTH_OUT;
-    wire [5:0] y_out = ptr / IMG_WIDTH_OUT;
-    wire [7:0] x_in  = x_out << 1;
-    wire [6:0] y_in  = y_out << 1;
-    wire [9:0] sum   = pixel_in_p0 + pixel_in_p1 + pixel_in_p2 + pixel_in_p3;
+    assign IMG_WIDTH_OUT  = (zoom_level == 3'd0) ? 40 : (zoom_level == 3'd1) ? 80 : 160;
+    assign IMG_HEIGHT_OUT = (zoom_level == 3'd0) ? 30 : (zoom_level == 3'd1) ? 60 : 120;
+    assign IMG_SIZE_OUT   = IMG_WIDTH_OUT * IMG_HEIGHT_OUT;
+    assign shift_factor   = 3'd2 - zoom_level;
 
-    // Lógica sequencial
     always @(posedge clk) begin
         if (!enable) begin
-            ptr <= 0;
-        end else if (ptr < IMG_SIZE_OUT) begin
-            ptr <= ptr + 1;
+            x_out_count <= 0; y_out_count <= 0; out_pixel_count <= 0; done <= 1'b0;
+        end else begin
+            if (out_pixel_count >= IMG_SIZE_OUT - 1) begin
+                done <= 1'b1; out_pixel_count <= 0; x_out_count <= 0; y_out_count <= 0;
+            end else begin
+                done <= 1'b0;
+                out_pixel_count <= out_pixel_count + 1;
+                if (x_out_count == IMG_WIDTH_OUT - 1) begin
+                    x_out_count <= 0; y_out_count <= y_out_count + 1;
+                end else begin
+                    x_out_count <= x_out_count + 1;
+                end
+            end
         end
     end
-
-    // Lógica combinacional
-    assign read_addr  = y_in * IMG_WIDTH_IN + x_in; // Endereço base do bloco 2x2
-    assign write_addr = ptr;
-    assign pixel_out  = sum >> 2; // Média dos 4 pixels (divisão por 4)
-    assign done       = (ptr == IMG_SIZE_OUT);
-
+    
+    assign x_in = x_out_count << shift_factor;
+    assign y_in = y_out_count << shift_factor;
+    
+    always @(*) begin
+        if (zoom_level == 3'd1) begin // 0.5x Zoom
+            pixel_out = (pixel_in_p0 + pixel_in_p1 + pixel_in_p2 + pixel_in_p3) >> 2;
+        end else begin // 1x ou 0.25x Zoom
+            pixel_out = pixel_in_p0;
+        end
+        
+        read_addr = y_in * IMG_WIDTH_IN + x_in;
+        write_addr = out_pixel_count;
+    end
 endmodule

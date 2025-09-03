@@ -1,0 +1,81 @@
+module Informations (
+    input           clk,
+    input           reset,
+    input   [1:0]   algorithm_select,
+    input           error_active, 
+
+    output  [6:0]   HEX0,
+    output  [6:0]   HEX1,
+    output  [6:0]   HEX2,
+    output  [6:0]   HEX3,
+    output  [6:0]   HEX4,
+    output  [6:0]   HEX5
+);
+
+    reg [26:0] scroll_counter;
+    wire scroll_tick;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) scroll_counter <= 0;
+        else if (scroll_tick) scroll_counter <= 0;
+        else scroll_counter <= scroll_counter + 1;
+    end
+    assign scroll_tick = (scroll_counter == 27'd75_000_000);
+
+    reg [4:0] text_pointer;
+    reg [7:0] text_data [0:31];
+    reg [1:0] last_algorithm_select;
+    reg last_error_active;
+
+    // Seleciona o texto a ser exibido
+    always @(*) begin
+        if (error_active) begin
+            text_data = "      ZOOM INVALIDO         ";
+        end else begin
+            case(algorithm_select)
+                2'b00: text_data = "      NEAREST NEIGHBOR      ";
+                2'b01: text_data = "      PIXEL REPLICATION     ";
+                2'b10: text_data = "      DECIMATION            ";
+                2'b11: text_data = "      BLOCK AVERAGING       ";
+                default: text_data = "                            ";
+            endcase
+        end
+    end
+
+    // Controla o ponteiro de rolagem
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            text_pointer <= 0;
+            last_algorithm_select <= 2'b00;
+            last_error_active <= 1'b0;
+        end else begin
+            last_algorithm_select <= algorithm_select;
+            last_error_active <= error_active;
+            if ((error_active != last_error_active) || (!error_active && (algorithm_select != last_algorithm_select))) begin
+                text_pointer <= 0;
+            end else if (scroll_tick) begin
+                if (text_pointer >= 26) text_pointer <= 0;
+                else text_pointer <= text_pointer + 1;
+            end
+        end
+    end
+
+    // Descodificador de Caracteres
+    function [6:0] char_to_segments;
+        input [7:0] char;
+        begin
+            case(char)
+                "N": char_to_segments = 7'b0101011; "E": char_to_segments = 7'b0000110; "A": char_to_segments = 7'b0001011; "R": char_to_segments = 7'b0101111; "S": char_to_segments = 7'b0010010; "T": char_to_segments = 7'b0000111; "P": char_to_segments = 7'b0001101; "I": char_to_segments = 7'b1111001; "X": char_to_segments = 7'b0011011; "L": char_to_segments = 7'b1000111; "C": char_to_segments = 7'b1000110; "O": char_to_segments = 7'b0100011; "D": char_to_segments = 7'b0100001; "M": char_to_segments = 7'b1010100; "B": char_to_segments = 7'b0000011; "K": char_to_segments = 7'b0001111; "V": char_to_segments = 7'b1100011; "G": char_to_segments = 7'b0010000; "H": char_to_segments = 7'b0011011; "Z": char_to_segments = 7'b0110010; "U": char_to_segments = 7'b1100011; " ": char_to_segments = 7'b1111111;
+                default: char_to_segments = 7'b1111111;
+            endcase
+        end
+    endfunction
+
+    assign HEX5 = char_to_segments(text_data[text_pointer + 0]);
+    assign HEX4 = char_to_segments(text_data[text_pointer + 1]);
+    assign HEX3 = char_to_segments(text_data[text_pointer + 2]);
+    assign HEX2 = char_to_segments(text_data[text_pointer + 3]);
+    assign HEX1 = char_to_segments(text_data[text_pointer + 4]);
+    assign HEX0 = char_to_segments(text_data[text_pointer + 5]);
+
+endmodule
