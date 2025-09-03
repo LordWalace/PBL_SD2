@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Coprocessador
-Tue Sep  2 23:08:37 2025
+Wed Sep  3 10:51:59 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -17,29 +17,27 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   9. Analysis & Synthesis DSP Block Usage Summary
  10. Analysis & Synthesis IP Cores Summary
  11. State Machine - |Coprocessador|Controller:main_fsm|current_state
- 12. Registers Removed During Synthesis
- 13. Removed Registers Triggering Further Register Optimizations
- 14. General Register Statistics
- 15. Inverted Register Statistics
- 16. Multiplexer Restructuring Statistics (Restructuring Performed)
- 17. Source assignments for ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 18. Source assignments for ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 19. Source assignments for ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 20. Source assignments for ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 21. Source assignments for VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated
- 22. Parameter Settings for User Entity Instance: ImgRom:rom0|altsyncram:altsyncram_component
- 23. Parameter Settings for User Entity Instance: ImgRom:rom1|altsyncram:altsyncram_component
- 24. Parameter Settings for User Entity Instance: ImgRom:rom2|altsyncram:altsyncram_component
- 25. Parameter Settings for User Entity Instance: ImgRom:rom3|altsyncram:altsyncram_component
- 26. Parameter Settings for User Entity Instance: VdRam:frame_buffer|altsyncram:altsyncram_component
- 27. altsyncram Parameter Settings by Entity Instance
- 28. Port Connectivity Checks: "VGAController:vga_inst"
- 29. Port Connectivity Checks: "ImgRom:rom3"
- 30. Port Connectivity Checks: "ImgRom:rom2"
- 31. Port Connectivity Checks: "ImgRom:rom1"
- 32. Post-Synthesis Netlist Statistics for Top Partition
- 33. Elapsed Time Per Partition
- 34. Analysis & Synthesis Messages
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 16. Source assignments for ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 17. Source assignments for ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 18. Source assignments for ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 19. Source assignments for VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated
+ 20. Parameter Settings for User Entity Instance: ImgRom:rom0|altsyncram:altsyncram_component
+ 21. Parameter Settings for User Entity Instance: ImgRom:rom1|altsyncram:altsyncram_component
+ 22. Parameter Settings for User Entity Instance: ImgRom:rom2|altsyncram:altsyncram_component
+ 23. Parameter Settings for User Entity Instance: ImgRom:rom3|altsyncram:altsyncram_component
+ 24. Parameter Settings for User Entity Instance: VdRam:frame_buffer|altsyncram:altsyncram_component
+ 25. altsyncram Parameter Settings by Entity Instance
+ 26. Port Connectivity Checks: "VGAController:vga_inst"
+ 27. Port Connectivity Checks: "ImgRom:rom3"
+ 28. Port Connectivity Checks: "ImgRom:rom2"
+ 29. Port Connectivity Checks: "ImgRom:rom1"
+ 30. Post-Synthesis Netlist Statistics for Top Partition
+ 31. Elapsed Time Per Partition
+ 32. Analysis & Synthesis Messages
 
 
 
@@ -66,7 +64,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Sep  2 23:08:37 2025          ;
+; Analysis & Synthesis Status     ; Successful - Wed Sep  3 10:51:59 2025          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; Coprocessador                                  ;
 ; Top-level Entity Name           ; Coprocessador                                  ;
@@ -75,8 +73,8 @@ https://fpgasoftware.intel.com/eula.
 ; Total registers                 ; 237                                            ;
 ; Total pins                      ; 79                                             ;
 ; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 1,138,688                                      ;
-; Total DSP Blocks                ; 4                                              ;
+; Total block memory bits         ; 1,228,800                                      ;
+; Total DSP Blocks                ; 5                                              ;
 ; Total HSSI RX PCSs              ; 0                                              ;
 ; Total HSSI PMA RX Deserializers ; 0                                              ;
 ; Total HSSI TX PCSs              ; 0                                              ;
@@ -189,7 +187,9 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 2            ;   0.0%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
-;     Processors 5-16        ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processors 7-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -234,27 +234,27 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 738            ;
+; Estimate of Logic utilization (ALMs needed) ; 767            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1125           ;
+; Combinational ALUT usage for logic          ; 1166           ;
 ;     -- 7 input functions                    ; 21             ;
-;     -- 6 input functions                    ; 327            ;
-;     -- 5 input functions                    ; 149            ;
+;     -- 6 input functions                    ; 345            ;
+;     -- 5 input functions                    ; 144            ;
 ;     -- 4 input functions                    ; 87             ;
-;     -- <=3 input functions                  ; 541            ;
+;     -- <=3 input functions                  ; 569            ;
 ;                                             ;                ;
 ; Dedicated logic registers                   ; 237            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 79             ;
 ; Total MLAB memory bits                      ; 0              ;
-; Total block memory bits                     ; 1138688        ;
+; Total block memory bits                     ; 1228800        ;
 ;                                             ;                ;
-; Total DSP Blocks                            ; 4              ;
+; Total DSP Blocks                            ; 5              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 398            ;
-; Total fan-out                               ; 8672           ;
-; Average fan-out                             ; 5.15           ;
+; Maximum fan-out                             ; 414            ;
+; Total fan-out                               ; 9288           ;
+; Average fan-out                             ; 5.33           ;
 +---------------------------------------------+----------------+
 
 
@@ -263,7 +263,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                       ; Entity Name      ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
-; |Coprocessador                            ; 1125 (72)           ; 237 (2)                   ; 1138688           ; 4          ; 79   ; 0            ; |Coprocessador                                                                                                            ; Coprocessador    ; work         ;
+; |Coprocessador                            ; 1166 (81)           ; 237 (2)                   ; 1228800           ; 5          ; 79   ; 0            ; |Coprocessador                                                                                                            ; Coprocessador    ; work         ;
 ;    |Controller:main_fsm|                  ; 14 (14)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Controller:main_fsm                                                                                        ; Controller       ; work         ;
 ;    |ImgRom:rom0|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0                                                                                                ; ImgRom           ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component                                                                ; altsyncram       ; work         ;
@@ -286,12 +286,12 @@ https://fpgasoftware.intel.com/eula.
 ;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode          ; decode_01a       ; work         ;
 ;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                    ; mux_nfb          ; work         ;
 ;    |Informations:scrolling_display|       ; 424 (424)           ; 37 (37)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Informations:scrolling_display                                                                             ; Informations     ; work         ;
-;    |VGAController:vga_inst|               ; 56 (56)             ; 22 (22)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VGAController:vga_inst                                                                                     ; VGAController    ; work         ;
-;    |VdRam:frame_buffer|                   ; 16 (0)              ; 6 (0)                     ; 524288            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer                                                                                         ; VdRam            ; work         ;
-;       |altsyncram:altsyncram_component|   ; 16 (0)              ; 6 (0)                     ; 524288            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component                                                         ; altsyncram       ; work         ;
-;          |altsyncram_uvt1:auto_generated| ; 16 (0)              ; 6 (6)                     ; 524288            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated                          ; altsyncram_uvt1  ; work         ;
-;             |decode_g2a:rden_decode_b|    ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_g2a:rden_decode_b ; decode_g2a       ; work         ;
-;             |decode_nma:decode2|          ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_nma:decode2       ; decode_nma       ; work         ;
+;    |VGAController:vga_inst|               ; 84 (84)             ; 20 (20)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|VGAController:vga_inst                                                                                     ; VGAController    ; work         ;
+;    |VdRam:frame_buffer|                   ; 20 (0)              ; 8 (0)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer                                                                                         ; VdRam            ; work         ;
+;       |altsyncram:altsyncram_component|   ; 20 (0)              ; 8 (0)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component                                                         ; altsyncram       ; work         ;
+;          |altsyncram_uvt1:auto_generated| ; 20 (0)              ; 8 (8)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated                          ; altsyncram_uvt1  ; work         ;
+;             |decode_g2a:rden_decode_b|    ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_g2a:rden_decode_b ; decode_g2a       ; work         ;
+;             |decode_nma:decode2|          ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_nma:decode2       ; decode_nma       ; work         ;
 ;    |ZoomSelection:resizer|                ; 499 (40)            ; 148 (0)                   ; 0                 ; 4          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer                                                                                      ; ZoomSelection    ; work         ;
 ;       |BlockAveraging:u_ba|               ; 142 (142)           ; 34 (34)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba                                                                  ; BlockAveraging   ; work         ;
 ;       |Decimation:u_dec|                  ; 92 (92)             ; 34 (34)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec                                                                     ; Decimation       ; work         ;
@@ -320,10 +320,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                       ; Number Used ;
 +---------------------------------+-------------+
 ; Independent 9x9                 ; 2           ;
-; Two Independent 18x18           ; 2           ;
-; Total number of DSP blocks      ; 4           ;
+; Two Independent 18x18           ; 3           ;
+; Total number of DSP blocks      ; 5           ;
 ;                                 ;             ;
-; Fixed Point Unsigned Multiplier ; 4           ;
+; Fixed Point Unsigned Multiplier ; 5           ;
 +---------------------------------+-------------+
 
 
@@ -350,27 +350,6 @@ Encoding Type:  One-Hot
 ; current_state.S_PROCESS ; 1                    ; 0                     ; 1                       ;
 ; current_state.S_WRITE   ; 1                    ; 1                     ; 0                       ;
 +-------------------------+----------------------+-----------------------+-------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                              ;
-+--------------------------------------------------------------------------------------------------------+----------------------------------------+
-; Register name                                                                                          ; Reason for Removal                     ;
-+--------------------------------------------------------------------------------------------------------+----------------------------------------+
-; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|address_reg_b[3]     ; Stuck at GND due to stuck port data_in ;
-; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|out_address_reg_b[3] ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 2                                                                  ;                                        ;
-+--------------------------------------------------------------------------------------------------------+----------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                             ;
-+----------------------------------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------------------------------+
-; Register name                                                                                      ; Reason for Removal        ; Registers Removed due to This Register                                                                 ;
-+----------------------------------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------------------------------+
-; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|address_reg_b[3] ; Stuck at GND              ; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|out_address_reg_b[3] ;
-;                                                                                                    ; due to stuck port data_in ;                                                                                                        ;
-+----------------------------------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -403,51 +382,51 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|out_pixel_count[11]                                         ;
-; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|out_pixel_count[12]                                        ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|out_pixel_count[16]                                             ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|out_pixel_count[5]                                           ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|y_out_count[9]                                              ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|x_out_count[5]                                              ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|y_out_count[7]                                             ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|x_out_count[7]                                             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|y_out_count[5]                                                  ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|x_out_count[6]                                                  ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|out_pixel_count[10]                                         ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|out_pixel_count[0]                                         ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|out_pixel_count[11]                                             ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|out_pixel_count[9]                                           ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|y_out_count[1]                                              ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|x_out_count[1]                                              ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|y_out_count[1]                                             ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|x_out_count[3]                                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|y_out_count[0]                                                  ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|x_out_count[0]                                                  ;
 ; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|y_out_count[7]                                               ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|x_out_count[6]                                               ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Coprocessador|Informations:scrolling_display|text_pointer[4]                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[18][6]                                                        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|x_out_count[5]                                               ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Coprocessador|Informations:scrolling_display|text_pointer[1]                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[10][0]                                                        ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
 ; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
 ; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Mux31                                                                            ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Mux34                                                                            ;
 ; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data                                                               ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|ShiftRight1                                                 ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|ShiftRight1                                                 ;
-; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|ShiftRight1                                                ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[2] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[6] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[0] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[7] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|ShiftRight1                                                ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|ShiftRight1                                                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[3] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[1] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[4] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[6] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|ShiftLeft1                                                   ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|ShiftLeft1                                                   ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|ShiftLeft1                                                      ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|ShiftLeft1                                                   ;
 ; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|ShiftLeft1                                                      ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|algorithm_select[1]                                                                                    ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[10][3]                                                        ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|algorithm_select[0]                                                                                    ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[21][1]                                                        ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux12                                                                   ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux40                                                                   ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux8                                                                    ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux38                                                                   ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux13                                                                   ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux35                                                                   ;
 ; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux4                                                                    ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux30                                                                   ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux33                                                                   ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux3                                                                    ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux34                                                                   ;
-; 9:1                ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VGA_R                                                                                                  ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Mux19                                                                            ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VGA_R                                                                                                  ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|Add10                                                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------+
 
 
@@ -865,13 +844,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+----------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "VGAController:vga_inst"                                                                                                                                                      ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                                                                                                                 ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; read_addr ; Output ; Warning  ; Output or bidir port (16 bits) is smaller than the port expression (17 bits) it drives.  The 1 most-significant bit(s) in the port expression will be connected to GND. ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "VGAController:vga_inst"                                                                                                                           ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                      ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; zoom_level ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -914,31 +893,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA SCLR          ; 36                          ;
 ;     SCLR              ; 108                         ;
 ;     plain             ; 28                          ;
-; arriav_lcell_comb     ; 1167                        ;
-;     arith             ; 351                         ;
-;         0 data inputs ; 4                           ;
-;         1 data inputs ; 307                         ;
-;         2 data inputs ; 26                          ;
+; arriav_lcell_comb     ; 1208                        ;
+;     arith             ; 387                         ;
+;         0 data inputs ; 6                           ;
+;         1 data inputs ; 323                         ;
+;         2 data inputs ; 44                          ;
 ;         4 data inputs ; 10                          ;
 ;         5 data inputs ; 4                           ;
 ;     extend            ; 21                          ;
 ;         7 data inputs ; 21                          ;
-;     normal            ; 777                         ;
+;     normal            ; 792                         ;
 ;         1 data inputs ; 44                          ;
-;         2 data inputs ; 98                          ;
+;         2 data inputs ; 100                         ;
 ;         3 data inputs ; 86                          ;
 ;         4 data inputs ; 77                          ;
-;         5 data inputs ; 145                         ;
-;         6 data inputs ; 327                         ;
-;     shared            ; 18                          ;
-;         2 data inputs ; 8                           ;
-;         3 data inputs ; 10                          ;
-; arriav_mac            ; 4                           ;
+;         5 data inputs ; 140                         ;
+;         6 data inputs ; 345                         ;
+;     shared            ; 8                           ;
+;         3 data inputs ; 8                           ;
+; arriav_mac            ; 5                           ;
 ; boundary_port         ; 79                          ;
-; stratixv_ram_block    ; 160                         ;
+; stratixv_ram_block    ; 176                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 9.00                        ;
-; Average LUT depth     ; 5.05                        ;
+; Average LUT depth     ; 4.96                        ;
 +-----------------------+-----------------------------+
 
 
@@ -947,7 +925,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:06     ;
 +----------------+--------------+
 
 
@@ -957,7 +935,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue Sep  2 23:08:22 2025
+    Info: Processing started: Wed Sep  3 10:51:36 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Coprocessador -c Coprocessador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1089,60 +1067,32 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/mux_
     Info (12023): Found entity 1: mux_7hb File: C:/Users/Walace/Documents/PBL_Co-processador/db/mux_7hb.tdf Line: 23
 Info (12128): Elaborating entity "mux_7hb" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|mux_7hb:mux3" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 49
 Info (12128): Elaborating entity "VGAController" for hierarchy "VGAController:vga_inst" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 94
-Warning (10230): Verilog HDL assignment warning at VGAController.v(25): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 25
-Warning (10230): Verilog HDL assignment warning at VGAController.v(29): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 29
-Warning (10230): Verilog HDL assignment warning at VGAController.v(45): truncated value with size 32 to match size of target (16) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 45
+Warning (10230): Verilog HDL assignment warning at VGAController.v(28): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 28
+Warning (10230): Verilog HDL assignment warning at VGAController.v(32): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 32
+Warning (10230): Verilog HDL assignment warning at VGAController.v(41): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 41
+Warning (10230): Verilog HDL assignment warning at VGAController.v(46): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 46
+Warning (10230): Verilog HDL assignment warning at VGAController.v(51): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 51
+Warning (10230): Verilog HDL assignment warning at VGAController.v(52): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 52
+Warning (10230): Verilog HDL assignment warning at VGAController.v(57): truncated value with size 32 to match size of target (17) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 57
 Info (12128): Elaborating entity "Informations" for hierarchy "Informations:scrolling_display" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 102
 Warning (10230): Verilog HDL assignment warning at Informations.v(24): truncated value with size 32 to match size of target (27) File: C:/Users/Walace/Documents/PBL_Co-processador/Informations.v Line: 24
 Warning (10230): Verilog HDL assignment warning at Informations.v(100): truncated value with size 32 to match size of target (5) File: C:/Users/Walace/Documents/PBL_Co-processador/Informations.v Line: 100
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "vga_read_addr[16]" is missing source, defaulting to GND File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 63
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "vga_read_addr[16]" is missing source, defaulting to GND File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 63
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "vga_read_addr[16]" is missing source, defaulting to GND File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 63
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "vga_read_addr[16]" is missing source, defaulting to GND File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 63
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "vga_read_addr[16]" is missing source, defaulting to GND File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 63
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "vga_read_addr[16]" is missing source, defaulting to GND File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 63
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "vga_read_addr[16]" is missing source, defaulting to GND File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 63
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a64" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2162
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a65" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2195
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a66" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2228
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a67" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2261
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a68" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2294
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a69" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2327
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a70" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2360
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a71" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2393
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a72" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2426
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a73" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2459
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a74" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2492
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a75" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2525
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a76" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2558
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a77" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2591
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a78" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2624
-        Warning (14320): Synthesized away node "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ram_block1a79" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 2657
 Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 3
-Info (21057): Implemented 1396 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1452 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 9 input pins
     Info (21059): Implemented 70 output pins
-    Info (21061): Implemented 1153 logic cells
-    Info (21064): Implemented 160 RAM segments
-    Info (21062): Implemented 4 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 77 warnings
+    Info (21061): Implemented 1192 logic cells
+    Info (21064): Implemented 176 RAM segments
+    Info (21062): Implemented 5 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 49 warnings
     Info: Peak virtual memory: 4914 megabytes
-    Info: Processing ended: Tue Sep  2 23:08:37 2025
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:16
+    Info: Processing ended: Wed Sep  3 10:51:59 2025
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:31
 
 

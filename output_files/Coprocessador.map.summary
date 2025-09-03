@@ -1,4 +1,4 @@
-Analysis & Synthesis Status : Successful - Tue Sep  2 23:08:37 2025
+Analysis & Synthesis Status : Successful - Wed Sep  3 10:51:59 2025
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : Coprocessador
 Top-level Entity Name : Coprocessador
@@ -7,8 +7,8 @@ Logic utilization (in ALMs) : N/A
 Total registers : 237
 Total pins : 79
 Total virtual pins : 0
-Total block memory bits : 1,138,688
-Total DSP Blocks : 4
+Total block memory bits : 1,228,800
+Total DSP Blocks : 5
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
 Total HSSI TX PCSs : 0
