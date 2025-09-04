@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Coprocessador
-Wed Sep  3 10:51:59 2025
+Thu Sep  4 16:41:49 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -16,28 +16,33 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis DSP Block Usage Summary
  10. Analysis & Synthesis IP Cores Summary
- 11. State Machine - |Coprocessador|Controller:main_fsm|current_state
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 16. Source assignments for ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 17. Source assignments for ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 18. Source assignments for ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
- 19. Source assignments for VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated
- 20. Parameter Settings for User Entity Instance: ImgRom:rom0|altsyncram:altsyncram_component
- 21. Parameter Settings for User Entity Instance: ImgRom:rom1|altsyncram:altsyncram_component
- 22. Parameter Settings for User Entity Instance: ImgRom:rom2|altsyncram:altsyncram_component
- 23. Parameter Settings for User Entity Instance: ImgRom:rom3|altsyncram:altsyncram_component
- 24. Parameter Settings for User Entity Instance: VdRam:frame_buffer|altsyncram:altsyncram_component
- 25. altsyncram Parameter Settings by Entity Instance
- 26. Port Connectivity Checks: "VGAController:vga_inst"
- 27. Port Connectivity Checks: "ImgRom:rom3"
- 28. Port Connectivity Checks: "ImgRom:rom2"
- 29. Port Connectivity Checks: "ImgRom:rom1"
- 30. Post-Synthesis Netlist Statistics for Top Partition
- 31. Elapsed Time Per Partition
- 32. Analysis & Synthesis Messages
+ 11. State Machine - |Coprocessador|VGA_Driver:the_vga_driver|v_state
+ 12. State Machine - |Coprocessador|VGA_Driver:the_vga_driver|h_state
+ 13. Registers Removed During Synthesis
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 18. Source assignments for ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 19. Source assignments for ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 20. Source assignments for ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 21. Source assignments for ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated
+ 22. Source assignments for VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated
+ 23. Parameter Settings for User Entity Instance: ImgRom:rom0|altsyncram:altsyncram_component
+ 24. Parameter Settings for User Entity Instance: ImgRom:rom1|altsyncram:altsyncram_component
+ 25. Parameter Settings for User Entity Instance: ImgRom:rom2|altsyncram:altsyncram_component
+ 26. Parameter Settings for User Entity Instance: ImgRom:rom3|altsyncram:altsyncram_component
+ 27. Parameter Settings for User Entity Instance: ImgRom:vga_rom_reader|altsyncram:altsyncram_component
+ 28. Parameter Settings for User Entity Instance: VdRam:frame_buffer|altsyncram:altsyncram_component
+ 29. Parameter Settings for User Entity Instance: VGA_Driver:the_vga_driver
+ 30. altsyncram Parameter Settings by Entity Instance
+ 31. Port Connectivity Checks: "VGA_Driver:the_vga_driver"
+ 32. Port Connectivity Checks: "ImgRom:rom3"
+ 33. Port Connectivity Checks: "ImgRom:rom2"
+ 34. Port Connectivity Checks: "ImgRom:rom1"
+ 35. Post-Synthesis Netlist Statistics for Top Partition
+ 36. Elapsed Time Per Partition
+ 37. Analysis & Synthesis Messages
 
 
 
@@ -64,16 +69,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Sep  3 10:51:59 2025          ;
+; Analysis & Synthesis Status     ; Successful - Thu Sep  4 16:41:49 2025          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; Coprocessador                                  ;
 ; Top-level Entity Name           ; Coprocessador                                  ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 237                                            ;
+; Total registers                 ; 274                                            ;
 ; Total pins                      ; 79                                             ;
 ; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 1,228,800                                      ;
+; Total block memory bits         ; 1,382,400                                      ;
 ; Total DSP Blocks                ; 5                                              ;
 ; Total HSSI RX PCSs              ; 0                                              ;
 ; Total HSSI PMA RX Deserializers ; 0                                              ;
@@ -176,57 +181,60 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 16          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 20          ;
+; Maximum allowed            ; 14          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 16          ;
+; Maximum used               ; 14          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processor 2            ;   0.1%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
-;     Processors 7-16        ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-14        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                       ;
-+----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                               ; Library ;
-+----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------+---------+
-; Img/ExemploPBL.mif               ; yes             ; User Memory Initialization File  ; C:/Users/Walace/Documents/PBL_Co-processador/Img/ExemploPBL.mif            ;         ;
-; ZoomSelection.v                  ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/ZoomSelection.v               ;         ;
-; VGAController.v                  ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v               ;         ;
-; PixelReplication.v               ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v            ;         ;
-; NearestNeighbor.v                ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v             ;         ;
-; Decimation.v                     ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v                  ;         ;
-; Controller.v                     ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/Controller.v                  ;         ;
-; BlockAveraging.v                 ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v              ;         ;
-; Coprocessador.v                  ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v               ;         ;
-; ImgRom.v                         ; yes             ; User Wizard-Generated File       ; C:/Users/Walace/Documents/PBL_Co-processador/ImgRom.v                      ;         ;
-; VdRam.v                          ; yes             ; User Wizard-Generated File       ; C:/Users/Walace/Documents/PBL_Co-processador/VdRam.v                       ;         ;
-; Informations.v                   ; yes             ; User Verilog HDL File            ; C:/Users/Walace/Documents/PBL_Co-processador/Informations.v                ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal231.inc                   ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/aglobal231.inc        ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                       ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                       ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                     ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_ueg1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf        ;         ;
-; db/decode_01a.tdf                ; yes             ; Auto-Generated Megafunction      ; C:/Users/Walace/Documents/PBL_Co-processador/db/decode_01a.tdf             ;         ;
-; db/mux_nfb.tdf                   ; yes             ; Auto-Generated Megafunction      ; C:/Users/Walace/Documents/PBL_Co-processador/db/mux_nfb.tdf                ;         ;
-; db/altsyncram_uvt1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf        ;         ;
-; db/decode_nma.tdf                ; yes             ; Auto-Generated Megafunction      ; C:/Users/Walace/Documents/PBL_Co-processador/db/decode_nma.tdf             ;         ;
-; db/decode_g2a.tdf                ; yes             ; Auto-Generated Megafunction      ; C:/Users/Walace/Documents/PBL_Co-processador/db/decode_g2a.tdf             ;         ;
-; db/mux_7hb.tdf                   ; yes             ; Auto-Generated Megafunction      ; C:/Users/Walace/Documents/PBL_Co-processador/db/mux_7hb.tdf                ;         ;
-+----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                           ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                   ; Library ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------+---------+
+; Img/ExemploPBL.mif               ; yes             ; User Memory Initialization File  ; /home/aluno/Documentos/PBL_Co-processador/Img/ExemploPBL.mif                   ;         ;
+; ZoomSelection.v                  ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/ZoomSelection.v                      ;         ;
+; VGAController.v                  ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/VGAController.v                      ;         ;
+; PixelReplication.v               ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v                   ;         ;
+; NearestNeighbor.v                ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v                    ;         ;
+; Decimation.v                     ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/Decimation.v                         ;         ;
+; Controller.v                     ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/Controller.v                         ;         ;
+; BlockAveraging.v                 ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v                     ;         ;
+; Coprocessador.v                  ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v                      ;         ;
+; ImgRom.v                         ; yes             ; User Wizard-Generated File       ; /home/aluno/Documentos/PBL_Co-processador/ImgRom.v                             ;         ;
+; VdRam.v                          ; yes             ; User Wizard-Generated File       ; /home/aluno/Documentos/PBL_Co-processador/VdRam.v                              ;         ;
+; Informations.v                   ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/Informations.v                       ;         ;
+; VGA_Driver.v                     ; yes             ; User Verilog HDL File            ; /home/aluno/Documentos/PBL_Co-processador/VGA_Driver.v                         ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/aglobal231.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                     ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_ueg1.tdf           ; yes             ; Auto-Generated Megafunction      ; /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_ueg1.tdf               ;         ;
+; db/decode_01a.tdf                ; yes             ; Auto-Generated Megafunction      ; /home/aluno/Documentos/PBL_Co-processador/db/decode_01a.tdf                    ;         ;
+; db/mux_nfb.tdf                   ; yes             ; Auto-Generated Megafunction      ; /home/aluno/Documentos/PBL_Co-processador/db/mux_nfb.tdf                       ;         ;
+; db/altsyncram_uvt1.tdf           ; yes             ; Auto-Generated Megafunction      ; /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_uvt1.tdf               ;         ;
+; db/decode_nma.tdf                ; yes             ; Auto-Generated Megafunction      ; /home/aluno/Documentos/PBL_Co-processador/db/decode_nma.tdf                    ;         ;
+; db/decode_g2a.tdf                ; yes             ; Auto-Generated Megafunction      ; /home/aluno/Documentos/PBL_Co-processador/db/decode_g2a.tdf                    ;         ;
+; db/mux_7hb.tdf                   ; yes             ; Auto-Generated Megafunction      ; /home/aluno/Documentos/PBL_Co-processador/db/mux_7hb.tdf                       ;         ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -234,84 +242,90 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 767            ;
+; Estimate of Logic utilization (ALMs needed) ; 821            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1166           ;
-;     -- 7 input functions                    ; 21             ;
-;     -- 6 input functions                    ; 345            ;
-;     -- 5 input functions                    ; 144            ;
-;     -- 4 input functions                    ; 87             ;
-;     -- <=3 input functions                  ; 569            ;
+; Combinational ALUT usage for logic          ; 1268           ;
+;     -- 7 input functions                    ; 32             ;
+;     -- 6 input functions                    ; 338            ;
+;     -- 5 input functions                    ; 202            ;
+;     -- 4 input functions                    ; 104            ;
+;     -- <=3 input functions                  ; 592            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 237            ;
+; Dedicated logic registers                   ; 274            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 79             ;
 ; Total MLAB memory bits                      ; 0              ;
-; Total block memory bits                     ; 1228800        ;
+; Total block memory bits                     ; 1382400        ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 5              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 414            ;
-; Total fan-out                               ; 9288           ;
-; Average fan-out                             ; 5.33           ;
+; Maximum fan-out                             ; 419            ;
+; Total fan-out                               ; 10232          ;
+; Average fan-out                             ; 5.37           ;
 +---------------------------------------------+----------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                              ;
-+-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
-; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                       ; Entity Name      ; Library Name ;
-+-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
-; |Coprocessador                            ; 1166 (81)           ; 237 (2)                   ; 1228800           ; 5          ; 79   ; 0            ; |Coprocessador                                                                                                            ; Coprocessador    ; work         ;
-;    |Controller:main_fsm|                  ; 14 (14)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Controller:main_fsm                                                                                        ; Controller       ; work         ;
-;    |ImgRom:rom0|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0                                                                                                ; ImgRom           ; work         ;
-;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component                                                                ; altsyncram       ; work         ;
-;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                 ; altsyncram_ueg1  ; work         ;
-;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode          ; decode_01a       ; work         ;
-;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                    ; mux_nfb          ; work         ;
-;    |ImgRom:rom1|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1                                                                                                ; ImgRom           ; work         ;
-;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component                                                                ; altsyncram       ; work         ;
-;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                 ; altsyncram_ueg1  ; work         ;
-;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode          ; decode_01a       ; work         ;
-;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                    ; mux_nfb          ; work         ;
-;    |ImgRom:rom2|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2                                                                                                ; ImgRom           ; work         ;
-;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component                                                                ; altsyncram       ; work         ;
-;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                 ; altsyncram_ueg1  ; work         ;
-;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode          ; decode_01a       ; work         ;
-;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                    ; mux_nfb          ; work         ;
-;    |ImgRom:rom3|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3                                                                                                ; ImgRom           ; work         ;
-;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component                                                                ; altsyncram       ; work         ;
-;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                 ; altsyncram_ueg1  ; work         ;
-;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode          ; decode_01a       ; work         ;
-;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                    ; mux_nfb          ; work         ;
-;    |Informations:scrolling_display|       ; 424 (424)           ; 37 (37)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Informations:scrolling_display                                                                             ; Informations     ; work         ;
-;    |VGAController:vga_inst|               ; 84 (84)             ; 20 (20)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|VGAController:vga_inst                                                                                     ; VGAController    ; work         ;
-;    |VdRam:frame_buffer|                   ; 20 (0)              ; 8 (0)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer                                                                                         ; VdRam            ; work         ;
-;       |altsyncram:altsyncram_component|   ; 20 (0)              ; 8 (0)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component                                                         ; altsyncram       ; work         ;
-;          |altsyncram_uvt1:auto_generated| ; 20 (0)              ; 8 (8)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated                          ; altsyncram_uvt1  ; work         ;
-;             |decode_g2a:rden_decode_b|    ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_g2a:rden_decode_b ; decode_g2a       ; work         ;
-;             |decode_nma:decode2|          ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_nma:decode2       ; decode_nma       ; work         ;
-;    |ZoomSelection:resizer|                ; 499 (40)            ; 148 (0)                   ; 0                 ; 4          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer                                                                                      ; ZoomSelection    ; work         ;
-;       |BlockAveraging:u_ba|               ; 142 (142)           ; 34 (34)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba                                                                  ; BlockAveraging   ; work         ;
-;       |Decimation:u_dec|                  ; 92 (92)             ; 34 (34)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec                                                                     ; Decimation       ; work         ;
-;       |NearestNeighbor:u_nn|              ; 112 (112)           ; 40 (40)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn                                                                 ; NearestNeighbor  ; work         ;
-;       |PixelReplication:u_pr|             ; 113 (113)           ; 40 (40)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr                                                                ; PixelReplication ; work         ;
-+-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                               ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                        ; Entity Name      ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
+; |Coprocessador                            ; 1268 (53)           ; 274 (4)                   ; 1382400           ; 5          ; 79   ; 0            ; |Coprocessador                                                                                                             ; Coprocessador    ; work         ;
+;    |Controller:main_fsm|                  ; 14 (14)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Controller:main_fsm                                                                                         ; Controller       ; work         ;
+;    |ImgRom:rom0|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0                                                                                                 ; ImgRom           ; work         ;
+;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component                                                                 ; altsyncram       ; work         ;
+;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                  ; altsyncram_ueg1  ; work         ;
+;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode           ; decode_01a       ; work         ;
+;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                     ; mux_nfb          ; work         ;
+;    |ImgRom:rom1|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1                                                                                                 ; ImgRom           ; work         ;
+;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component                                                                 ; altsyncram       ; work         ;
+;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                  ; altsyncram_ueg1  ; work         ;
+;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode           ; decode_01a       ; work         ;
+;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                     ; mux_nfb          ; work         ;
+;    |ImgRom:rom2|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2                                                                                                 ; ImgRom           ; work         ;
+;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component                                                                 ; altsyncram       ; work         ;
+;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                  ; altsyncram_ueg1  ; work         ;
+;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode           ; decode_01a       ; work         ;
+;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                     ; mux_nfb          ; work         ;
+;    |ImgRom:rom3|                          ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3                                                                                                 ; ImgRom           ; work         ;
+;       |altsyncram:altsyncram_component|   ; 11 (0)              ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component                                                                 ; altsyncram       ; work         ;
+;          |altsyncram_ueg1:auto_generated| ; 11 (0)              ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                                  ; altsyncram_ueg1  ; work         ;
+;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode           ; decode_01a       ; work         ;
+;             |mux_nfb:mux2|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2                     ; mux_nfb          ; work         ;
+;    |ImgRom:vga_rom_reader|                ; 2 (0)               ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:vga_rom_reader                                                                                       ; ImgRom           ; work         ;
+;       |altsyncram:altsyncram_component|   ; 2 (0)               ; 4 (0)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:vga_rom_reader|altsyncram:altsyncram_component                                                       ; altsyncram       ; work         ;
+;          |altsyncram_ueg1:auto_generated| ; 2 (0)               ; 4 (4)                     ; 153600            ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated                        ; altsyncram_ueg1  ; work         ;
+;             |decode_01a:rden_decode|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode ; decode_01a       ; work         ;
+;    |Informations:scrolling_display|       ; 390 (390)           ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Informations:scrolling_display                                                                              ; Informations     ; work         ;
+;    |VGAController:vga_logic_inst|         ; 142 (142)           ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|VGAController:vga_logic_inst                                                                                ; VGAController    ; work         ;
+;    |VGA_Driver:the_vga_driver|            ; 116 (116)           ; 55 (55)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VGA_Driver:the_vga_driver                                                                                   ; VGA_Driver       ; work         ;
+;    |VdRam:frame_buffer|                   ; 21 (0)              ; 4 (0)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer                                                                                          ; VdRam            ; work         ;
+;       |altsyncram:altsyncram_component|   ; 21 (0)              ; 4 (0)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component                                                          ; altsyncram       ; work         ;
+;          |altsyncram_uvt1:auto_generated| ; 21 (0)              ; 4 (4)                     ; 614400            ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated                           ; altsyncram_uvt1  ; work         ;
+;             |decode_g2a:rden_decode_b|    ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_g2a:rden_decode_b  ; decode_g2a       ; work         ;
+;             |decode_nma:decode2|          ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_nma:decode2        ; decode_nma       ; work         ;
+;    |ZoomSelection:resizer|                ; 486 (41)            ; 148 (0)                   ; 0                 ; 4          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer                                                                                       ; ZoomSelection    ; work         ;
+;       |BlockAveraging:u_ba|               ; 140 (140)           ; 34 (34)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba                                                                   ; BlockAveraging   ; work         ;
+;       |Decimation:u_dec|                  ; 90 (90)             ; 34 (34)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec                                                                      ; Decimation       ; work         ;
+;       |NearestNeighbor:u_nn|              ; 107 (107)           ; 40 (40)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn                                                                  ; NearestNeighbor  ; work         ;
+;       |PixelReplication:u_pr|             ; 108 (108)           ; 40 (40)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr                                                                 ; PixelReplication ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                   ;
-+----------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------------------+
-; Name                                                                                         ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                  ;
-+----------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------------------+
-; ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM        ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
-; ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM        ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
-; ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM        ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
-; ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM        ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
-; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 76800        ; 8            ; 76800        ; 8            ; 614400 ; None                 ;
-+----------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                      ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------------------+
+; Name                                                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                  ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------------------+
+; ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM           ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
+; ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM           ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
+; ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM           ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
+; ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM           ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
+; ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|ALTSYNCRAM ; AUTO ; ROM              ; 19200        ; 8            ; --           ; --           ; 153600 ; ./Img/ExemploPBL.mif ;
+; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|ALTSYNCRAM    ; AUTO ; Simple Dual Port ; 76800        ; 8            ; 76800        ; 8            ; 614400 ; None                 ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+----------------------+
 
 
 +-----------------------------------------------+
@@ -327,29 +341,73 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                               ;
-+--------+--------------+---------+--------------+--------------+-----------------------------------+-----------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                   ; IP Include File ;
-+--------+--------------+---------+--------------+--------------+-----------------------------------+-----------------+
-; Altera ; RAM: 2-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|VdRam:frame_buffer ; VdRam.v         ;
-; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom0        ; ImgRom.v        ;
-; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom1        ; ImgRom.v        ;
-; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom2        ; ImgRom.v        ;
-; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom3        ; ImgRom.v        ;
-+--------+--------------+---------+--------------+--------------+-----------------------------------+-----------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                  ;
++--------+--------------+---------+--------------+--------------+--------------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                      ; IP Include File ;
++--------+--------------+---------+--------------+--------------+--------------------------------------+-----------------+
+; Altera ; RAM: 2-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|VdRam:frame_buffer    ; VdRam.v         ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom0           ; ImgRom.v        ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom1           ; ImgRom.v        ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom2           ; ImgRom.v        ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:rom3           ; ImgRom.v        ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |Coprocessador|ImgRom:vga_rom_reader ; ImgRom.v        ;
++--------+--------------+---------+--------------+--------------+--------------------------------------+-----------------+
 
 
 Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------+
-; State Machine - |Coprocessador|Controller:main_fsm|current_state                                 ;
-+-------------------------+----------------------+-----------------------+-------------------------+
-; Name                    ; current_state.S_IDLE ; current_state.S_WRITE ; current_state.S_PROCESS ;
-+-------------------------+----------------------+-----------------------+-------------------------+
-; current_state.S_IDLE    ; 0                    ; 0                     ; 0                       ;
-; current_state.S_PROCESS ; 1                    ; 0                     ; 1                       ;
-; current_state.S_WRITE   ; 1                    ; 1                     ; 0                       ;
-+-------------------------+----------------------+-----------------------+-------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Coprocessador|VGA_Driver:the_vga_driver|v_state                                                       ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; v_state.V_BACK_STATE ; v_state.V_PULSE_STATE ; v_state.V_FRONT_STATE ; v_state.V_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; v_state.V_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; v_state.V_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; v_state.V_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; v_state.V_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Coprocessador|VGA_Driver:the_vga_driver|h_state                                                       ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; h_state.H_BACK_STATE ; h_state.H_PULSE_STATE ; h_state.H_FRONT_STATE ; h_state.H_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; h_state.H_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; h_state.H_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; h_state.H_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; h_state.H_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                                             ;
++--------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                                          ; Reason for Removal                                                                                                    ;
++--------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|out_address_reg_b[1] ; Merged with ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|out_address_reg_a[1] ;
+; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|out_address_reg_b[0] ; Merged with ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|out_address_reg_a[0] ;
+; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|address_reg_b[1]     ; Merged with ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|address_reg_a[1]     ;
+; VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|address_reg_b[0]     ; Merged with ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|address_reg_a[0]     ;
+; VGA_Driver:the_vga_driver|v_state~5                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|v_state~6                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|v_state~7                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|v_state~8                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|v_state~9                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|v_state~10                                                                   ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|v_state~11                                                                   ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|v_state~12                                                                   ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~5                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~6                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~7                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~8                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~9                                                                    ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~10                                                                   ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~11                                                                   ; Lost fanout                                                                                                           ;
+; VGA_Driver:the_vga_driver|h_state~12                                                                   ; Lost fanout                                                                                                           ;
+; Total Number of Removed Registers = 20                                                                 ;                                                                                                                       ;
++--------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -357,12 +415,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 237   ;
-; Number of registers using Synchronous Clear  ; 191   ;
+; Total registers                              ; 274   ;
+; Number of registers using Synchronous Clear  ; 196   ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 65    ;
+; Number of registers using Asynchronous Clear ; 46    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 51    ;
+; Number of registers using Clock Enable       ; 81    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -372,8 +430,9 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; Controller:main_fsm|zoom_level[1]      ; 94      ;
-; Total number of inverted registers = 1 ;         ;
+; Controller:main_fsm|zoom_level[1]      ; 117     ;
+; Controller:main_fsm|prev_zoom_level[1] ; 1       ;
+; Total number of inverted registers = 2 ;         ;
 +----------------------------------------+---------+
 
 
@@ -382,51 +441,55 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|out_pixel_count[10]                                         ;
-; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|out_pixel_count[0]                                         ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|out_pixel_count[11]                                             ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|out_pixel_count[9]                                           ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|y_out_count[1]                                              ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|x_out_count[1]                                              ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|y_out_count[1]                                             ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|x_out_count[3]                                             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|y_out_count[0]                                                  ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|x_out_count[0]                                                  ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|y_out_count[7]                                               ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|x_out_count[5]                                               ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Coprocessador|Informations:scrolling_display|text_pointer[1]                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[10][0]                                                        ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Mux34                                                                            ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data                                                               ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|ShiftRight1                                                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Coprocessador|Controller:main_fsm|zoom_level[2]                                                                      ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|out_pixel_count[15]                                         ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|out_pixel_count[1]                                         ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|out_pixel_count[9]                                              ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|out_pixel_count[16]                                          ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|y_out_count[9]                                              ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|x_out_count[4]                                              ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|y_out_count[2]                                             ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|x_out_count[2]                                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|y_out_count[5]                                                  ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|x_out_count[6]                                                  ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|y_out_count[6]                                               ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|x_out_count[1]                                               ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Coprocessador|Informations:scrolling_display|text_pointer[4]                                                         ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|v_counter[9]                                                                 ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|h_counter[8]                                                                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data                                                               ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[9][2]                                                         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux1                                                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
+; 4:1                ; 19 bits   ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Mux39                                                                            ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|ShiftRight1                                                ;
-; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|NearestNeighbor:u_nn|ShiftRight1                                                 ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[3] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[1] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[4] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[6] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|ShiftRight1                                                ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|PixelReplication:u_pr|ShiftRight1                                                ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VGAController:vga_logic_inst|IMG_HEIGHT_OUT[2]                                                         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[6] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom2|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[0] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom3|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[6] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:rom1|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[5] ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|ShiftLeft1                                                   ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|ShiftLeft1                                                   ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|ShiftLeft1                                                      ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|ShiftLeft1                                                   ;
 ; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|Decimation:u_dec|ShiftLeft1                                                      ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|algorithm_select[0]                                                                                    ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[21][1]                                                        ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux12                                                                   ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux38                                                                   ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux13                                                                   ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux35                                                                   ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux4                                                                    ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux33                                                                   ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux3                                                                    ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux34                                                                   ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VGA_R                                                                                                  ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[17][2]                                                        ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux11                                                                   ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                   ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|VGAController:vga_logic_inst|IMG_WIDTH_OUT[5]                                                          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux2                                                                    ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux6                                                                    ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux30                                                                   ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux28                                                                   ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux36                                                                   ;
 ; 16:1               ; 4 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ZoomSelection:resizer|BlockAveraging:u_ba|Add10                                                        ;
+; 15:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VGA_Driver:the_vga_driver|red_reg                                                                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------+
 
 
@@ -464,6 +527,15 @@ Encoding Type:  One-Hot
 +---------------------------------+--------------------+------+-------------------------------------+
 ; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                   ;
 +---------------------------------+--------------------+------+-------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Source assignments for ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                            ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                             ;
++---------------------------------+--------------------+------+-----------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------+
@@ -719,6 +791,67 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ImgRom:vga_rom_reader|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+----------------------------------------+
+; Parameter Name                     ; Value                ; Type                                   ;
++------------------------------------+----------------------+----------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                             ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                           ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                           ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                         ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                ;
+; WIDTH_A                            ; 8                    ; Signed Integer                         ;
+; WIDTHAD_A                          ; 15                   ; Signed Integer                         ;
+; NUMWORDS_A                         ; 19200                ; Signed Integer                         ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                ;
+; WIDTH_B                            ; 1                    ; Untyped                                ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                         ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                ;
+; INIT_FILE                          ; ./Img/ExemploPBL.mif ; Untyped                                ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                ;
+; CBXI_PARAMETER                     ; altsyncram_ueg1      ; Untyped                                ;
++------------------------------------+----------------------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: VdRam:frame_buffer|altsyncram:altsyncram_component ;
 +------------------------------------+----------------------+-------------------------------------+
@@ -780,77 +913,115 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                                               ;
-+-------------------------------------------+----------------------------------------------------+
-; Name                                      ; Value                                              ;
-+-------------------------------------------+----------------------------------------------------+
-; Number of entity instances                ; 5                                                  ;
-; Entity Instance                           ; ImgRom:rom0|altsyncram:altsyncram_component        ;
-;     -- OPERATION_MODE                     ; ROM                                                ;
-;     -- WIDTH_A                            ; 8                                                  ;
-;     -- NUMWORDS_A                         ; 19200                                              ;
-;     -- OUTDATA_REG_A                      ; CLOCK0                                             ;
-;     -- WIDTH_B                            ; 1                                                  ;
-;     -- NUMWORDS_B                         ; 1                                                  ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                             ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                       ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                               ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                          ;
-; Entity Instance                           ; ImgRom:rom1|altsyncram:altsyncram_component        ;
-;     -- OPERATION_MODE                     ; ROM                                                ;
-;     -- WIDTH_A                            ; 8                                                  ;
-;     -- NUMWORDS_A                         ; 19200                                              ;
-;     -- OUTDATA_REG_A                      ; CLOCK0                                             ;
-;     -- WIDTH_B                            ; 1                                                  ;
-;     -- NUMWORDS_B                         ; 1                                                  ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                             ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                       ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                               ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                          ;
-; Entity Instance                           ; ImgRom:rom2|altsyncram:altsyncram_component        ;
-;     -- OPERATION_MODE                     ; ROM                                                ;
-;     -- WIDTH_A                            ; 8                                                  ;
-;     -- NUMWORDS_A                         ; 19200                                              ;
-;     -- OUTDATA_REG_A                      ; CLOCK0                                             ;
-;     -- WIDTH_B                            ; 1                                                  ;
-;     -- NUMWORDS_B                         ; 1                                                  ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                             ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                       ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                               ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                          ;
-; Entity Instance                           ; ImgRom:rom3|altsyncram:altsyncram_component        ;
-;     -- OPERATION_MODE                     ; ROM                                                ;
-;     -- WIDTH_A                            ; 8                                                  ;
-;     -- NUMWORDS_A                         ; 19200                                              ;
-;     -- OUTDATA_REG_A                      ; CLOCK0                                             ;
-;     -- WIDTH_B                            ; 1                                                  ;
-;     -- NUMWORDS_B                         ; 1                                                  ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                             ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                       ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                               ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                          ;
-; Entity Instance                           ; VdRam:frame_buffer|altsyncram:altsyncram_component ;
-;     -- OPERATION_MODE                     ; DUAL_PORT                                          ;
-;     -- WIDTH_A                            ; 8                                                  ;
-;     -- NUMWORDS_A                         ; 76800                                              ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                                       ;
-;     -- WIDTH_B                            ; 8                                                  ;
-;     -- NUMWORDS_B                         ; 76800                                              ;
-;     -- ADDRESS_REG_B                      ; CLOCK0                                             ;
-;     -- OUTDATA_REG_B                      ; CLOCK0                                             ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                               ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                          ;
-+-------------------------------------------+----------------------------------------------------+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: VGA_Driver:the_vga_driver ;
++----------------+------------+------------------------------------------+
+; Parameter Name ; Value      ; Type                                     ;
++----------------+------------+------------------------------------------+
+; H_ACTIVE       ; 1001111111 ; Unsigned Binary                          ;
+; H_FRONT        ; 0000001111 ; Unsigned Binary                          ;
+; H_PULSE        ; 0001011111 ; Unsigned Binary                          ;
+; H_BACK         ; 0000101111 ; Unsigned Binary                          ;
+; V_ACTIVE       ; 0111011111 ; Unsigned Binary                          ;
+; V_FRONT        ; 0000001001 ; Unsigned Binary                          ;
+; V_PULSE        ; 0000000001 ; Unsigned Binary                          ;
+; V_BACK         ; 0000100000 ; Unsigned Binary                          ;
+; LOW            ; 0          ; Unsigned Binary                          ;
+; HIGH           ; 1          ; Unsigned Binary                          ;
+; H_ACTIVE_STATE ; 00000000   ; Unsigned Binary                          ;
+; H_FRONT_STATE  ; 00000001   ; Unsigned Binary                          ;
+; H_PULSE_STATE  ; 00000010   ; Unsigned Binary                          ;
+; H_BACK_STATE   ; 00000011   ; Unsigned Binary                          ;
+; V_ACTIVE_STATE ; 00000000   ; Unsigned Binary                          ;
+; V_FRONT_STATE  ; 00000001   ; Unsigned Binary                          ;
+; V_PULSE_STATE  ; 00000010   ; Unsigned Binary                          ;
+; V_BACK_STATE   ; 00000011   ; Unsigned Binary                          ;
++----------------+------------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "VGAController:vga_inst"                                                                                                                           ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port       ; Type  ; Severity ; Details                                                                                                                                      ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; zoom_level ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                  ;
++-------------------------------------------+-------------------------------------------------------+
+; Name                                      ; Value                                                 ;
++-------------------------------------------+-------------------------------------------------------+
+; Number of entity instances                ; 6                                                     ;
+; Entity Instance                           ; ImgRom:rom0|altsyncram:altsyncram_component           ;
+;     -- OPERATION_MODE                     ; ROM                                                   ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 19200                                                 ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                ;
+;     -- WIDTH_B                            ; 1                                                     ;
+;     -- NUMWORDS_B                         ; 1                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
+; Entity Instance                           ; ImgRom:rom1|altsyncram:altsyncram_component           ;
+;     -- OPERATION_MODE                     ; ROM                                                   ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 19200                                                 ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                ;
+;     -- WIDTH_B                            ; 1                                                     ;
+;     -- NUMWORDS_B                         ; 1                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
+; Entity Instance                           ; ImgRom:rom2|altsyncram:altsyncram_component           ;
+;     -- OPERATION_MODE                     ; ROM                                                   ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 19200                                                 ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                ;
+;     -- WIDTH_B                            ; 1                                                     ;
+;     -- NUMWORDS_B                         ; 1                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
+; Entity Instance                           ; ImgRom:rom3|altsyncram:altsyncram_component           ;
+;     -- OPERATION_MODE                     ; ROM                                                   ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 19200                                                 ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                ;
+;     -- WIDTH_B                            ; 1                                                     ;
+;     -- NUMWORDS_B                         ; 1                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
+; Entity Instance                           ; ImgRom:vga_rom_reader|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                   ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 19200                                                 ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                ;
+;     -- WIDTH_B                            ; 1                                                     ;
+;     -- NUMWORDS_B                         ; 1                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
+; Entity Instance                           ; VdRam:frame_buffer|altsyncram:altsyncram_component    ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 8                                                     ;
+;     -- NUMWORDS_A                         ; 76800                                                 ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 8                                                     ;
+;     -- NUMWORDS_B                         ; 76800                                                 ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                                ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
++-------------------------------------------+-------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "VGA_Driver:the_vga_driver"                                                          ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; sync ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -885,38 +1056,39 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 237                         ;
-;     CLR               ; 13                          ;
-;     CLR SCLR          ; 37                          ;
-;     ENA CLR           ; 5                           ;
-;     ENA CLR SCLR      ; 10                          ;
-;     ENA SCLR          ; 36                          ;
-;     SCLR              ; 108                         ;
-;     plain             ; 28                          ;
-; arriav_lcell_comb     ; 1208                        ;
-;     arith             ; 387                         ;
-;         0 data inputs ; 6                           ;
-;         1 data inputs ; 323                         ;
-;         2 data inputs ; 44                          ;
-;         4 data inputs ; 10                          ;
-;         5 data inputs ; 4                           ;
-;     extend            ; 21                          ;
-;         7 data inputs ; 21                          ;
-;     normal            ; 792                         ;
-;         1 data inputs ; 44                          ;
-;         2 data inputs ; 100                         ;
-;         3 data inputs ; 86                          ;
-;         4 data inputs ; 77                          ;
-;         5 data inputs ; 140                         ;
-;         6 data inputs ; 345                         ;
+; arriav_ff             ; 274                         ;
+;     CLR               ; 12                          ;
+;     CLR SCLR          ; 25                          ;
+;     ENA               ; 26                          ;
+;     ENA CLR           ; 9                           ;
+;     ENA SCLR          ; 46                          ;
+;     SCLR              ; 125                         ;
+;     plain             ; 31                          ;
+; arriav_lcell_comb     ; 1310                        ;
+;     arith             ; 415                         ;
+;         0 data inputs ; 11                          ;
+;         1 data inputs ; 309                         ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 19                          ;
+;         5 data inputs ; 11                          ;
+;     extend            ; 32                          ;
+;         7 data inputs ; 32                          ;
+;     normal            ; 855                         ;
+;         1 data inputs ; 48                          ;
+;         2 data inputs ; 92                          ;
+;         3 data inputs ; 101                         ;
+;         4 data inputs ; 85                          ;
+;         5 data inputs ; 191                         ;
+;         6 data inputs ; 338                         ;
 ;     shared            ; 8                           ;
 ;         3 data inputs ; 8                           ;
 ; arriav_mac            ; 5                           ;
 ; boundary_port         ; 79                          ;
-; stratixv_ram_block    ; 176                         ;
+; stratixv_ram_block    ; 200                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.00                        ;
-; Average LUT depth     ; 4.96                        ;
+; Max LUT depth         ; 10.00                       ;
+; Average LUT depth     ; 5.11                        ;
 +-----------------------+-----------------------------+
 
 
@@ -925,7 +1097,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:06     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -935,40 +1107,42 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Wed Sep  3 10:51:36 2025
+    Info: Processing started: Thu Sep  4 16:41:42 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Coprocessador -c Coprocessador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file zoomselection.v
-    Info (12023): Found entity 1: ZoomSelection File: C:/Users/Walace/Documents/PBL_Co-processador/ZoomSelection.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file vgacontroller.v
-    Info (12023): Found entity 1: VGAController File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file pixelreplication.v
-    Info (12023): Found entity 1: PixelReplication File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file nearestneighbor.v
-    Info (12023): Found entity 1: NearestNeighbor File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file decimation.v
-    Info (12023): Found entity 1: Decimation File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file controller.v
-    Info (12023): Found entity 1: Controller File: C:/Users/Walace/Documents/PBL_Co-processador/Controller.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file blockaveraging.v
-    Info (12023): Found entity 1: BlockAveraging File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 3
-Info (12021): Found 1 design units, including 1 entities, in source file coprocessador.v
-    Info (12023): Found entity 1: Coprocessador File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file imgrom.v
-    Info (12023): Found entity 1: ImgRom File: C:/Users/Walace/Documents/PBL_Co-processador/ImgRom.v Line: 40
-Info (12021): Found 1 design units, including 1 entities, in source file vdram.v
-    Info (12023): Found entity 1: VdRam File: C:/Users/Walace/Documents/PBL_Co-processador/VdRam.v Line: 40
-Info (12021): Found 1 design units, including 1 entities, in source file informations.v
-    Info (12023): Found entity 1: Informations File: C:/Users/Walace/Documents/PBL_Co-processador/Informations.v Line: 1
+Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file ZoomSelection.v
+    Info (12023): Found entity 1: ZoomSelection File: /home/aluno/Documentos/PBL_Co-processador/ZoomSelection.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file VGAController.v
+    Info (12023): Found entity 1: VGAController File: /home/aluno/Documentos/PBL_Co-processador/VGAController.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file PixelReplication.v
+    Info (12023): Found entity 1: PixelReplication File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file NearestNeighbor.v
+    Info (12023): Found entity 1: NearestNeighbor File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file Decimation.v
+    Info (12023): Found entity 1: Decimation File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file Controller.v
+    Info (12023): Found entity 1: Controller File: /home/aluno/Documentos/PBL_Co-processador/Controller.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file BlockAveraging.v
+    Info (12023): Found entity 1: BlockAveraging File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file Coprocessador.v
+    Info (12023): Found entity 1: Coprocessador File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ImgRom.v
+    Info (12023): Found entity 1: ImgRom File: /home/aluno/Documentos/PBL_Co-processador/ImgRom.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file VdRam.v
+    Info (12023): Found entity 1: VdRam File: /home/aluno/Documentos/PBL_Co-processador/VdRam.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file Informations.v
+    Info (12023): Found entity 1: Informations File: /home/aluno/Documentos/PBL_Co-processador/Informations.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file VGA_Driver.v
+    Info (12023): Found entity 1: VGA_Driver File: /home/aluno/Documentos/PBL_Co-processador/VGA_Driver.v Line: 8
 Info (12127): Elaborating entity "Coprocessador" for the top level hierarchy
-Info (12128): Elaborating entity "Controller" for hierarchy "Controller:main_fsm" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 78
-Warning (10230): Verilog HDL assignment warning at Controller.v(33): truncated value with size 32 to match size of target (3) File: C:/Users/Walace/Documents/PBL_Co-processador/Controller.v Line: 33
-Warning (10230): Verilog HDL assignment warning at Controller.v(35): truncated value with size 32 to match size of target (3) File: C:/Users/Walace/Documents/PBL_Co-processador/Controller.v Line: 35
-Info (12128): Elaborating entity "ImgRom" for hierarchy "ImgRom:rom0" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 81
-Info (12128): Elaborating entity "altsyncram" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ImgRom.v Line: 82
-Info (12130): Elaborated megafunction instantiation "ImgRom:rom0|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ImgRom.v Line: 82
-Info (12133): Instantiated megafunction "ImgRom:rom0|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Walace/Documents/PBL_Co-processador/ImgRom.v Line: 82
+Info (12128): Elaborating entity "Controller" for hierarchy "Controller:main_fsm" File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 87
+Warning (10230): Verilog HDL assignment warning at Controller.v(44): truncated value with size 32 to match size of target (3) File: /home/aluno/Documentos/PBL_Co-processador/Controller.v Line: 44
+Warning (10230): Verilog HDL assignment warning at Controller.v(47): truncated value with size 32 to match size of target (3) File: /home/aluno/Documentos/PBL_Co-processador/Controller.v Line: 47
+Info (12128): Elaborating entity "ImgRom" for hierarchy "ImgRom:rom0" File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 90
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador/ImgRom.v Line: 82
+Info (12130): Elaborated megafunction instantiation "ImgRom:rom0|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador/ImgRom.v Line: 82
+Info (12133): Instantiated megafunction "ImgRom:rom0|altsyncram:altsyncram_component" with the following parameter: File: /home/aluno/Documentos/PBL_Co-processador/ImgRom.v Line: 82
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
@@ -984,57 +1158,57 @@ Info (12133): Instantiated megafunction "ImgRom:rom0|altsyncram:altsyncram_compo
     Info (12134): Parameter "width_a" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ueg1.tdf
-    Info (12023): Found entity 1: altsyncram_ueg1 File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 32
-Info (12128): Elaborating entity "altsyncram_ueg1" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated" File: c:/intelfpga/23.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+    Info (12023): Found entity 1: altsyncram_ueg1 File: /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 32
+Info (12128): Elaborating entity "altsyncram_ueg1" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated" File: /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_01a.tdf
-    Info (12023): Found entity 1: decode_01a File: C:/Users/Walace/Documents/PBL_Co-processador/db/decode_01a.tdf Line: 23
-Info (12128): Elaborating entity "decode_01a" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 41
+    Info (12023): Found entity 1: decode_01a File: /home/aluno/Documentos/PBL_Co-processador/db/decode_01a.tdf Line: 23
+Info (12128): Elaborating entity "decode_01a" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode" File: /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 41
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_nfb.tdf
-    Info (12023): Found entity 1: mux_nfb File: C:/Users/Walace/Documents/PBL_Co-processador/db/mux_nfb.tdf Line: 23
-Info (12128): Elaborating entity "mux_nfb" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 42
-Info (12128): Elaborating entity "ZoomSelection" for hierarchy "ZoomSelection:resizer" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 91
-Info (12128): Elaborating entity "NearestNeighbor" for hierarchy "ZoomSelection:resizer|NearestNeighbor:u_nn" File: C:/Users/Walace/Documents/PBL_Co-processador/ZoomSelection.v Line: 33
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(25): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 25
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(26): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 26
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(28): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 28
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(45): truncated value with size 32 to match size of target (19) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 45
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(48): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 48
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(50): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 50
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(57): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 57
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(58): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 58
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(62): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 62
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(63): truncated value with size 19 to match size of target (17) File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 63
-Info (12128): Elaborating entity "PixelReplication" for hierarchy "ZoomSelection:resizer|PixelReplication:u_pr" File: C:/Users/Walace/Documents/PBL_Co-processador/ZoomSelection.v Line: 37
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(22): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 22
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(23): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 23
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(25): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 25
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(35): truncated value with size 32 to match size of target (19) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 35
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(37): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 37
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(39): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 39
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(45): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 45
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(46): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 46
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(50): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 50
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(51): truncated value with size 19 to match size of target (17) File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 51
-Info (12128): Elaborating entity "Decimation" for hierarchy "ZoomSelection:resizer|Decimation:u_dec" File: C:/Users/Walace/Documents/PBL_Co-processador/ZoomSelection.v Line: 41
-Warning (10230): Verilog HDL assignment warning at Decimation.v(22): truncated value with size 32 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 22
-Warning (10230): Verilog HDL assignment warning at Decimation.v(23): truncated value with size 32 to match size of target (7) File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 23
-Warning (10230): Verilog HDL assignment warning at Decimation.v(25): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 25
-Warning (10230): Verilog HDL assignment warning at Decimation.v(35): truncated value with size 32 to match size of target (17) File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 35
-Warning (10230): Verilog HDL assignment warning at Decimation.v(37): truncated value with size 32 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 37
-Warning (10230): Verilog HDL assignment warning at Decimation.v(39): truncated value with size 32 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 39
-Warning (10230): Verilog HDL assignment warning at Decimation.v(50): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 50
-Info (12128): Elaborating entity "BlockAveraging" for hierarchy "ZoomSelection:resizer|BlockAveraging:u_ba" File: C:/Users/Walace/Documents/PBL_Co-processador/ZoomSelection.v Line: 46
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(27): truncated value with size 32 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 27
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(28): truncated value with size 32 to match size of target (7) File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 28
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(30): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 30
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(40): truncated value with size 32 to match size of target (17) File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 40
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(42): truncated value with size 32 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 42
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(44): truncated value with size 32 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 44
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(60): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/BlockAveraging.v Line: 60
-Info (12128): Elaborating entity "VdRam" for hierarchy "VdRam:frame_buffer" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 93
-Info (12128): Elaborating entity "altsyncram" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/VdRam.v Line: 89
-Info (12130): Elaborated megafunction instantiation "VdRam:frame_buffer|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/VdRam.v Line: 89
-Info (12133): Instantiated megafunction "VdRam:frame_buffer|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Walace/Documents/PBL_Co-processador/VdRam.v Line: 89
+    Info (12023): Found entity 1: mux_nfb File: /home/aluno/Documentos/PBL_Co-processador/db/mux_nfb.tdf Line: 23
+Info (12128): Elaborating entity "mux_nfb" for hierarchy "ImgRom:rom0|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2" File: /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 42
+Info (12128): Elaborating entity "ZoomSelection" for hierarchy "ZoomSelection:resizer" File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 96
+Info (12128): Elaborating entity "NearestNeighbor" for hierarchy "ZoomSelection:resizer|NearestNeighbor:u_nn" File: /home/aluno/Documentos/PBL_Co-processador/ZoomSelection.v Line: 33
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(25): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 25
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(26): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 26
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(28): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 28
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(45): truncated value with size 32 to match size of target (19) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 45
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(48): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 48
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(50): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 50
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(57): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 57
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(58): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 58
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(62): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 62
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(63): truncated value with size 19 to match size of target (17) File: /home/aluno/Documentos/PBL_Co-processador/NearestNeighbor.v Line: 63
+Info (12128): Elaborating entity "PixelReplication" for hierarchy "ZoomSelection:resizer|PixelReplication:u_pr" File: /home/aluno/Documentos/PBL_Co-processador/ZoomSelection.v Line: 37
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(22): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 22
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(23): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 23
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(25): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 25
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(35): truncated value with size 32 to match size of target (19) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 35
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(37): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 37
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(39): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 39
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(45): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 45
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(46): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 46
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(50): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 50
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(51): truncated value with size 19 to match size of target (17) File: /home/aluno/Documentos/PBL_Co-processador/PixelReplication.v Line: 51
+Info (12128): Elaborating entity "Decimation" for hierarchy "ZoomSelection:resizer|Decimation:u_dec" File: /home/aluno/Documentos/PBL_Co-processador/ZoomSelection.v Line: 41
+Warning (10230): Verilog HDL assignment warning at Decimation.v(22): truncated value with size 32 to match size of target (8) File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 22
+Warning (10230): Verilog HDL assignment warning at Decimation.v(23): truncated value with size 32 to match size of target (7) File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 23
+Warning (10230): Verilog HDL assignment warning at Decimation.v(25): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 25
+Warning (10230): Verilog HDL assignment warning at Decimation.v(35): truncated value with size 32 to match size of target (17) File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 35
+Warning (10230): Verilog HDL assignment warning at Decimation.v(37): truncated value with size 32 to match size of target (8) File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 37
+Warning (10230): Verilog HDL assignment warning at Decimation.v(39): truncated value with size 32 to match size of target (8) File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 39
+Warning (10230): Verilog HDL assignment warning at Decimation.v(50): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador/Decimation.v Line: 50
+Info (12128): Elaborating entity "BlockAveraging" for hierarchy "ZoomSelection:resizer|BlockAveraging:u_ba" File: /home/aluno/Documentos/PBL_Co-processador/ZoomSelection.v Line: 46
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(27): truncated value with size 32 to match size of target (8) File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 27
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(28): truncated value with size 32 to match size of target (7) File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 28
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(30): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 30
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(40): truncated value with size 32 to match size of target (17) File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 40
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(42): truncated value with size 32 to match size of target (8) File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 42
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(44): truncated value with size 32 to match size of target (8) File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 44
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(60): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador/BlockAveraging.v Line: 60
+Info (12128): Elaborating entity "VdRam" for hierarchy "VdRam:frame_buffer" File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 98
+Info (12128): Elaborating entity "altsyncram" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador/VdRam.v Line: 89
+Info (12130): Elaborated megafunction instantiation "VdRam:frame_buffer|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador/VdRam.v Line: 89
+Info (12133): Instantiated megafunction "VdRam:frame_buffer|altsyncram:altsyncram_component" with the following parameter: File: /home/aluno/Documentos/PBL_Co-processador/VdRam.v Line: 89
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK0"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
@@ -1055,44 +1229,42 @@ Info (12133): Instantiated megafunction "VdRam:frame_buffer|altsyncram:altsyncra
     Info (12134): Parameter "width_b" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_uvt1.tdf
-    Info (12023): Found entity 1: altsyncram_uvt1 File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 34
-Info (12128): Elaborating entity "altsyncram_uvt1" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated" File: c:/intelfpga/23.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+    Info (12023): Found entity 1: altsyncram_uvt1 File: /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 34
+Info (12128): Elaborating entity "altsyncram_uvt1" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated" File: /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_nma.tdf
-    Info (12023): Found entity 1: decode_nma File: C:/Users/Walace/Documents/PBL_Co-processador/db/decode_nma.tdf Line: 23
-Info (12128): Elaborating entity "decode_nma" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_nma:decode2" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 46
+    Info (12023): Found entity 1: decode_nma File: /home/aluno/Documentos/PBL_Co-processador/db/decode_nma.tdf Line: 23
+Info (12128): Elaborating entity "decode_nma" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_nma:decode2" File: /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 46
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_g2a.tdf
-    Info (12023): Found entity 1: decode_g2a File: C:/Users/Walace/Documents/PBL_Co-processador/db/decode_g2a.tdf Line: 23
-Info (12128): Elaborating entity "decode_g2a" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_g2a:rden_decode_b" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 47
+    Info (12023): Found entity 1: decode_g2a File: /home/aluno/Documentos/PBL_Co-processador/db/decode_g2a.tdf Line: 23
+Info (12128): Elaborating entity "decode_g2a" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|decode_g2a:rden_decode_b" File: /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 47
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_7hb.tdf
-    Info (12023): Found entity 1: mux_7hb File: C:/Users/Walace/Documents/PBL_Co-processador/db/mux_7hb.tdf Line: 23
-Info (12128): Elaborating entity "mux_7hb" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|mux_7hb:mux3" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 49
-Info (12128): Elaborating entity "VGAController" for hierarchy "VGAController:vga_inst" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 94
-Warning (10230): Verilog HDL assignment warning at VGAController.v(28): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 28
-Warning (10230): Verilog HDL assignment warning at VGAController.v(32): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 32
-Warning (10230): Verilog HDL assignment warning at VGAController.v(41): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 41
-Warning (10230): Verilog HDL assignment warning at VGAController.v(46): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 46
-Warning (10230): Verilog HDL assignment warning at VGAController.v(51): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 51
-Warning (10230): Verilog HDL assignment warning at VGAController.v(52): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 52
-Warning (10230): Verilog HDL assignment warning at VGAController.v(57): truncated value with size 32 to match size of target (17) File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 57
-Info (12128): Elaborating entity "Informations" for hierarchy "Informations:scrolling_display" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 102
-Warning (10230): Verilog HDL assignment warning at Informations.v(24): truncated value with size 32 to match size of target (27) File: C:/Users/Walace/Documents/PBL_Co-processador/Informations.v Line: 24
-Warning (10230): Verilog HDL assignment warning at Informations.v(100): truncated value with size 32 to match size of target (5) File: C:/Users/Walace/Documents/PBL_Co-processador/Informations.v Line: 100
-Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+    Info (12023): Found entity 1: mux_7hb File: /home/aluno/Documentos/PBL_Co-processador/db/mux_7hb.tdf Line: 23
+Info (12128): Elaborating entity "mux_7hb" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_uvt1:auto_generated|mux_7hb:mux3" File: /home/aluno/Documentos/PBL_Co-processador/db/altsyncram_uvt1.tdf Line: 49
+Info (12128): Elaborating entity "VGAController" for hierarchy "VGAController:vga_logic_inst" File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 101
+Warning (10230): Verilog HDL assignment warning at VGAController.v(23): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/VGAController.v Line: 23
+Warning (10230): Verilog HDL assignment warning at VGAController.v(28): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/VGAController.v Line: 28
+Warning (10230): Verilog HDL assignment warning at VGAController.v(34): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/VGAController.v Line: 34
+Warning (10230): Verilog HDL assignment warning at VGAController.v(35): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador/VGAController.v Line: 35
+Warning (10230): Verilog HDL assignment warning at VGAController.v(42): truncated value with size 32 to match size of target (17) File: /home/aluno/Documentos/PBL_Co-processador/VGAController.v Line: 42
+Info (12128): Elaborating entity "VGA_Driver" for hierarchy "VGA_Driver:the_vga_driver" File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 106
+Info (12128): Elaborating entity "Informations" for hierarchy "Informations:scrolling_display" File: /home/aluno/Documentos/PBL_Co-processador/Coprocessador.v Line: 108
+Warning (10230): Verilog HDL assignment warning at Informations.v(24): truncated value with size 32 to match size of target (25) File: /home/aluno/Documentos/PBL_Co-processador/Informations.v Line: 24
+Warning (10230): Verilog HDL assignment warning at Informations.v(114): truncated value with size 32 to match size of target (5) File: /home/aluno/Documentos/PBL_Co-processador/Informations.v Line: 114
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 16 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 3
-Info (21057): Implemented 1452 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1602 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 9 input pins
     Info (21059): Implemented 70 output pins
-    Info (21061): Implemented 1192 logic cells
-    Info (21064): Implemented 176 RAM segments
+    Info (21061): Implemented 1318 logic cells
+    Info (21064): Implemented 200 RAM segments
     Info (21062): Implemented 5 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 49 warnings
-    Info: Peak virtual memory: 4914 megabytes
-    Info: Processing ended: Wed Sep  3 10:51:59 2025
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:31
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 45 warnings
+    Info: Peak virtual memory: 556 megabytes
+    Info: Processing ended: Thu Sep  4 16:41:49 2025
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:16
 
 

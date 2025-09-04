@@ -1,16 +1,16 @@
-Fitter Status : Successful - Wed Sep  3 10:58:01 2025
+Fitter Status : Successful - Thu Sep  4 16:42:30 2025
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : Coprocessador
 Top-level Entity Name : Coprocessador
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 769 / 32,070 ( 2 % )
-Total registers : 285
+Logic utilization (in ALMs) : 820 / 32,070 ( 3 % )
+Total registers : 308
 Total pins : 79 / 457 ( 17 % )
 Total virtual pins : 0
-Total block memory bits : 1,228,800 / 4,065,280 ( 30 % )
-Total RAM Blocks : 156 / 397 ( 39 % )
+Total block memory bits : 1,382,400 / 4,065,280 ( 34 % )
+Total RAM Blocks : 176 / 397 ( 44 % )
 Total DSP Blocks : 5 / 87 ( 6 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
