@@ -14,8 +14,8 @@ module Informations (
     output  [6:0]   HEX5
 );
 
-    // Divisor de clock para controlar a velocidade da rolagem (aprox. 1.5s por passo)
-    reg [26:0] scroll_counter;
+    // Divisor de clock para controlar a velocidade da rolagem.
+    reg [24:0] scroll_counter;
     wire scroll_tick;
 
     always @(posedge clk or posedge reset) begin
@@ -23,7 +23,7 @@ module Informations (
         else if (scroll_tick) scroll_counter <= 0;
         else scroll_counter <= scroll_counter + 1;
     end
-    assign scroll_tick = (scroll_counter == 27'd75_000_000);
+    assign scroll_tick = (scroll_counter == 25'd25_000_000);
 
     // Registadores para o estado do display
     reg [4:0] text_pointer;
@@ -32,44 +32,60 @@ module Informations (
     reg last_invalid_zoom_error, last_multiple_switches_error, last_no_switch_selected_error;
     integer i;
     
-    // --- Fios para a lógica de reinício da rolagem (Movidos para cá) ---
     wire error_state_changed;
     wire no_error;
 
-    // Lógica para selecionar o texto a ser exibido, com prioridade de erros
+    // Lógica para selecionar o texto a ser exibido
     always @(*) begin
-        // Inicializa a memória com espaços para evitar latches indesejados
-        for (i = 0; i < 32; i = i + 1) begin
-            text_data[i] = " ";
-        end
+        for (i = 0; i < 32; i = i + 1) text_data[i] = " ";
 
-        // A verificação de erros tem prioridade sobre a exibição normal
         if (no_switch_selected_error) begin
-            // "      SELECIONE UM ALGORITMO"
-            text_data[6] = "S"; text_data[7] = "E"; text_data[8] = "L"; text_data[9] = "E";
-            text_data[10] = "C"; text_data[11] = "I"; text_data[12] = "O"; text_data[13] = "N";
-            text_data[14] = "E"; text_data[15] = " "; text_data[16] = "U"; text_data[17] = "M";
-            text_data[18] = " "; text_data[19] = "A"; text_data[20] = "L"; text_data[21] = "G";
-            text_data[22] = "O"; text_data[23] = "R"; text_data[24] = "I"; text_data[25] = "T";
-            text_data[26] = "M"; text_data[27] = "O";
+            // "      SELECT AN ALGORITHM   "
+            text_data[6] = "S"; text_data[7] = "E"; text_data[8] = "L"; text_data[9] = "E"; text_data[10] = "C"; text_data[11] = "T";
+            text_data[12] = " "; text_data[13] = "A"; text_data[14] = "N";
+            text_data[15] = " "; text_data[16] = "A"; text_data[17] = "L"; text_data[18] = "G";
+            text_data[19] = "O"; text_data[20] = "R"; text_data[21] = "I"; text_data[22] = "T";
+            text_data[23] = "H"; text_data[24] = "M";
         end else if (multiple_switches_error) begin
-            // "      ERRO SELECAO          "
-            text_data[6] = "E"; text_data[7] = "R"; text_data[8] = "R"; text_data[9] = "O";
-            text_data[10] = " "; text_data[11] = "S"; text_data[12] = "E"; text_data[13] = "L";
-            text_data[14] = "E"; text_data[15] = "C"; text_data[16] = "A"; text_data[17] = "O";
+            // "      ERROR SELECTION       "
+				text_data[16] = "E"; text_data[17] = "R"; text_data[18] = "R";
+            text_data[19] = "O"; text_data[20] = "R"; text_data[15] = " "; 
+            text_data[6] = "S"; text_data[7] = "E"; text_data[8] = "L"; text_data[9] = "E"; text_data[10] = "C"; text_data[11] = "T";
+            text_data[12] = "I"; text_data[13] = "O"; text_data[14] = "N";
         end else if (invalid_zoom_error) begin
-            // "      ZOOM INVALIDO         "
-            text_data[6] = "Z"; text_data[7] = "O"; text_data[8] = "O"; text_data[9] = "M";
-            text_data[10] = " "; text_data[11] = "I"; text_data[12] = "N"; text_data[13] = "V";
-            text_data[14] = "A"; text_data[15] = "L"; text_data[16] = "I"; text_data[17] = "D";
-            text_data[18] = "O";
+            // "      INVALID ZOOM          "
+            text_data[6] = "I"; text_data[7] = "N"; text_data[8] = "V"; text_data[9] = "A"; text_data[10] = "L"; text_data[11] = "I";
+            text_data[12] = "D"; text_data[13] = " "; text_data[14] = "Z"; text_data[15] = "O";
+            text_data[16] = "O"; text_data[17] = "M";
         end else begin
-            // Se não houver erros, mostra o nome do algoritmo selecionado
             case(algorithm_select)
-                2'b00: begin text_data[6] = "N"; text_data[7] = "E"; text_data[8] = "A"; text_data[9] = "R"; text_data[10] = "E"; text_data[11] = "S"; text_data[12] = "T"; text_data[13] = " "; text_data[14] = "N"; text_data[15] = "E"; text_data[16] = "I"; text_data[17] = "G"; text_data[18] = "H"; text_data[19] = "B"; text_data[20] = "O"; text_data[21] = "R"; end
-                2'b01: begin text_data[6] = "P"; text_data[7] = "I"; text_data[8] = "X"; text_data[9] = "E"; text_data[10] = "L"; text_data[11] = " "; text_data[12] = "R"; text_data[13] = "E"; text_data[14] = "P"; text_data[15] = "L"; text_data[16] = "I"; text_data[17] = "C"; text_data[18] = "A"; text_data[19] = "T"; text_data[20] = "I"; text_data[21] = "O"; text_data[22] = "N"; end
-                2'b10: begin text_data[6] = "D"; text_data[7] = "E"; text_data[8] = "C"; text_data[9] = "I"; text_data[10] = "M"; text_data[11] = "A"; text_data[12] = "T"; text_data[13] = "I"; text_data[14] = "O"; text_data[15] = "N"; end
-                2'b11: begin text_data[6] = "B"; text_data[7] = "L"; text_data[8] = "O"; text_data[9] = "C"; text_data[10] = "K"; text_data[11] = " "; text_data[12] = "A"; text_data[13] = "V"; text_data[14] = "E"; text_data[15] = "R"; text_data[16] = "A"; text_data[17] = "G"; text_data[18] = "I"; text_data[19] = "N"; text_data[20] = "G"; end
+                2'b00: begin // NEAREST NEIGHBOR
+                    text_data[6] = "N"; text_data[7] = "E"; text_data[8] = "A"; text_data[9] = "R";
+                    text_data[10] = "E"; text_data[11] = "S"; text_data[12] = "T";
+                    text_data[13] = " "; text_data[14] = "N"; text_data[15] = "E";
+                    text_data[16] = "I"; text_data[17] = "G"; text_data[18] = "H";
+                    text_data[19] = "B"; text_data[20] = "O"; text_data[21] = "R";
+                end
+                2'b01: begin // PIXEL REPLICATION
+                    text_data[6] = "P"; text_data[7] = "I"; text_data[8] = "X"; text_data[9] = "E";
+                    text_data[10] = "L"; text_data[11] = " "; text_data[12] = "R";
+                    text_data[13] = "E"; text_data[14] = "P"; text_data[15] = "L";
+                    text_data[16] = "I"; text_data[17] = "C"; text_data[18] = "A";
+                    text_data[19] = "T"; text_data[20] = "I"; text_data[21] = "O";
+                    text_data[22] = "N";
+                end
+                2'b10: begin // DECIMATION
+                    text_data[6] = "D"; text_data[7] = "E"; text_data[8] = "C"; text_data[9] = "I";
+                    text_data[10] = "M"; text_data[11] = "A"; text_data[12] = "T";
+                    text_data[13] = "I"; text_data[14] = "O"; text_data[15] = "N";
+                end
+                2'b11: begin // BLOCK AVERAGING
+                    text_data[6] = "B"; text_data[7] = "L"; text_data[8] = "O"; text_data[9] = "C";
+                    text_data[10] = "K"; text_data[11] = " "; text_data[12] = "A";
+                    text_data[13] = "V"; text_data[14] = "E"; text_data[15] = "R";
+                    text_data[16] = "A"; text_data[17] = "G"; text_data[18] = "I";
+                    text_data[19] = "N"; text_data[20] = "G";
+                end
             endcase
         end
     end
@@ -86,13 +102,11 @@ module Informations (
             last_multiple_switches_error <= 1'b0;
             last_no_switch_selected_error <= 1'b0;
         end else begin
-            // Guarda o estado anterior para detetar mudanças
             last_algorithm_select <= algorithm_select;
             last_invalid_zoom_error <= invalid_zoom_error;
             last_multiple_switches_error <= multiple_switches_error;
             last_no_switch_selected_error <= no_switch_selected_error;
             
-            // Reinicia se o estado de erro mudar ou se o algoritmo mudar enquanto não há erros
             if (error_state_changed || (no_error && (algorithm_select != last_algorithm_select))) begin
                 text_pointer <= 0;
             end else if (scroll_tick) begin
@@ -102,13 +116,32 @@ module Informations (
         end
     end
 
-    // Função para descodificar um caracter ASCII para o padrão de 7 segmentos
+    // =============================================================================
+    // FUNÇÃO DE DESCODIFICAÇÃO CORRIGIDA
+    // Converte um caracter ASCII para um padrão de 7 segmentos.
+    // O padrão é {g, f, e, d, c, b, a}, e um '0' acende o segmento (ativo baixo).
+    // =============================================================================
     function [6:0] char_to_segments;
         input [7:0] char;
         begin
             case(char)
-                "N": char_to_segments = 7'b0101011; "E": char_to_segments = 7'b0000110; "A": char_to_segments = 7'b0001011; "R": char_to_segments = 7'b0101111; "S": char_to_segments = 7'b0010010; "T": char_to_segments = 7'b0000111; "P": char_to_segments = 7'b0001101; "I": char_to_segments = 7'b1111001; "X": char_to_segments = 7'b0011011; "L": char_to_segments = 7'b1000111; "C": char_to_segments = 7'b1000110; "O": char_to_segments = 7'b0100011; "D": char_to_segments = 7'b0100001; "M": char_to_segments = 7'b1010100; "B": char_to_segments = 7'b0000011; "K": char_to_segments = 7'b0001111; "V": char_to_segments = 7'b1100011; "G": char_to_segments = 7'b0010000; "H": char_to_segments = 7'b0011011; "Z": char_to_segments = 7'b0110010; "U": char_to_segments = 7'b1100011; " ": char_to_segments = 7'b1111111;
-                default: char_to_segments = 7'b1111111;
+                // Letras Maiúsculas
+                "A": char_to_segments = 7'b0001000; "B": char_to_segments = 7'b0000011;
+                "C": char_to_segments = 7'b1000110; "D": char_to_segments = 7'b1100000;
+                "E": char_to_segments = 7'b0000110; "F": char_to_segments = 7'b0001110;
+                "G": char_to_segments = 7'b1000010; "H": char_to_segments = 7'b0001011;
+                "I": char_to_segments = 7'b1001111; "J": char_to_segments = 7'b1100001;
+                "K": char_to_segments = 7'b0001010; "L": char_to_segments = 7'b1000111;
+                "M": char_to_segments = 7'b1101010; "N": char_to_segments = 7'b1001000;
+                "O": char_to_segments = 7'b1000000; "P": char_to_segments = 7'b0001100;
+                "Q": char_to_segments = 7'b0011000; "R": char_to_segments = 7'b1001100;
+                "S": char_to_segments = 7'b0010010; "T": char_to_segments = 7'b0000111;
+                "U": char_to_segments = 7'b1000001; "V": char_to_segments = 7'b1100011;// 0101110
+                "X": char_to_segments = 7'b0001001; "Y": char_to_segments = 7'b0010001;
+                "Z": char_to_segments = 7'b0110100;
+                // Caracteres especiais
+                " ": char_to_segments = 7'b1111111; // Apagado
+                default: char_to_segments = 7'b1111111; // Caracter desconhecido = Apagado
             endcase
         end
     endfunction
