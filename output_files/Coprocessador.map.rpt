@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Coprocessador
-Wed Sep 10 16:03:42 2025
+Wed Sep 10 20:34:17 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -61,7 +61,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Sep 10 16:03:42 2025          ;
+; Analysis & Synthesis Status     ; Successful - Wed Sep 10 20:34:17 2025          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; Coprocessador                                  ;
 ; Top-level Entity Name           ; Coprocessador                                  ;
@@ -186,9 +186,7 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processor 8            ;   0.0%      ;
-;     Processors 9-16        ;   0.0%      ;
+;     Processors 7-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -820,7 +818,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:09     ;
+; Top            ; 00:00:06     ;
 +----------------+--------------+
 
 
@@ -830,12 +828,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Wed Sep 10 16:03:14 2025
+    Info: Processing started: Wed Sep 10 20:33:58 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Coprocessador -c Coprocessador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file zoomselection.v
-    Info (12023): Found entity 1: ZoomSelection File: C:/Users/Walace/Documents/PBL_Co-processador/ZoomSelection.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vgacontroller.v
     Info (12023): Found entity 1: VGAController File: C:/Users/Walace/Documents/PBL_Co-processador/VGAController.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file pixelreplication.v
@@ -860,18 +856,18 @@ Info (12021): Found 1 design units, including 1 entities, in source file vdram.v
     Info (12023): Found entity 1: VdRam File: C:/Users/Walace/Documents/PBL_Co-processador/VdRam.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file imageprocessor.v
     Info (12023): Found entity 1: ImageProcessor File: C:/Users/Walace/Documents/PBL_Co-processador/ImageProcessor.v Line: 1
-Warning (10227): Verilog HDL Port Declaration warning at NearestNeighbor.v(14): data type declaration for "pixel_out" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 14
-Info (10499): HDL info at NearestNeighbor.v(9): see declaration for object "pixel_out" File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 9
-Warning (10227): Verilog HDL Port Declaration warning at NearestNeighbor.v(15): data type declaration for "read_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 15
-Info (10499): HDL info at NearestNeighbor.v(10): see declaration for object "read_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 10
-Warning (10227): Verilog HDL Port Declaration warning at NearestNeighbor.v(16): data type declaration for "write_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 16
-Info (10499): HDL info at NearestNeighbor.v(11): see declaration for object "write_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 11
 Warning (10227): Verilog HDL Port Declaration warning at PixelReplication.v(14): data type declaration for "pixel_out" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 14
 Info (10499): HDL info at PixelReplication.v(9): see declaration for object "pixel_out" File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 9
 Warning (10227): Verilog HDL Port Declaration warning at PixelReplication.v(15): data type declaration for "read_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 15
 Info (10499): HDL info at PixelReplication.v(10): see declaration for object "read_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 10
 Warning (10227): Verilog HDL Port Declaration warning at PixelReplication.v(16): data type declaration for "write_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 16
 Info (10499): HDL info at PixelReplication.v(11): see declaration for object "write_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/PixelReplication.v Line: 11
+Warning (10227): Verilog HDL Port Declaration warning at NearestNeighbor.v(14): data type declaration for "pixel_out" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 14
+Info (10499): HDL info at NearestNeighbor.v(9): see declaration for object "pixel_out" File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 9
+Warning (10227): Verilog HDL Port Declaration warning at NearestNeighbor.v(15): data type declaration for "read_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 15
+Info (10499): HDL info at NearestNeighbor.v(10): see declaration for object "read_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 10
+Warning (10227): Verilog HDL Port Declaration warning at NearestNeighbor.v(16): data type declaration for "write_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 16
+Info (10499): HDL info at NearestNeighbor.v(11): see declaration for object "write_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/NearestNeighbor.v Line: 11
 Warning (10227): Verilog HDL Port Declaration warning at Decimation.v(14): data type declaration for "pixel_out" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 14
 Info (10499): HDL info at Decimation.v(9): see declaration for object "pixel_out" File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 9
 Warning (10227): Verilog HDL Port Declaration warning at Decimation.v(15): data type declaration for "read_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/Decimation.v Line: 15
@@ -1018,9 +1014,9 @@ Info (21057): Implemented 1924 device resources after synthesis - the final reso
     Info (21064): Implemented 352 RAM segments
     Info (21062): Implemented 6 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 61 warnings
-    Info: Peak virtual memory: 4964 megabytes
-    Info: Processing ended: Wed Sep 10 16:03:42 2025
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:31
+    Info: Peak virtual memory: 4966 megabytes
+    Info: Processing ended: Wed Sep 10 20:34:17 2025
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:17
 
 

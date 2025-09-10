@@ -67,7 +67,6 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VERILOG_FILE Informations.v
 set_location_assignment PIN_AA14 -to KEY[0]
-set_location_assignment PIN_AA15 -to KEY[1]
 set_location_assignment PIN_W15 -to KEY[2]
 set_location_assignment PIN_Y16 -to KEY[3]
 set_location_assignment PIN_AB12 -to SW[0]

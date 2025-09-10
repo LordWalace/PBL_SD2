@@ -1,5 +1,5 @@
 // Esse algoritmo podera apresentar problemas entao ele deve ser corrigido 
-
+// Ultima alteracao feita porem os dados da imagem original ainda foram perdidos
 module BlockAveraging(
     clk, enable, zoom_level,
     pixel_in_p0, pixel_in_p1, pixel_in_p2, pixel_in_p3,
