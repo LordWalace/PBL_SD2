@@ -4,11 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Ign)
-<<<<<<< HEAD
 		Device PartName(5CSEMA5) MfrSpec(OpMask(0));
-=======
-		Device PartName(5CSEMA5F31) MfrSpec(OpMask(0) FullPath("/home/aluno/Documentos/PBL_Co-processador/output_files/Coprocessador.sof"));
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
 	P ActionCode(Cfg)
 		Device PartName(5CSEMA5F31) Path("/home/aluno/Documentos/PBL_Co-processador/output_files/") File("Coprocessador.sof") MfrSpec(OpMask(1));
 

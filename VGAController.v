@@ -6,7 +6,7 @@ module VGAController(
     input   [9:0]   current_y,    // Coordenada Y atual (vinda do vga_driver)
 
     output          is_image_area,// Informa se a coordenada atual está dentro da imagem
-    output  [16:0]  read_addr     // Endereço de leitura para a VdRam
+    output  [18:0]  read_addr     // Endereço de leitura para a VdRam
 );
 
     // --- Parâmetros do Ecrã VGA ---

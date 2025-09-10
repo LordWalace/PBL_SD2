@@ -34,12 +34,9 @@ module Informations (
     
     wire error_state_changed;
     wire no_error;
-
-<<<<<<< HEAD
     // Lógica para selecionar o texto a ser exibido
-=======
+
     // Lógica para selecionar o texto a ser exibido - TEXTOS EM INGLÊS
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
     always @(*) begin
         for (i = 0; i < 32; i = i + 1) text_data[i] = " ";
 
@@ -51,19 +48,16 @@ module Informations (
             text_data[19] = "O"; text_data[20] = "R"; text_data[21] = "I"; text_data[22] = "T";
             text_data[23] = "H"; text_data[24] = "M";
         end else if (multiple_switches_error) begin
-<<<<<<< HEAD
             // "      ERROR SELECTION       "
 				text_data[16] = "E"; text_data[17] = "R"; text_data[18] = "R";
             text_data[19] = "O"; text_data[20] = "R"; text_data[15] = " "; 
             text_data[6] = "S"; text_data[7] = "E"; text_data[8] = "L"; text_data[9] = "E"; text_data[10] = "C"; text_data[11] = "T";
             text_data[12] = "I"; text_data[13] = "O"; text_data[14] = "N";
-=======
             // "      SELECTION ERROR       "
             text_data[6] = "S"; text_data[7] = "E"; text_data[8] = "L"; text_data[9] = "E"; text_data[10] = "C"; text_data[11] = "T";
             text_data[12] = "I"; text_data[13] = "O"; text_data[14] = "N";
             text_data[15] = " "; text_data[16] = "E"; text_data[17] = "R"; text_data[18] = "R";
             text_data[19] = "O"; text_data[20] = "R";
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
         end else if (invalid_zoom_error) begin
             // "      INVALID ZOOM          "
             text_data[6] = "I"; text_data[7] = "N"; text_data[8] = "V"; text_data[9] = "A"; text_data[10] = "L"; text_data[11] = "I";
@@ -138,7 +132,6 @@ module Informations (
         begin
             case(char)
                 // Letras Maiúsculas
-<<<<<<< HEAD
                 "A": char_to_segments = 7'b0001000; "B": char_to_segments = 7'b0000011;
                 "C": char_to_segments = 7'b1000110; "D": char_to_segments = 7'b1100000;
                 "E": char_to_segments = 7'b0000110; "F": char_to_segments = 7'b0001110;
@@ -151,21 +144,7 @@ module Informations (
                 "S": char_to_segments = 7'b0010010; "T": char_to_segments = 7'b0000111;
                 "U": char_to_segments = 7'b1000001; "V": char_to_segments = 7'b1100011;// 0101110
                 "X": char_to_segments = 7'b0001001; "Y": char_to_segments = 7'b0010001;
-=======
-                "A": char_to_segments = 7'b0001000; "B": char_to_segments = 7'b0011111;
-                "C": char_to_segments = 7'b1000110; "D": char_to_segments = 7'b1000010;
-                "E": char_to_segments = 7'b0000110; "F": char_to_segments = 7'b0001110;
-                "G": char_to_segments = 7'b0000100; "H": char_to_segments = 7'b1001000;
-                "I": char_to_segments = 7'b1001111; "J": char_to_segments = 7'b1100001;
-                "K": char_to_segments = 7'b0001010; "L": char_to_segments = 7'b1000111;
-                "M": char_to_segments = 7'b1010101; "N": char_to_segments = 7'b0101011;
-                "O": char_to_segments = 7'b1000000; "P": char_to_segments = 7'b0001101;
-                "Q": char_to_segments = 7'b0011010; "R": char_to_segments = 7'b0101111;
-                "S": char_to_segments = 7'b0010010; "T": char_to_segments = 7'b0000111;
-                "U": char_to_segments = 7'b1100011; "V": char_to_segments = 7'b1100011;
-                "X": char_to_segments = 7'b0011011; "Y": char_to_segments = 7'b0010001;
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
-                "Z": char_to_segments = 7'b0110100;
+
                 // Caracteres especiais
                 " ": char_to_segments = 7'b1111111; // Apagado
                 default: char_to_segments = 7'b1111111; // Caracter desconhecido = Apagado

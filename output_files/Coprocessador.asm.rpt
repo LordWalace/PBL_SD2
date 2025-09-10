@@ -1,9 +1,5 @@
 Assembler report for Coprocessador
-<<<<<<< HEAD
-Fri Sep  5 17:13:38 2025
-=======
-Thu Sep  4 16:42:35 2025
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
+Wed Sep 10 16:13:24 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -14,7 +10,7 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: Coprocessador.sof
+  5. Assembler Device Options: C:/Users/Walace/Documents/PBL_Co-processador/output_files/Coprocessador.sof
   6. Assembler Messages
 
 
@@ -42,11 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-<<<<<<< HEAD
-; Assembler Status      ; Successful - Fri Sep  5 17:13:38 2025 ;
-=======
-; Assembler Status      ; Successful - Thu Sep  4 16:42:35 2025 ;
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
+; Assembler Status      ; Successful - Wed Sep 10 16:13:24 2025 ;
 ; Revision Name         ; Coprocessador                         ;
 ; Top-level Entity Name ; Coprocessador                         ;
 ; Family                ; Cyclone V                             ;
@@ -61,28 +53,23 @@ https://fpgasoftware.intel.com/eula.
 +--------+---------+---------------+
 
 
-+--------------------------------------------------------------------------+
-; Assembler Generated Files                                                ;
-+--------------------------------------------------------------------------+
-; File Name                                                                ;
-+--------------------------------------------------------------------------+
-; /home/aluno/Documentos/PBL_Co-processador/output_files/Coprocessador.sof ;
-+--------------------------------------------------------------------------+
++-----------------------------------------------------------------------------+
+; Assembler Generated Files                                                   ;
++-----------------------------------------------------------------------------+
+; File Name                                                                   ;
++-----------------------------------------------------------------------------+
+; C:/Users/Walace/Documents/PBL_Co-processador/output_files/Coprocessador.sof ;
++-----------------------------------------------------------------------------+
 
 
-+---------------------------------------------+
-; Assembler Device Options: Coprocessador.sof ;
-+----------------+----------------------------+
-; Option         ; Setting                    ;
-+----------------+----------------------------+
-<<<<<<< HEAD
-; JTAG usercode  ; 0x03175BEA                 ;
-; Checksum       ; 0x03175BEA                 ;
-=======
-; JTAG usercode  ; 0x0316AAD2                 ;
-; Checksum       ; 0x0316AAD2                 ;
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
-+----------------+----------------------------+
++-------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/Walace/Documents/PBL_Co-processador/output_files/Coprocessador.sof ;
++----------------+--------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                              ;
++----------------+--------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x071B2239                                                                           ;
+; Checksum       ; 0x071B2239                                                                           ;
++----------------+--------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -91,24 +78,14 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-<<<<<<< HEAD
-    Info: Processing started: Fri Sep  5 17:13:34 2025
-=======
-    Info: Processing started: Thu Sep  4 16:42:31 2025
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
+    Info: Processing started: Wed Sep 10 16:13:06 2025
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Coprocessador -c Coprocessador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-<<<<<<< HEAD
-    Info: Peak virtual memory: 540 megabytes
-    Info: Processing ended: Fri Sep  5 17:13:38 2025
-    Info: Elapsed time: 00:00:04
-=======
-    Info: Peak virtual memory: 545 megabytes
-    Info: Processing ended: Thu Sep  4 16:42:36 2025
-    Info: Elapsed time: 00:00:05
->>>>>>> 6d290ca7783c3875a41ffa48216444c312509f36
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 4905 megabytes
+    Info: Processing ended: Wed Sep 10 16:13:24 2025
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:16
 
 

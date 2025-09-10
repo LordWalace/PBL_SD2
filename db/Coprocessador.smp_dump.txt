@@ -12,3 +12,10 @@ h_state.H_ACTIVE_STATE 0 0 0 0
 h_state.H_FRONT_STATE 0 0 1 1 
 h_state.H_PULSE_STATE 0 1 0 1 
 h_state.H_BACK_STATE 1 0 0 1 
+
+State Machine - |Coprocessador|ImageProcessor:processor|fetch_state
+Name fetch_state.FETCH_P3 fetch_state.FETCH_P2 fetch_state.FETCH_P1 fetch_state.FETCH_P0 
+fetch_state.FETCH_P0 0 0 0 0 
+fetch_state.FETCH_P1 0 0 1 1 
+fetch_state.FETCH_P2 0 1 0 1 
+fetch_state.FETCH_P3 1 0 0 1 

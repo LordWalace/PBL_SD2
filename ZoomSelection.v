@@ -14,7 +14,7 @@ module ZoomSelection(
 
     // Interface com a Memória de Escrita (RAM)
     output reg  [7:0]   pixel_out,
-    output reg  [16:0]  write_addr,
+    output reg  [18:0]  write_addr,
 
     // Sinal de Fim
     output reg          done
@@ -23,7 +23,7 @@ module ZoomSelection(
     // Fios para as saídas de cada módulo de algoritmo
     wire [7:0]  pixel_out_nn, pixel_out_pr, pixel_out_dec, pixel_out_ba;
     wire [14:0] read_addr_nn, read_addr_pr, read_addr_dec, read_addr_ba;
-    wire [16:0] write_addr_nn, write_addr_pr, write_addr_dec, write_addr_ba;
+    wire [18:0] write_addr_nn, write_addr_pr, write_addr_dec, write_addr_ba;
     wire        done_nn, done_pr, done_dec, done_ba;
 
     // Instanciação dos 4 módulos de algoritmo
