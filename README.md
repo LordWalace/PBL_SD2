@@ -56,7 +56,7 @@
 
 #### Compilação no Quartus
 
-## 4.2. Passos para Compilação no Intel Quartus Prime
+### 4.2. Passos para Compilação no Intel Quartus Prime
 
 ### 🔹 Abrir o Projeto
 Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
@@ -91,9 +91,9 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ---
 
-# 🧪 5. Testes de Funcionamento
+## 🧪 5. Testes de Funcionamento
 
-## 5.1. Mapeamento de Controles
+### 5.1. Mapeamento de Controles
 
 | Função         | Componente | Descrição |
 |----------------|------------|-----------|
@@ -108,7 +108,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ---
 
-## 5.2. Sequência de Verificação
+### 5.2. Sequência de Verificação
 - **Inicialização:**  
   Ao ligar a placa, a imagem original (160x120) deve aparecer centralizada no monitor.  
   O display de 7 segmentos deve mostrar **"SELECT AN ALGORITHM"**.  
@@ -130,7 +130,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
   
 ---
 
-# 📊 6. Análise dos Resultados
+## 📊 6. Análise dos Resultados
 
 ✅ Projeto implementado com sucesso:  
 - Suporte a 4 algoritmos de redimensionamento.  
