@@ -110,11 +110,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ## 5.2. Sequência de Verificação
 - **Inicialização:**  
-  Ao ligar a placa, a imagem original (160x120) deve aparecer centralizada no monitor.  
   O display de 7 segmentos deve mostrar **"SELECT AN ALGORITHM"**.  
-
-- **Seleção de Algoritmo:**  
-  - Apenas uma chave ligada → mostra o algoritmo selecionado.  
   - Mais de uma chave ligada → display mostra **"SELECTION ERROR"**.  
 
 - **Operação de Zoom Válida:**  
