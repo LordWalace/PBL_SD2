@@ -37,7 +37,7 @@ module Controller(
             // A lógica de zoom e de "voltar atrás" só é executada no estado IDLE
             if (current_state == S_IDLE) begin
                 if (return_to_previous) begin
-                    zoom_level <= prev_zoom_level; // Restaura o zoom anterior
+                    zoom_level <= prev_zoom_level; // Restaura o zoom anterior						
                 end
                 else if (is_zoom_in_request && zoom_level < 4) begin
                     prev_zoom_level <= zoom_level; // Guarda o estado atual ANTES de mudar
@@ -98,4 +98,3 @@ module Controller(
     end
 
 endmodule
-

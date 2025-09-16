@@ -23,7 +23,7 @@ module Informations (
         else if (scroll_tick) scroll_counter <= 0;
         else scroll_counter <= scroll_counter + 1;
     end
-    assign scroll_tick = (scroll_counter == 25'd25_000_000);
+    assign scroll_tick = (scroll_counter == 25'd12_000_000);
 
     // Registadores para o estado do display
     reg [4:0] text_pointer;

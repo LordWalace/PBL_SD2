@@ -20,8 +20,8 @@ module Coprocessador (
     // --- Sinais de Controlo ---
     wire reset = !KEY[0];
     wire return_press = !KEY[1];
-    wire zoom_in_press = !KEY[2];
-    wire zoom_out_press = !KEY[3];
+    wire zoom_out_press = !KEY[2];
+	 wire zoom_in_press = !KEY[3];
     reg [1:0] algorithm_select;
     wire multiple_switches_error, no_switch_selected_error;
 
