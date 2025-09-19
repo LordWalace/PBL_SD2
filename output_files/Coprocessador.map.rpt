@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Coprocessador
-Tue Sep 16 15:33:07 2025
+Thu Sep 18 14:34:04 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -60,13 +60,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Sep 16 15:33:07 2025          ;
+; Analysis & Synthesis Status     ; Successful - Thu Sep 18 14:34:03 2025          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; Coprocessador                                  ;
 ; Top-level Entity Name           ; Coprocessador                                  ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 192                                            ;
+; Total registers                 ; 201                                            ;
 ; Total pins                      ; 79                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 2,764,800                                      ;
@@ -172,11 +172,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 20          ;
-; Maximum allowed            ; 14          ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 14          ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
@@ -187,49 +187,45 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 6            ;   0.0%      ;
 ;     Processor 7            ;   0.0%      ;
 ;     Processor 8            ;   0.0%      ;
-;     Processor 9            ;   0.0%      ;
-;     Processor 10           ;   0.0%      ;
-;     Processor 11           ;   0.0%      ;
-;     Processor 12           ;   0.0%      ;
-;     Processors 13-14       ;   0.0%      ;
+;     Processors 9-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                  ;
-+----------------------------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path                   ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                                  ; Library ;
-+----------------------------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------------------------------+---------+
-; Coprocessador.v                                    ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v                                    ;         ;
-; veriloghdl/vga/VGAController.v                     ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGAController.v                     ;         ;
-; veriloghdl/vga/VGA_Driver.v                        ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGA_Driver.v                        ;         ;
-; veriloghdl/processing/ImageProcessor.v             ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v             ;         ;
-; veriloghdl/processing/algorithm/PixelReplication.v ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/PixelReplication.v ;         ;
-; veriloghdl/processing/algorithm/NearestNeighbor.v  ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/NearestNeighbor.v  ;         ;
-; veriloghdl/processing/algorithm/Decimation.v       ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/Decimation.v       ;         ;
-; veriloghdl/processing/algorithm/BlockAveraging.v   ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/BlockAveraging.v   ;         ;
-; veriloghdl/control/Informations.v                  ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Informations.v                  ;         ;
-; veriloghdl/control/Controller.v                    ; yes             ; User Verilog HDL File                  ; /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Controller.v                    ;         ;
-; ip/VdRam.v                                         ; yes             ; User Wizard-Generated File             ; /home/aluno/Documentos/PBL_Co-processador+/ip/VdRam.v                                         ;         ;
-; ip/ImgRom.v                                        ; yes             ; User Wizard-Generated File             ; /home/aluno/Documentos/PBL_Co-processador+/ip/ImgRom.v                                        ;         ;
-; altsyncram.tdf                                     ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altsyncram.tdf                       ;         ;
-; stratix_ram_block.inc                              ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/stratix_ram_block.inc                ;         ;
-; lpm_mux.inc                                        ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/lpm_mux.inc                          ;         ;
-; lpm_decode.inc                                     ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/lpm_decode.inc                       ;         ;
-; aglobal231.inc                                     ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/aglobal231.inc                       ;         ;
-; a_rdenreg.inc                                      ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/a_rdenreg.inc                        ;         ;
-; altrom.inc                                         ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altrom.inc                           ;         ;
-; altram.inc                                         ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altram.inc                           ;         ;
-; altdpram.inc                                       ; yes             ; Megafunction                           ; /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altdpram.inc                         ;         ;
-; db/altsyncram_ueg1.tdf                             ; yes             ; Auto-Generated Megafunction            ; /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_ueg1.tdf                             ;         ;
-; Img/ExemploPBL.mif                                 ; yes             ; Auto-Found Memory Initialization File  ; /home/aluno/Documentos/PBL_Co-processador+/Img/ExemploPBL.mif                                 ;         ;
-; db/decode_01a.tdf                                  ; yes             ; Auto-Generated Megafunction            ; /home/aluno/Documentos/PBL_Co-processador+/db/decode_01a.tdf                                  ;         ;
-; db/mux_nfb.tdf                                     ; yes             ; Auto-Generated Megafunction            ; /home/aluno/Documentos/PBL_Co-processador+/db/mux_nfb.tdf                                     ;         ;
-; db/altsyncram_g2u1.tdf                             ; yes             ; Auto-Generated Megafunction            ; /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_g2u1.tdf                             ;         ;
-; db/decode_3na.tdf                                  ; yes             ; Auto-Generated Megafunction            ; /home/aluno/Documentos/PBL_Co-processador+/db/decode_3na.tdf                                  ;         ;
-; db/decode_s2a.tdf                                  ; yes             ; Auto-Generated Megafunction            ; /home/aluno/Documentos/PBL_Co-processador+/db/decode_s2a.tdf                                  ;         ;
-; db/mux_jhb.tdf                                     ; yes             ; Auto-Generated Megafunction            ; /home/aluno/Documentos/PBL_Co-processador+/db/mux_jhb.tdf                                     ;         ;
-+----------------------------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                    ;
++----------------------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                   ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                                    ; Library ;
++----------------------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------------------------+---------+
+; Coprocessador.v                                    ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v                                    ;         ;
+; veriloghdl/vga/VGAController.v                     ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v                     ;         ;
+; veriloghdl/vga/VGA_Driver.v                        ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGA_Driver.v                        ;         ;
+; veriloghdl/processing/ImageProcessor.v             ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v             ;         ;
+; veriloghdl/processing/algorithm/PixelReplication.v ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/PixelReplication.v ;         ;
+; veriloghdl/processing/algorithm/NearestNeighbor.v  ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/NearestNeighbor.v  ;         ;
+; veriloghdl/processing/algorithm/Decimation.v       ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/Decimation.v       ;         ;
+; veriloghdl/processing/algorithm/BlockAveraging.v   ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v   ;         ;
+; veriloghdl/control/Informations.v                  ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Informations.v                  ;         ;
+; veriloghdl/control/Controller.v                    ; yes             ; User Verilog HDL File                  ; C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Controller.v                    ;         ;
+; ip/VdRam.v                                         ; yes             ; User Wizard-Generated File             ; C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v                                         ;         ;
+; ip/ImgRom.v                                        ; yes             ; User Wizard-Generated File             ; C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v                                        ;         ;
+; altsyncram.tdf                                     ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altsyncram.tdf                             ;         ;
+; stratix_ram_block.inc                              ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                      ;         ;
+; lpm_mux.inc                                        ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/lpm_mux.inc                                ;         ;
+; lpm_decode.inc                                     ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/lpm_decode.inc                             ;         ;
+; aglobal231.inc                                     ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/aglobal231.inc                             ;         ;
+; a_rdenreg.inc                                      ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc                              ;         ;
+; altrom.inc                                         ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altrom.inc                                 ;         ;
+; altram.inc                                         ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altram.inc                                 ;         ;
+; altdpram.inc                                       ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altdpram.inc                               ;         ;
+; db/altsyncram_ueg1.tdf                             ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf                             ;         ;
+; ./Img/ExemploPBL.mif                               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Walace/Documents/PBL_Co-processador/Img/ExemploPBL.mif                                 ;         ;
+; db/decode_01a.tdf                                  ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/decode_01a.tdf                                  ;         ;
+; db/mux_nfb.tdf                                     ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/mux_nfb.tdf                                     ;         ;
+; db/altsyncram_g2u1.tdf                             ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_g2u1.tdf                             ;         ;
+; db/decode_3na.tdf                                  ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/decode_3na.tdf                                  ;         ;
+; db/decode_s2a.tdf                                  ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/decode_s2a.tdf                                  ;         ;
+; db/mux_jhb.tdf                                     ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/mux_jhb.tdf                                     ;         ;
++----------------------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -237,16 +233,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 778            ;
+; Estimate of Logic utilization (ALMs needed) ; 790            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1148           ;
-;     -- 7 input functions                    ; 22             ;
-;     -- 6 input functions                    ; 379            ;
-;     -- 5 input functions                    ; 180            ;
-;     -- 4 input functions                    ; 123            ;
-;     -- <=3 input functions                  ; 444            ;
+; Combinational ALUT usage for logic          ; 1164           ;
+;     -- 7 input functions                    ; 21             ;
+;     -- 6 input functions                    ; 387            ;
+;     -- 5 input functions                    ; 186            ;
+;     -- 4 input functions                    ; 121            ;
+;     -- <=3 input functions                  ; 449            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 192            ;
+; Dedicated logic registers                   ; 201            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 79             ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -255,9 +251,9 @@ https://fpgasoftware.intel.com/eula.
 ; Total DSP Blocks                            ; 3              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 489            ;
-; Total fan-out                               ; 15568          ;
-; Average fan-out                             ; 8.40           ;
+; Maximum fan-out                             ; 498            ;
+; Total fan-out                               ; 15667          ;
+; Average fan-out                             ; 8.34           ;
 +---------------------------------------------+----------------+
 
 
@@ -266,7 +262,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                        ; Entity Name      ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
-; |Coprocessador                            ; 1148 (13)           ; 192 (4)                   ; 2764800           ; 3          ; 79   ; 0            ; |Coprocessador                                                                                                             ; Coprocessador    ; work         ;
+; |Coprocessador                            ; 1164 (18)           ; 201 (13)                  ; 2764800           ; 3          ; 79   ; 0            ; |Coprocessador                                                                                                             ; Coprocessador    ; work         ;
 ;    |Controller:main_fsm|                  ; 16 (16)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Controller:main_fsm                                                                                         ; Controller       ; work         ;
 ;    |ImageProcessor:processor|             ; 297 (206)           ; 74 (74)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ImageProcessor:processor                                                                                    ; ImageProcessor   ; work         ;
 ;       |BlockAveraging:u_ba|               ; 48 (48)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba                                                                ; BlockAveraging   ; work         ;
@@ -284,7 +280,7 @@ https://fpgasoftware.intel.com/eula.
 ;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode ; decode_01a       ; work         ;
 ;    |Informations:scrolling_display|       ; 362 (362)           ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Informations:scrolling_display                                                                              ; Informations     ; work         ;
 ;    |VGAController:vga_logic_inst|         ; 159 (159)           ; 0 (0)                     ; 0                 ; 2          ; 0    ; 0            ; |Coprocessador|VGAController:vga_logic_inst                                                                                ; VGAController    ; work         ;
-;    |VGA_Driver:the_vga_driver|            ; 197 (197)           ; 55 (55)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VGA_Driver:the_vga_driver                                                                                   ; VGA_Driver       ; work         ;
+;    |VGA_Driver:the_vga_driver|            ; 208 (208)           ; 55 (55)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VGA_Driver:the_vga_driver                                                                                   ; VGA_Driver       ; work         ;
 ;    |VdRam:frame_buffer|                   ; 90 (0)              ; 8 (0)                     ; 2457600           ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer                                                                                          ; VdRam            ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 90 (0)              ; 8 (0)                     ; 2457600           ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component                                                          ; altsyncram       ; work         ;
 ;          |altsyncram_g2u1:auto_generated| ; 90 (0)              ; 8 (8)                     ; 2457600           ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated                           ; altsyncram_g2u1  ; work         ;
@@ -389,12 +385,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 192   ;
-; Number of registers using Synchronous Clear  ; 93    ;
+; Total registers                              ; 201   ;
+; Number of registers using Synchronous Clear  ; 86    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 46    ;
+; Number of registers using Asynchronous Clear ; 55    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 116   ;
+; Number of registers using Clock Enable       ; 120   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -416,46 +412,46 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Coprocessador|Controller:main_fsm|zoom_level[2]                                                                                   ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Coprocessador|Informations:scrolling_display|text_pointer[0]                                                                      ;
-; 4:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|write_ptr[15]                                                                              ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|y_out_count[0]                                                                             ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|x_out_count[5]                                                                             ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|v_counter[8]                                                                              ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|h_counter[1]                                                                              ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Coprocessador|Informations:scrolling_display|text_pointer[1]                                                                      ;
+; 4:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|write_ptr[3]                                                                               ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|y_out_count[7]                                                                             ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|x_out_count[3]                                                                             ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|v_counter[5]                                                                              ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|h_counter[7]                                                                              ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data                                                                            ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[9][0]                                                                      ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[8][1]                                                                      ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                                ;
 ; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                                ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                                ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux1                                                                                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                                ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux1                                                                                 ;
 ; 4:1                ; 19 bits   ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux41                                                                                ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|NearestNeighbor:u_nn|ShiftRight1                                                           ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|NearestNeighbor:u_nn|ShiftRight0                                                           ;
 ; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|NearestNeighbor:u_nn|ShiftRight1                                                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba|ShiftLeft1                                                             ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba|ShiftLeft1                                                             ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba|ShiftLeft0                                                             ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VGAController:vga_logic_inst|IMG_WIDTH_OUT[7]                                                                       ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[5]    ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|IMG_WIDTH_OUT[4]                                                                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|IMG_WIDTH_OUT[5]                                                                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba|ShiftLeft0                                                             ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba|ShiftLeft0                                                             ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba|ShiftLeft1                                                             ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VGAController:vga_logic_inst|IMG_HEIGHT_OUT[2]                                                                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2|result_node[4]    ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|IMG_WIDTH_OUT[0]                                                                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|IMG_HEIGHT_OUT[3]                                                                          ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|IMG_HEIGHT_OUT[6]                                                                          ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Coprocessador|algorithm_select[1]                                                                                                 ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[17][2]                                                                     ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux7                                                                                 ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux40                                                                                ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|mux_jhb:mux3|l3_w6_n4_mux_dataout ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|VGAController:vga_logic_inst|IMG_HEIGHT_OUT[1]                                                                      ;
-; 7:1                ; 10 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|Mux15                                                                                      ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data[19][5]                                                                     ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux13                                                                                ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux38                                                                                ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|mux_jhb:mux3|l3_w1_n4_mux_dataout ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Coprocessador|VGAController:vga_logic_inst|IMG_HEIGHT_OUT[5]                                                                      ;
+; 7:1                ; 10 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|Mux20                                                                                      ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|IMG_HEIGHT_OUT[2]                                                                          ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Coprocessador|ImageProcessor:processor|IMG_HEIGHT_OUT[9]                                                                          ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux2                                                                                 ;
 ; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux0                                                                                 ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux30                                                                                ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux32                                                                                ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux31                                                                                ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|Mux36                                                                                ;
-; 9:1                ; 5 bits    ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |Coprocessador|ImageProcessor:processor|Mux25                                                                                      ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |Coprocessador|ImageProcessor:processor|Mux29                                                                                      ;
 ; 39:1               ; 8 bits    ; 208 LEs       ; 208 LEs              ; 0 LEs                  ; No         ; |Coprocessador|VGA_Driver:the_vga_driver|red_reg                                                                                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -753,15 +749,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 192                         ;
-;     CLR               ; 12                          ;
+; arriav_ff             ; 201                         ;
+;     CLR               ; 17                          ;
 ;     CLR SCLR          ; 25                          ;
 ;     ENA               ; 58                          ;
-;     ENA CLR           ; 9                           ;
+;     ENA CLR           ; 13                          ;
 ;     ENA SCLR          ; 49                          ;
-;     SCLR              ; 19                          ;
-;     plain             ; 20                          ;
-; arriav_lcell_comb     ; 1190                        ;
+;     SCLR              ; 12                          ;
+;     plain             ; 27                          ;
+; arriav_lcell_comb     ; 1206                        ;
 ;     arith             ; 231                         ;
 ;         0 data inputs ; 10                          ;
 ;         1 data inputs ; 145                         ;
@@ -769,15 +765,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 22                          ;
 ;         4 data inputs ; 11                          ;
 ;         5 data inputs ; 7                           ;
-;     extend            ; 22                          ;
-;         7 data inputs ; 22                          ;
-;     normal            ; 887                         ;
+;     extend            ; 21                          ;
+;         7 data inputs ; 21                          ;
+;     normal            ; 904                         ;
 ;         1 data inputs ; 47                          ;
-;         2 data inputs ; 75                          ;
-;         3 data inputs ; 103                         ;
-;         4 data inputs ; 110                         ;
-;         5 data inputs ; 173                         ;
-;         6 data inputs ; 379                         ;
+;         2 data inputs ; 78                          ;
+;         3 data inputs ; 105                         ;
+;         4 data inputs ; 108                         ;
+;         5 data inputs ; 179                         ;
+;         6 data inputs ; 387                         ;
 ;     shared            ; 50                          ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 4                           ;
@@ -789,7 +785,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; stratixv_ram_block    ; 352                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 10.00                       ;
-; Average LUT depth     ; 5.31                        ;
+; Average LUT depth     ; 5.28                        ;
 +-----------------------+-----------------------------+
 
 
@@ -798,7 +794,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:09     ;
 +----------------+--------------+
 
 
@@ -808,48 +804,48 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue Sep 16 15:32:59 2025
+    Info: Processing started: Thu Sep 18 14:33:36 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Coprocessador -c Coprocessador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file Coprocessador.v
-    Info (12023): Found entity 1: Coprocessador File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/vga/VGAController.v
-    Info (12023): Found entity 1: VGAController File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGAController.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/vga/VGA_Driver.v
-    Info (12023): Found entity 1: VGA_Driver File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGA_Driver.v Line: 8
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/ImageProcessor.v
-    Info (12023): Found entity 1: ImageProcessor File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/PixelReplication.v
-    Info (12023): Found entity 1: PixelReplication File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/PixelReplication.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/NearestNeighbor.v
-    Info (12023): Found entity 1: NearestNeighbor File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/Decimation.v
-    Info (12023): Found entity 1: Decimation File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/Decimation.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/BlockAveraging.v
-    Info (12023): Found entity 1: BlockAveraging File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/BlockAveraging.v Line: 3
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/control/Informations.v
-    Info (12023): Found entity 1: Informations File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Informations.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/control/Controller.v
-    Info (12023): Found entity 1: Controller File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Controller.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file ip/VdRam.v
-    Info (12023): Found entity 1: VdRam File: /home/aluno/Documentos/PBL_Co-processador+/ip/VdRam.v Line: 40
-Info (12021): Found 1 design units, including 1 entities, in source file ip/ImgRom.v
-    Info (12023): Found entity 1: ImgRom File: /home/aluno/Documentos/PBL_Co-processador+/ip/ImgRom.v Line: 40
-Warning (10227): Verilog HDL Port Declaration warning at ImageProcessor.v(16): data type declaration for "read_addr" declares packed dimensions but the port declaration declaration does not File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 16
-Info (10499): HDL info at ImageProcessor.v(11): see declaration for object "read_addr" File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 11
-Warning (10227): Verilog HDL Port Declaration warning at ImageProcessor.v(17): data type declaration for "pixel_out_to_ram" declares packed dimensions but the port declaration declaration does not File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 17
-Info (10499): HDL info at ImageProcessor.v(12): see declaration for object "pixel_out_to_ram" File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 12
-Warning (10227): Verilog HDL Port Declaration warning at ImageProcessor.v(18): data type declaration for "write_addr" declares packed dimensions but the port declaration declaration does not File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 18
-Info (10499): HDL info at ImageProcessor.v(13): see declaration for object "write_addr" File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 13
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file coprocessador.v
+    Info (12023): Found entity 1: Coprocessador File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/vga/vgacontroller.v
+    Info (12023): Found entity 1: VGAController File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/vga/vga_driver.v
+    Info (12023): Found entity 1: VGA_Driver File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGA_Driver.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/imageprocessor.v
+    Info (12023): Found entity 1: ImageProcessor File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/pixelreplication.v
+    Info (12023): Found entity 1: PixelReplication File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/PixelReplication.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/nearestneighbor.v
+    Info (12023): Found entity 1: NearestNeighbor File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/decimation.v
+    Info (12023): Found entity 1: Decimation File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/Decimation.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/processing/algorithm/blockaveraging.v
+    Info (12023): Found entity 1: BlockAveraging File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/control/informations.v
+    Info (12023): Found entity 1: Informations File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Informations.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file veriloghdl/control/controller.v
+    Info (12023): Found entity 1: Controller File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Controller.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ip/vdram.v
+    Info (12023): Found entity 1: VdRam File: C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file ip/imgrom.v
+    Info (12023): Found entity 1: ImgRom File: C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v Line: 40
+Warning (10227): Verilog HDL Port Declaration warning at ImageProcessor.v(16): data type declaration for "read_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 16
+Info (10499): HDL info at ImageProcessor.v(11): see declaration for object "read_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 11
+Warning (10227): Verilog HDL Port Declaration warning at ImageProcessor.v(17): data type declaration for "pixel_out_to_ram" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 17
+Info (10499): HDL info at ImageProcessor.v(12): see declaration for object "pixel_out_to_ram" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 12
+Warning (10227): Verilog HDL Port Declaration warning at ImageProcessor.v(18): data type declaration for "write_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 18
+Info (10499): HDL info at ImageProcessor.v(13): see declaration for object "write_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 13
 Info (12127): Elaborating entity "Coprocessador" for the top level hierarchy
-Info (12128): Elaborating entity "Controller" for hierarchy "Controller:main_fsm" File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 75
-Warning (10230): Verilog HDL assignment warning at Controller.v(44): truncated value with size 32 to match size of target (3) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Controller.v Line: 44
-Warning (10230): Verilog HDL assignment warning at Controller.v(47): truncated value with size 32 to match size of target (3) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Controller.v Line: 47
-Info (12128): Elaborating entity "ImgRom" for hierarchy "ImgRom:processing_rom" File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 78
-Info (12128): Elaborating entity "altsyncram" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador+/ip/ImgRom.v Line: 82
-Info (12130): Elaborated megafunction instantiation "ImgRom:processing_rom|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador+/ip/ImgRom.v Line: 82
-Info (12133): Instantiated megafunction "ImgRom:processing_rom|altsyncram:altsyncram_component" with the following parameter: File: /home/aluno/Documentos/PBL_Co-processador+/ip/ImgRom.v Line: 82
+Info (12128): Elaborating entity "Controller" for hierarchy "Controller:main_fsm" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 109
+Warning (10230): Verilog HDL assignment warning at Controller.v(44): truncated value with size 32 to match size of target (3) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Controller.v Line: 44
+Warning (10230): Verilog HDL assignment warning at Controller.v(47): truncated value with size 32 to match size of target (3) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Controller.v Line: 47
+Info (12128): Elaborating entity "ImgRom" for hierarchy "ImgRom:processing_rom" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 112
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v Line: 82
+Info (12130): Elaborated megafunction instantiation "ImgRom:processing_rom|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v Line: 82
+Info (12133): Instantiated megafunction "ImgRom:processing_rom|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v Line: 82
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
@@ -865,49 +861,49 @@ Info (12133): Instantiated megafunction "ImgRom:processing_rom|altsyncram:altsyn
     Info (12134): Parameter "width_a" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ueg1.tdf
-    Info (12023): Found entity 1: altsyncram_ueg1 File: /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_ueg1.tdf Line: 32
-Info (12128): Elaborating entity "altsyncram_ueg1" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated" File: /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+    Info (12023): Found entity 1: altsyncram_ueg1 File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 32
+Info (12128): Elaborating entity "altsyncram_ueg1" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated" File: c:/intelfpga/23.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_01a.tdf
-    Info (12023): Found entity 1: decode_01a File: /home/aluno/Documentos/PBL_Co-processador+/db/decode_01a.tdf Line: 23
-Info (12128): Elaborating entity "decode_01a" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode" File: /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_ueg1.tdf Line: 41
+    Info (12023): Found entity 1: decode_01a File: C:/Users/Walace/Documents/PBL_Co-processador/db/decode_01a.tdf Line: 23
+Info (12128): Elaborating entity "decode_01a" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 41
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_nfb.tdf
-    Info (12023): Found entity 1: mux_nfb File: /home/aluno/Documentos/PBL_Co-processador+/db/mux_nfb.tdf Line: 23
-Info (12128): Elaborating entity "mux_nfb" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2" File: /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_ueg1.tdf Line: 42
-Info (12128): Elaborating entity "ImageProcessor" for hierarchy "ImageProcessor:processor" File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 89
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(43): truncated value with size 32 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 43
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(52): truncated value with size 32 to match size of target (19) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 52
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(54): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 54
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(56): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 56
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(91): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 91
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(92): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 92
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(93): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 93
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(103): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 103
-Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(104): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 104
-Info (12128): Elaborating entity "NearestNeighbor" for hierarchy "ImageProcessor:processor|NearestNeighbor:u_nn" File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 75
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(9): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 9
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(10): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 10
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(11): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 11
-Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(12): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 12
-Info (12128): Elaborating entity "PixelReplication" for hierarchy "ImageProcessor:processor|PixelReplication:u_pr" File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 76
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(9): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/PixelReplication.v Line: 9
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(10): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/PixelReplication.v Line: 10
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(11): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/PixelReplication.v Line: 11
-Warning (10230): Verilog HDL assignment warning at PixelReplication.v(12): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/PixelReplication.v Line: 12
-Info (12128): Elaborating entity "Decimation" for hierarchy "ImageProcessor:processor|Decimation:u_dec" File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 77
-Warning (10230): Verilog HDL assignment warning at Decimation.v(9): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/Decimation.v Line: 9
-Warning (10230): Verilog HDL assignment warning at Decimation.v(10): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/Decimation.v Line: 10
-Warning (10230): Verilog HDL assignment warning at Decimation.v(11): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/Decimation.v Line: 11
-Warning (10230): Verilog HDL assignment warning at Decimation.v(12): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/Decimation.v Line: 12
-Info (12128): Elaborating entity "BlockAveraging" for hierarchy "ImageProcessor:processor|BlockAveraging:u_ba" File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/ImageProcessor.v Line: 78
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(15): truncated value with size 3 to match size of target (2) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/BlockAveraging.v Line: 15
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(16): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/BlockAveraging.v Line: 16
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(17): truncated value with size 10 to match size of target (9) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/BlockAveraging.v Line: 17
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(20): truncated value with size 32 to match size of target (15) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/BlockAveraging.v Line: 20
-Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(21): truncated value with size 10 to match size of target (8) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/processing/algorithm/BlockAveraging.v Line: 21
-Info (12128): Elaborating entity "VdRam" for hierarchy "VdRam:frame_buffer" File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 92
-Info (12128): Elaborating entity "altsyncram" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador+/ip/VdRam.v Line: 89
-Info (12130): Elaborated megafunction instantiation "VdRam:frame_buffer|altsyncram:altsyncram_component" File: /home/aluno/Documentos/PBL_Co-processador+/ip/VdRam.v Line: 89
-Info (12133): Instantiated megafunction "VdRam:frame_buffer|altsyncram:altsyncram_component" with the following parameter: File: /home/aluno/Documentos/PBL_Co-processador+/ip/VdRam.v Line: 89
+    Info (12023): Found entity 1: mux_nfb File: C:/Users/Walace/Documents/PBL_Co-processador/db/mux_nfb.tdf Line: 23
+Info (12128): Elaborating entity "mux_nfb" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 42
+Info (12128): Elaborating entity "ImageProcessor" for hierarchy "ImageProcessor:processor" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 123
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(43): truncated value with size 32 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 43
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(52): truncated value with size 32 to match size of target (19) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 52
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(54): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 54
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(56): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 56
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(91): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 91
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(92): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 92
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(93): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 93
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(103): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 103
+Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(104): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 104
+Info (12128): Elaborating entity "NearestNeighbor" for hierarchy "ImageProcessor:processor|NearestNeighbor:u_nn" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 75
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(9): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 9
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(10): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 10
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(11): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 11
+Warning (10230): Verilog HDL assignment warning at NearestNeighbor.v(12): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/NearestNeighbor.v Line: 12
+Info (12128): Elaborating entity "PixelReplication" for hierarchy "ImageProcessor:processor|PixelReplication:u_pr" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 76
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(9): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/PixelReplication.v Line: 9
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(10): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/PixelReplication.v Line: 10
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(11): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/PixelReplication.v Line: 11
+Warning (10230): Verilog HDL assignment warning at PixelReplication.v(12): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/PixelReplication.v Line: 12
+Info (12128): Elaborating entity "Decimation" for hierarchy "ImageProcessor:processor|Decimation:u_dec" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 77
+Warning (10230): Verilog HDL assignment warning at Decimation.v(9): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/Decimation.v Line: 9
+Warning (10230): Verilog HDL assignment warning at Decimation.v(10): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/Decimation.v Line: 10
+Warning (10230): Verilog HDL assignment warning at Decimation.v(11): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/Decimation.v Line: 11
+Warning (10230): Verilog HDL assignment warning at Decimation.v(12): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/Decimation.v Line: 12
+Info (12128): Elaborating entity "BlockAveraging" for hierarchy "ImageProcessor:processor|BlockAveraging:u_ba" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 78
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(15): truncated value with size 3 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 15
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(16): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 16
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(17): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 17
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(20): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 20
+Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(21): truncated value with size 10 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 21
+Info (12128): Elaborating entity "VdRam" for hierarchy "VdRam:frame_buffer" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 126
+Info (12128): Elaborating entity "altsyncram" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v Line: 89
+Info (12130): Elaborated megafunction instantiation "VdRam:frame_buffer|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v Line: 89
+Info (12133): Instantiated megafunction "VdRam:frame_buffer|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v Line: 89
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK0"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
@@ -928,41 +924,41 @@ Info (12133): Instantiated megafunction "VdRam:frame_buffer|altsyncram:altsyncra
     Info (12134): Parameter "width_b" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g2u1.tdf
-    Info (12023): Found entity 1: altsyncram_g2u1 File: /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_g2u1.tdf Line: 34
-Info (12128): Elaborating entity "altsyncram_g2u1" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated" File: /opt/intelFPGA_lite/23.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+    Info (12023): Found entity 1: altsyncram_g2u1 File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_g2u1.tdf Line: 34
+Info (12128): Elaborating entity "altsyncram_g2u1" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated" File: c:/intelfpga/23.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_3na.tdf
-    Info (12023): Found entity 1: decode_3na File: /home/aluno/Documentos/PBL_Co-processador+/db/decode_3na.tdf Line: 23
-Info (12128): Elaborating entity "decode_3na" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|decode_3na:decode2" File: /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_g2u1.tdf Line: 46
+    Info (12023): Found entity 1: decode_3na File: C:/Users/Walace/Documents/PBL_Co-processador/db/decode_3na.tdf Line: 23
+Info (12128): Elaborating entity "decode_3na" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|decode_3na:decode2" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_g2u1.tdf Line: 46
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_s2a.tdf
-    Info (12023): Found entity 1: decode_s2a File: /home/aluno/Documentos/PBL_Co-processador+/db/decode_s2a.tdf Line: 23
-Info (12128): Elaborating entity "decode_s2a" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|decode_s2a:rden_decode_b" File: /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_g2u1.tdf Line: 47
+    Info (12023): Found entity 1: decode_s2a File: C:/Users/Walace/Documents/PBL_Co-processador/db/decode_s2a.tdf Line: 23
+Info (12128): Elaborating entity "decode_s2a" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|decode_s2a:rden_decode_b" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_g2u1.tdf Line: 47
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_jhb.tdf
-    Info (12023): Found entity 1: mux_jhb File: /home/aluno/Documentos/PBL_Co-processador+/db/mux_jhb.tdf Line: 23
-Info (12128): Elaborating entity "mux_jhb" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|mux_jhb:mux3" File: /home/aluno/Documentos/PBL_Co-processador+/db/altsyncram_g2u1.tdf Line: 49
-Info (12128): Elaborating entity "VGAController" for hierarchy "VGAController:vga_logic_inst" File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 97
-Warning (10230): Verilog HDL assignment warning at VGAController.v(23): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGAController.v Line: 23
-Warning (10230): Verilog HDL assignment warning at VGAController.v(28): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGAController.v Line: 28
-Warning (10230): Verilog HDL assignment warning at VGAController.v(34): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGAController.v Line: 34
-Warning (10230): Verilog HDL assignment warning at VGAController.v(35): truncated value with size 32 to match size of target (10) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGAController.v Line: 35
-Warning (10230): Verilog HDL assignment warning at VGAController.v(42): truncated value with size 32 to match size of target (19) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/vga/VGAController.v Line: 42
-Info (12128): Elaborating entity "VGA_Driver" for hierarchy "VGA_Driver:the_vga_driver" File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 100
-Info (12128): Elaborating entity "Informations" for hierarchy "Informations:scrolling_display" File: /home/aluno/Documentos/PBL_Co-processador+/Coprocessador.v Line: 103
-Warning (10230): Verilog HDL assignment warning at Informations.v(24): truncated value with size 32 to match size of target (25) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Informations.v Line: 24
-Warning (10230): Verilog HDL assignment warning at Informations.v(120): truncated value with size 32 to match size of target (5) File: /home/aluno/Documentos/PBL_Co-processador+/veriloghdl/control/Informations.v Line: 120
+    Info (12023): Found entity 1: mux_jhb File: C:/Users/Walace/Documents/PBL_Co-processador/db/mux_jhb.tdf Line: 23
+Info (12128): Elaborating entity "mux_jhb" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|mux_jhb:mux3" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_g2u1.tdf Line: 49
+Info (12128): Elaborating entity "VGAController" for hierarchy "VGAController:vga_logic_inst" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 131
+Warning (10230): Verilog HDL assignment warning at VGAController.v(23): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 23
+Warning (10230): Verilog HDL assignment warning at VGAController.v(28): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 28
+Warning (10230): Verilog HDL assignment warning at VGAController.v(34): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 34
+Warning (10230): Verilog HDL assignment warning at VGAController.v(35): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 35
+Warning (10230): Verilog HDL assignment warning at VGAController.v(42): truncated value with size 32 to match size of target (19) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 42
+Info (12128): Elaborating entity "VGA_Driver" for hierarchy "VGA_Driver:the_vga_driver" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 134
+Info (12128): Elaborating entity "Informations" for hierarchy "Informations:scrolling_display" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 137
+Warning (10230): Verilog HDL assignment warning at Informations.v(24): truncated value with size 32 to match size of target (25) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Informations.v Line: 24
+Warning (10230): Verilog HDL assignment warning at Informations.v(120): truncated value with size 32 to match size of target (5) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Informations.v Line: 120
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 16 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1661 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1686 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 9 input pins
     Info (21059): Implemented 70 output pins
-    Info (21061): Implemented 1227 logic cells
+    Info (21061): Implemented 1252 logic cells
     Info (21064): Implemented 352 RAM segments
     Info (21062): Implemented 3 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
-    Info: Peak virtual memory: 589 megabytes
-    Info: Processing ended: Tue Sep 16 15:33:07 2025
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:16
+    Info: Peak virtual memory: 4949 megabytes
+    Info: Processing ended: Thu Sep 18 14:34:04 2025
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:34
 
 

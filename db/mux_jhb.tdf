@@ -1,5 +1,5 @@
 --lpm_mux CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" DEVICE_FAMILY="Cyclone V" LPM_SIZE=38 LPM_WIDTH=8 LPM_WIDTHS=6 data result sel
---VERSION_BEGIN 23.1 cbx_lpm_mux 2023:11:29:19:33:05:SC cbx_mgl 2023:11:29:19:43:53:SC  VERSION_END
+--VERSION_BEGIN 23.1 cbx_lpm_mux 2023:11:29:19:36:37:SC cbx_mgl 2023:11:29:19:36:47:SC  VERSION_END
 
 
 -- Copyright (C) 2023  Intel Corporation. All rights reserved.

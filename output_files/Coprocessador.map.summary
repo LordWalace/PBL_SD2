@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Tue Sep 16 15:33:07 2025
+Analysis & Synthesis Status : Successful - Thu Sep 18 14:34:03 2025
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : Coprocessador
 Top-level Entity Name : Coprocessador
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 192
+Total registers : 201
 Total pins : 79
 Total virtual pins : 0
 Total block memory bits : 2,764,800

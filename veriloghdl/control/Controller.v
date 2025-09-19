@@ -3,7 +3,7 @@ module Controller(
     input           reset,
     input           zoom_in,
     input           zoom_out,
-    input           return_to_previous,      // <<< NOVA ENTRADA
+    input           return_to_previous,  
     input   [1:0]   algorithm_select,
     input           multiple_switches_error,
     input           no_switch_selected_error,
