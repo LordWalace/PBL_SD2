@@ -1,4 +1,3 @@
-<!--
 # 📟 Coprocessador de Zoom Digital com FPGA
 
 **Universidade Estadual de Feira de Santana (UEFS)**  
@@ -134,5 +133,4 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 - Interface robusta com feedback em display de 7 segmentos.  
 
 ### 🔧 Desafios e Soluções
-- **Memória:** solução com um único módulo `ImageProcessor` acessando uma única ROM.    
--->
+- **Memória:** solução com um único módulo `ImageProcessor` acessando uma única ROM.
