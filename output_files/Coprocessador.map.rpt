@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Coprocessador
-Thu Sep 18 14:34:04 2025
+Sun Sep 21 23:19:41 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -60,13 +60,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Sep 18 14:34:03 2025          ;
+; Analysis & Synthesis Status     ; Successful - Sun Sep 21 23:19:41 2025          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; Coprocessador                                  ;
 ; Top-level Entity Name           ; Coprocessador                                  ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 201                                            ;
+; Total registers                 ; 192                                            ;
 ; Total pins                      ; 79                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 2,764,800                                      ;
@@ -218,7 +218,7 @@ https://fpgasoftware.intel.com/eula.
 ; altram.inc                                         ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altram.inc                                 ;         ;
 ; altdpram.inc                                       ; yes             ; Megafunction                           ; c:/intelfpga/23.1std/quartus/libraries/megafunctions/altdpram.inc                               ;         ;
 ; db/altsyncram_ueg1.tdf                             ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf                             ;         ;
-; ./Img/ExemploPBL.mif                               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Walace/Documents/PBL_Co-processador/Img/ExemploPBL.mif                                 ;         ;
+; img/exemplopbl.mif                                 ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Walace/Documents/PBL_Co-processador/img/exemplopbl.mif                                 ;         ;
 ; db/decode_01a.tdf                                  ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/decode_01a.tdf                                  ;         ;
 ; db/mux_nfb.tdf                                     ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/mux_nfb.tdf                                     ;         ;
 ; db/altsyncram_g2u1.tdf                             ; yes             ; Auto-Generated Megafunction            ; C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_g2u1.tdf                             ;         ;
@@ -233,16 +233,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 790            ;
+; Estimate of Logic utilization (ALMs needed) ; 778            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1164           ;
-;     -- 7 input functions                    ; 21             ;
-;     -- 6 input functions                    ; 387            ;
-;     -- 5 input functions                    ; 186            ;
-;     -- 4 input functions                    ; 121            ;
-;     -- <=3 input functions                  ; 449            ;
+; Combinational ALUT usage for logic          ; 1148           ;
+;     -- 7 input functions                    ; 22             ;
+;     -- 6 input functions                    ; 379            ;
+;     -- 5 input functions                    ; 180            ;
+;     -- 4 input functions                    ; 123            ;
+;     -- <=3 input functions                  ; 444            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 201            ;
+; Dedicated logic registers                   ; 192            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 79             ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -251,9 +251,9 @@ https://fpgasoftware.intel.com/eula.
 ; Total DSP Blocks                            ; 3              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 498            ;
-; Total fan-out                               ; 15667          ;
-; Average fan-out                             ; 8.34           ;
+; Maximum fan-out                             ; 489            ;
+; Total fan-out                               ; 15568          ;
+; Average fan-out                             ; 8.40           ;
 +---------------------------------------------+----------------+
 
 
@@ -262,7 +262,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                        ; Entity Name      ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+------------------+--------------+
-; |Coprocessador                            ; 1164 (18)           ; 201 (13)                  ; 2764800           ; 3          ; 79   ; 0            ; |Coprocessador                                                                                                             ; Coprocessador    ; work         ;
+; |Coprocessador                            ; 1148 (13)           ; 192 (4)                   ; 2764800           ; 3          ; 79   ; 0            ; |Coprocessador                                                                                                             ; Coprocessador    ; work         ;
 ;    |Controller:main_fsm|                  ; 16 (16)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Controller:main_fsm                                                                                         ; Controller       ; work         ;
 ;    |ImageProcessor:processor|             ; 297 (206)           ; 74 (74)                   ; 0                 ; 1          ; 0    ; 0            ; |Coprocessador|ImageProcessor:processor                                                                                    ; ImageProcessor   ; work         ;
 ;       |BlockAveraging:u_ba|               ; 48 (48)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImageProcessor:processor|BlockAveraging:u_ba                                                                ; BlockAveraging   ; work         ;
@@ -280,7 +280,7 @@ https://fpgasoftware.intel.com/eula.
 ;             |decode_01a:rden_decode|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|ImgRom:vga_rom_reader|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|decode_01a:rden_decode ; decode_01a       ; work         ;
 ;    |Informations:scrolling_display|       ; 362 (362)           ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|Informations:scrolling_display                                                                              ; Informations     ; work         ;
 ;    |VGAController:vga_logic_inst|         ; 159 (159)           ; 0 (0)                     ; 0                 ; 2          ; 0    ; 0            ; |Coprocessador|VGAController:vga_logic_inst                                                                                ; VGAController    ; work         ;
-;    |VGA_Driver:the_vga_driver|            ; 208 (208)           ; 55 (55)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VGA_Driver:the_vga_driver                                                                                   ; VGA_Driver       ; work         ;
+;    |VGA_Driver:the_vga_driver|            ; 197 (197)           ; 55 (55)                   ; 0                 ; 0          ; 0    ; 0            ; |Coprocessador|VGA_Driver:the_vga_driver                                                                                   ; VGA_Driver       ; work         ;
 ;    |VdRam:frame_buffer|                   ; 90 (0)              ; 8 (0)                     ; 2457600           ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer                                                                                          ; VdRam            ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 90 (0)              ; 8 (0)                     ; 2457600           ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component                                                          ; altsyncram       ; work         ;
 ;          |altsyncram_g2u1:auto_generated| ; 90 (0)              ; 8 (8)                     ; 2457600           ; 0          ; 0    ; 0            ; |Coprocessador|VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated                           ; altsyncram_g2u1  ; work         ;
@@ -385,12 +385,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 201   ;
-; Number of registers using Synchronous Clear  ; 86    ;
+; Total registers                              ; 192   ;
+; Number of registers using Synchronous Clear  ; 93    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 55    ;
+; Number of registers using Asynchronous Clear ; 46    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 120   ;
+; Number of registers using Clock Enable       ; 116   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -414,8 +414,8 @@ Encoding Type:  One-Hot
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Coprocessador|Controller:main_fsm|zoom_level[2]                                                                                   ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Coprocessador|Informations:scrolling_display|text_pointer[1]                                                                      ;
 ; 4:1                ; 19 bits   ; 38 LEs        ; 0 LEs                ; 38 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|write_ptr[3]                                                                               ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|y_out_count[7]                                                                             ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|x_out_count[3]                                                                             ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|y_out_count[8]                                                                             ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Coprocessador|ImageProcessor:processor|x_out_count[2]                                                                             ;
 ; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|v_counter[5]                                                                              ;
 ; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Coprocessador|VGA_Driver:the_vga_driver|h_counter[7]                                                                              ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Coprocessador|Informations:scrolling_display|text_data                                                                            ;
@@ -749,15 +749,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 201                         ;
-;     CLR               ; 17                          ;
+; arriav_ff             ; 192                         ;
+;     CLR               ; 12                          ;
 ;     CLR SCLR          ; 25                          ;
 ;     ENA               ; 58                          ;
-;     ENA CLR           ; 13                          ;
+;     ENA CLR           ; 9                           ;
 ;     ENA SCLR          ; 49                          ;
-;     SCLR              ; 12                          ;
-;     plain             ; 27                          ;
-; arriav_lcell_comb     ; 1206                        ;
+;     SCLR              ; 19                          ;
+;     plain             ; 20                          ;
+; arriav_lcell_comb     ; 1190                        ;
 ;     arith             ; 231                         ;
 ;         0 data inputs ; 10                          ;
 ;         1 data inputs ; 145                         ;
@@ -765,15 +765,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 22                          ;
 ;         4 data inputs ; 11                          ;
 ;         5 data inputs ; 7                           ;
-;     extend            ; 21                          ;
-;         7 data inputs ; 21                          ;
-;     normal            ; 904                         ;
+;     extend            ; 22                          ;
+;         7 data inputs ; 22                          ;
+;     normal            ; 887                         ;
 ;         1 data inputs ; 47                          ;
-;         2 data inputs ; 78                          ;
-;         3 data inputs ; 105                         ;
-;         4 data inputs ; 108                         ;
-;         5 data inputs ; 179                         ;
-;         6 data inputs ; 387                         ;
+;         2 data inputs ; 75                          ;
+;         3 data inputs ; 103                         ;
+;         4 data inputs ; 110                         ;
+;         5 data inputs ; 173                         ;
+;         6 data inputs ; 379                         ;
 ;     shared            ; 50                          ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 4                           ;
@@ -785,7 +785,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; stratixv_ram_block    ; 352                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 10.00                       ;
-; Average LUT depth     ; 5.28                        ;
+; Average LUT depth     ; 5.31                        ;
 +-----------------------+-----------------------------+
 
 
@@ -804,7 +804,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Thu Sep 18 14:33:36 2025
+    Info: Processing started: Sun Sep 21 23:19:13 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Coprocessador -c Coprocessador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -839,10 +839,10 @@ Info (10499): HDL info at ImageProcessor.v(12): see declaration for object "pixe
 Warning (10227): Verilog HDL Port Declaration warning at ImageProcessor.v(18): data type declaration for "write_addr" declares packed dimensions but the port declaration declaration does not File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 18
 Info (10499): HDL info at ImageProcessor.v(13): see declaration for object "write_addr" File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 13
 Info (12127): Elaborating entity "Coprocessador" for the top level hierarchy
-Info (12128): Elaborating entity "Controller" for hierarchy "Controller:main_fsm" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 109
+Info (12128): Elaborating entity "Controller" for hierarchy "Controller:main_fsm" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 75
 Warning (10230): Verilog HDL assignment warning at Controller.v(44): truncated value with size 32 to match size of target (3) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Controller.v Line: 44
 Warning (10230): Verilog HDL assignment warning at Controller.v(47): truncated value with size 32 to match size of target (3) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Controller.v Line: 47
-Info (12128): Elaborating entity "ImgRom" for hierarchy "ImgRom:processing_rom" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 112
+Info (12128): Elaborating entity "ImgRom" for hierarchy "ImgRom:processing_rom" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 78
 Info (12128): Elaborating entity "altsyncram" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v Line: 82
 Info (12130): Elaborated megafunction instantiation "ImgRom:processing_rom|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v Line: 82
 Info (12133): Instantiated megafunction "ImgRom:processing_rom|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Walace/Documents/PBL_Co-processador/ip/ImgRom.v Line: 82
@@ -869,7 +869,7 @@ Info (12128): Elaborating entity "decode_01a" for hierarchy "ImgRom:processing_r
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_nfb.tdf
     Info (12023): Found entity 1: mux_nfb File: C:/Users/Walace/Documents/PBL_Co-processador/db/mux_nfb.tdf Line: 23
 Info (12128): Elaborating entity "mux_nfb" for hierarchy "ImgRom:processing_rom|altsyncram:altsyncram_component|altsyncram_ueg1:auto_generated|mux_nfb:mux2" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_ueg1.tdf Line: 42
-Info (12128): Elaborating entity "ImageProcessor" for hierarchy "ImageProcessor:processor" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 123
+Info (12128): Elaborating entity "ImageProcessor" for hierarchy "ImageProcessor:processor" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 89
 Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(43): truncated value with size 32 to match size of target (2) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 43
 Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(52): truncated value with size 32 to match size of target (19) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 52
 Warning (10230): Verilog HDL assignment warning at ImageProcessor.v(54): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/ImageProcessor.v Line: 54
@@ -900,7 +900,7 @@ Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(16): truncat
 Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(17): truncated value with size 10 to match size of target (9) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 17
 Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(20): truncated value with size 32 to match size of target (15) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 20
 Warning (10230): Verilog HDL assignment warning at BlockAveraging.v(21): truncated value with size 10 to match size of target (8) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/processing/algorithm/BlockAveraging.v Line: 21
-Info (12128): Elaborating entity "VdRam" for hierarchy "VdRam:frame_buffer" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 126
+Info (12128): Elaborating entity "VdRam" for hierarchy "VdRam:frame_buffer" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 92
 Info (12128): Elaborating entity "altsyncram" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v Line: 89
 Info (12130): Elaborated megafunction instantiation "VdRam:frame_buffer|altsyncram:altsyncram_component" File: C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v Line: 89
 Info (12133): Instantiated megafunction "VdRam:frame_buffer|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Walace/Documents/PBL_Co-processador/ip/VdRam.v Line: 89
@@ -935,30 +935,30 @@ Info (12128): Elaborating entity "decode_s2a" for hierarchy "VdRam:frame_buffer|
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_jhb.tdf
     Info (12023): Found entity 1: mux_jhb File: C:/Users/Walace/Documents/PBL_Co-processador/db/mux_jhb.tdf Line: 23
 Info (12128): Elaborating entity "mux_jhb" for hierarchy "VdRam:frame_buffer|altsyncram:altsyncram_component|altsyncram_g2u1:auto_generated|mux_jhb:mux3" File: C:/Users/Walace/Documents/PBL_Co-processador/db/altsyncram_g2u1.tdf Line: 49
-Info (12128): Elaborating entity "VGAController" for hierarchy "VGAController:vga_logic_inst" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 131
+Info (12128): Elaborating entity "VGAController" for hierarchy "VGAController:vga_logic_inst" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 97
 Warning (10230): Verilog HDL assignment warning at VGAController.v(23): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 23
 Warning (10230): Verilog HDL assignment warning at VGAController.v(28): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 28
 Warning (10230): Verilog HDL assignment warning at VGAController.v(34): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 34
 Warning (10230): Verilog HDL assignment warning at VGAController.v(35): truncated value with size 32 to match size of target (10) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 35
 Warning (10230): Verilog HDL assignment warning at VGAController.v(42): truncated value with size 32 to match size of target (19) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/vga/VGAController.v Line: 42
-Info (12128): Elaborating entity "VGA_Driver" for hierarchy "VGA_Driver:the_vga_driver" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 134
-Info (12128): Elaborating entity "Informations" for hierarchy "Informations:scrolling_display" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 137
+Info (12128): Elaborating entity "VGA_Driver" for hierarchy "VGA_Driver:the_vga_driver" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 100
+Info (12128): Elaborating entity "Informations" for hierarchy "Informations:scrolling_display" File: C:/Users/Walace/Documents/PBL_Co-processador/Coprocessador.v Line: 103
 Warning (10230): Verilog HDL assignment warning at Informations.v(24): truncated value with size 32 to match size of target (25) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Informations.v Line: 24
 Warning (10230): Verilog HDL assignment warning at Informations.v(120): truncated value with size 32 to match size of target (5) File: C:/Users/Walace/Documents/PBL_Co-processador/veriloghdl/control/Informations.v Line: 120
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 16 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1686 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1661 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 9 input pins
     Info (21059): Implemented 70 output pins
-    Info (21061): Implemented 1252 logic cells
+    Info (21061): Implemented 1227 logic cells
     Info (21064): Implemented 352 RAM segments
     Info (21062): Implemented 3 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
-    Info: Peak virtual memory: 4949 megabytes
-    Info: Processing ended: Thu Sep 18 14:34:04 2025
+    Info: Peak virtual memory: 4962 megabytes
+    Info: Processing ended: Sun Sep 21 23:19:41 2025
     Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:34
+    Info: Total CPU time (on all processors): 00:00:29
 
 
