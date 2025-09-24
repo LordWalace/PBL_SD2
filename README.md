@@ -4,10 +4,15 @@
 **Disciplina:** Sistemas Digitais (TEC499) - 2025.2  
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas  
 
----
 <h2>Descrição do Projeto</h2>
 
 Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC com o processador Cyclone V, permitindo a leitura e escrita de dados diretamente na memória RAM do dispositivo, o ambiente de desenvolvimento utilizado foi o Quartus Lite na versão 23.1 e para linguagem de descrição de hardware foi lidado com Verilog. O objetivo do problema é projetar um módulo embarcado de redimensionamento de imagens para sistemas de vigilância e exibição em tempo real, o hardware deve aplicar o efeito de zoom-in (Ampliação) e zoom-out (Redução) simulando um comportamento básico de interpolação.
+
+
+  <div align="center">
+    <img src="Imagens/de1soc.png"><br>
+    <strong>Imagem do Site da Altera</strong><br><br>
+  </div>
 
 ## 1. Levantamento de Requisitos
 
