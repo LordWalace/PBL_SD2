@@ -14,9 +14,9 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
     <strong>Imagem do Site da Altera</strong><br><br>
   </div>
 
-## 1. Levantamento de Requisitos
+### 1. Levantamento de Requisitos
 
-### 1.1. Requisitos Funcionais
+#### 1.1. Requisitos Funcionais
 - **RF01:** O sistema deve implementar quatro algoritmos distintos de redimensionamento de imagem.  
 - **RF02:** Dois algoritmos devem ser para ampliação (Zoom In): *Vizinho Mais Próximo* e *Replicação de Pixel*.  
 - **RF03:** Dois algoritmos devem ser para redução (Zoom Out): *Decimação* e *Média de Blocos*.  
@@ -28,14 +28,14 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
 - **RF09:** O sistema deve fornecer feedback visual ao utilizador através dos displays de 7 segmentos.  
 - **RF10:** O sistema deve implementar validações para impedir operações inválidas.  
 
-### 1.2. Requisitos Não-Funcionais
+#### 1.2. Requisitos Não-Funcionais
 - **RNF01:** O projeto deve ser desenvolvido inteiramente em linguagem **Verilog (2001)**.  
 - **RNF02:** A implementação deve utilizar apenas os recursos de hardware disponíveis na placa **DE1-SoC**.  
 - **RNF03:** O código deve ser modular, bem organizado e detalhadamente comentado.  
 
 ---
 
-## 2. Softwares Utilizados
+### 2. Softwares Utilizados
 - **IDE de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0)*  
 - **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*  
 - **Linguagem HDL:** *Verilog-2001*  
@@ -44,7 +44,7 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
 
 ---
 
-## 3. Hardware Usado nos Testes
+### 3. Hardware Usado nos Testes
 - **Placa de Desenvolvimento:** Terasic DE1-SoC  
 - **FPGA:** Intel Cyclone V SE 5CSEMA5F31C6N  
 - **Memória da Imagem Original:** ROM (19.200 palavras x 8 bits)  
@@ -53,9 +53,9 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
 
 ---
 
-## 4. Instalação e Configuração
+### 4. Instalação e Configuração
 
-### 4.1. Conversão de Imagem
+#### 4.1. Conversão de Imagem
 
 #### Compilar ferramenta de conversão gcc converter.c -o converter -lm
 
@@ -63,14 +63,14 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
 
 #### Compilação no Quartus
 
-## 4.2. Passos para Compilação no Intel Quartus Prime
+### 4.2. Passos para Compilação no Intel Quartus Prime
 
-### 🔹 Abrir o Projeto
+#### 🔹 Abrir o Projeto
 Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ---
 
-### 🔹 Gerar os IPs de Memória
+#### 🔹 Gerar os IPs de Memória
 1. Use a ferramenta **IP Catalog** para gerar os componentes de memória:  
    - **ImgRom.qip** → configurado como **ROM: 1-PORT** e inicializado com o ficheiro `.mif` gerado na conversão de imagem.  
    - **VdRam.qip** → configurada como **RAM: 2-PORT** com **307.200 palavras de 8 bits**.  
@@ -79,28 +79,28 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ---
 
-### 🔹 Atribuição de Pinos (Pin Assignment)
+#### 🔹 Atribuição de Pinos (Pin Assignment)
 1. Abra o **Pin Planner**: `Assignments > Pin Planner`.  
 2. Atribua as portas do módulo `Coprocessador` aos **pinos físicos** da placa **DE1-SoC**, conforme a documentação da placa.  
 
 ---
 
-### 🔹 Compilação do Projeto
+#### 🔹 Compilação do Projeto
 - No menu, selecione **Processing > Start Compilation**.  
 - Aguarde a síntese, mapeamento, fitting e geração do bitstream.  
 
 ---
 
-### 🔹 Programação da FPGA
+#### 🔹 Programação da FPGA
 1. Após a compilação bem-sucedida, abra a ferramenta **Programmer**.  
 2. Carregue o ficheiro `.sof` localizado na pasta `output_files/`.  
 3. Clique em **Start** para programar a FPGA.  
 
 ---
 
-# 🧪 5. Testes de Funcionamento
+### 🧪 5. Testes de Funcionamento
 
-## 5.1. Mapeamento de Controles
+#### 5.1. Mapeamento de Controles
 
 | Função         | Componente | Descrição |
 |----------------|------------|-----------|
@@ -115,7 +115,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ---
 
-## 5.2. Sequência de Verificação
+#### 5.2. Sequência de Verificação
 - **Inicialização:**  
   O display de 7 segmentos deve mostrar **"SELECT AN ALGORITHM"**.  
   - Mais de uma chave ligada → display mostra **"SELECTION ERROR"**.  
@@ -133,7 +133,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
   
 ---
 
-# 📊 6. Análise dos Resultados
+### 📊 6. Análise dos Resultados
 
 ✅ Projeto implementado com sucesso:  
 - Suporte a 4 algoritmos de redimensionamento.  
