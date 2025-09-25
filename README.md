@@ -14,6 +14,18 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
     <strong>Imagem do Site da Altera</strong><br><br>
   </div>
 
+Sumário
+=================
+<!--ts-->
+   * [1.Levantamento de Requisitos](#levantamento-requisitos)
+   * [2.Softwares Utilizados](#software)
+   * [3.Hardware usado nos Testes](#hardware)
+   * [4.Instalação e Configuração](#instalacao-configuracao)
+   * [5.Testes de funcionamento](#testes)
+   * [6.Análise dos resultados](#analise-resultados)
+<!--te-->
+
+<div id="levantamento-requisitos">
 ### 1. Levantamento de Requisitos
 
 #### 1.1. Requisitos Funcionais
@@ -33,8 +45,7 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
 - **RNF02:** A implementação deve utilizar apenas os recursos de hardware disponíveis na placa **DE1-SoC**.  
 - **RNF03:** O código deve ser modular, bem organizado e detalhadamente comentado.  
 
----
-
+<div id="software">
 ### 2. Softwares Utilizados
 - **IDE de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0)*  
 - **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*  
@@ -42,17 +53,18 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
 - **Ferramenta de Conversão:** *Compilador C (MinGW/GCC 6.3.0)*  
 - **Bibliotecas em C:** *stb_image.h* e *stb_image_resize.h*  
 
----
 
+<div id="hardware">
 ### 3. Hardware Usado nos Testes
 - **Placa de Desenvolvimento:** Terasic DE1-SoC  
 - **FPGA:** Intel Cyclone V SE 5CSEMA5F31C6N  
 - **Memória da Imagem Original:** ROM (19.200 palavras x 8 bits)  
 - **Memória de Vídeo (Frame Buffer):** RAM de dupla porta (307.200 palavras x 8 bits)  
-- **Monitor:** Philips VGA (640x480 @ 60Hz)  
+- **Monitor:** Philips VGA (640x480 @ 60Hz)
 
----
+----
 
+<div id="instalacao-configuracao">
 ### 4. Instalação e Configuração
 
 #### 4.1. Conversão de Imagem
@@ -98,6 +110,8 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ---
 
+
+<div id="testes">
 ### 🧪 5. Testes de Funcionamento
 
 #### 5.1. Mapeamento de Controles
@@ -133,6 +147,8 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
   
 ---
 
+
+<div id="analise-resultados">
 ### 📊 6. Análise dos Resultados
 
 ✅ Projeto implementado com sucesso:  
