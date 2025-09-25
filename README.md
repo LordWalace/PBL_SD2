@@ -22,9 +22,9 @@ Sumário
   * [1. Levantamento de Requisitos](#1-levantamento-de-requisitos)
   * [2. Softwares Utilizados](#2-softwares-utilizados)
   * [3. Hardware Usado nos Testes](#3-hardware-usado-nos-testes)
-  * [4. Instalação e Configuração](#4-instalacao-e-configuracao)
+  * [4. Instalação e Configuração](#4-instalacão-e-configuração)
   * [5. Testes de Funcionamento](#5-testes-de-funcionamento)
-  * [6. Análise dos Resultados](#6-analise-dos-resultados)
+  * [6. Análise dos Resultados](#6-análise-dos-resultados)
 
 ### 1. Levantamento de Requisitos
 
