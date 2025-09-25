@@ -147,10 +147,14 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ### 6. Análise dos Resultados
 
-✅ Projeto implementado com sucesso:
+O projeto implementado foi implementado com as seguintes funcionalidades:
 - Suporte a 4 algoritmos de redimensionamento.
 - Níveis de zoom de **0.25x a 4.0x**.
 - Interface robusta com feedback em display de 7 segmentos.
+
+Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
+- Alteração entre algoritmos de zoom sem dar um _Reset_ antes distorce muito a imagem.
+- Todos os algoritmos de zoom distorcem a imagem em certo grau, principalmente visível no **nível de zoom 0.25** onde a imagem aparenta ter um espaço maior à esquerda.
 
 ### 🔧 Desafios e Soluções
 - **Memória:** solução com um único módulo `ImageProcessor` acessando uma única ROM.
