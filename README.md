@@ -73,7 +73,7 @@ Sumário
 
 #### Compilação no Quartus
 
-### 4.2. Passos para Compilação no Intel Quartus Prime
+#### 4.2. Passos para Compilação no Intel Quartus Prime
 
 #### Abrir o Projeto
 Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
