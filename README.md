@@ -75,33 +75,33 @@ Sumário
 
 ### 4.2. Passos para Compilação no Intel Quartus Prime
 
-#### 🔹 Abrir o Projeto
+#### Abrir o Projeto
 Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
----
 
-#### 🔹 Gerar os IPs de Memória
+
+#### Gerar os IPs de Memória
 1. Use a ferramenta **IP Catalog** para gerar os componentes de memória:
    - **ImgRom.qip** → configurado como **ROM: 1-PORT** e inicializado com o ficheiro `.mif` gerado na conversão de imagem.
    - **VdRam.qip** → configurada como **RAM: 2-PORT** com **307.200 palavras de 8 bits**.
 
-> ⚠️ É crucial configurar cada IP corretamente para evitar erros de compilação.
+> É crucial configurar cada IP corretamente para evitar erros de compilação.
 
----
 
-#### 🔹 Atribuição de Pinos (Pin Assignment)
+
+#### Atribuição de Pinos (Pin Assignment)
 1. Abra o **Pin Planner**: `Assignments > Pin Planner`.
 2. Atribua as portas do módulo `Coprocessador` aos **pinos físicos** da placa **DE1-SoC**, conforme a documentação da placa.
 
----
 
-#### 🔹 Compilação do Projeto
+
+#### Compilação do Projeto
 - No menu, selecione **Processing > Start Compilation**.
 - Aguarde a síntese, mapeamento, fitting e geração do bitstream.
 
----
 
-#### 🔹 Programação da FPGA
+
+#### Programação da FPGA
 1. Após a compilação bem-sucedida, abra a ferramenta **Programmer**.
 2. Carregue o ficheiro `.sof` localizado na pasta `output_files/`.
 3. Clique em **Start** para programar a FPGA.
@@ -119,10 +119,10 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 | Voltar Zoom | KEY[1] | Reverte para nível anterior |
 | Zoom In | KEY[2] | Reduz em 2x |
 | Zoom Out | KEY[3] | Amplia em 2x |
-| Alg. 1 | SW[0] | Nearest Neighbor |
-| Alg. 2 | SW[1] | Pixel Replication |
-| Alg. 3 | SW[2] | Decimation |
-| Alg. 4 | SW[3] | Block Averaging |
+| Alg. 1 | SW[9] | Nearest Neighbor |
+| Alg. 2 | SW[8] | Pixel Replication |
+| Alg. 3 | SW[7] | Decimation |
+| Alg. 4 | SW[6] | Block Averaging |
 
 ---
 
@@ -140,21 +140,22 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
   - Display mostra **"INVALID ZOOM"**.
 
 - **Botão Voltar:**
-  Após qualquer operação de zoom, pressione **KEY[1]** para retornar ao nível anterior.
+  Após qualquer operação de zoom, pressione **KEY[1]** para retornar ao nível normal.
 
 ---
 
 
-### 6. Análise dos Resultados
+### 7. Análise dos Resultados
 
 O projeto implementado foi implementado com as seguintes funcionalidades:
 - Suporte a 4 algoritmos de redimensionamento.
 - Níveis de zoom de **0.25x a 4.0x**.
 - Interface robusta com feedback em display de 7 segmentos.
+- Disponibilização de uma imagem para realizar redimensionamento.
 
 Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
-- Alteração entre algoritmos de zoom sem dar um _Reset_ antes distorce muito a imagem.
-- Todos os algoritmos de zoom distorcem a imagem em certo grau, principalmente visível no **nível de zoom 0.25** onde a imagem aparenta ter um espaço maior à esquerda.
+- Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso.
+- Todos os algoritmos de zoom distorcem a imagem em certo grau, notavelmente no **nível de zoom 0.25** onde a imagem aparenta ter um espaço maior à esquerda.
 
 ### 🔧 Desafios e Soluções
 - **Memória:** solução com um único módulo `ImageProcessor` acessando uma única ROM.
