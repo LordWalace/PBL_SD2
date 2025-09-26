@@ -111,7 +111,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 5. Caso a imagem esteja distorcida ou o usuário queira voltar à imagem original, apertar o botão KEY[0] para reiniciar o sistema e voltar para a imagem original.
 
 <div align="center">
-  <img src="Imagens/DE1SOC guia.jpg"><br>
+  <img src="https://i.postimg.cc/mkPzgNym/DE1-SOC-guia.jpg"><br>
   <strong>Componentes necessários para a utilização do projeto.</strong><br><br>
 </div>
 
