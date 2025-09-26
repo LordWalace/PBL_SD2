@@ -180,7 +180,7 @@ Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
 
 <div align="center">
   <img src="https://i.postimg.cc/s2X9FSZD/ezgif-7a830649ca549f-ezgif-com-optimize.gif"><br>
-  <strong>Componentes necessários para a utilização do projeto.</strong><br><br>
+  <strong>Placa DE1-SOC programada pronta para uso.</strong><br><br>
 </div>
 
 ### 🔧 Desafios e Soluções
