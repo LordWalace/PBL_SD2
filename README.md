@@ -178,5 +178,10 @@ Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
 - Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso.
 - Todos os algoritmos de zoom distorcem a imagem em certo grau, notavelmente no **nível de zoom 0.25** onde a imagem aparenta ter um espaço maior à esquerda.
 
+<div align="center">
+  <img src="https://i.postimg.cc/s2X9FSZD/ezgif-7a830649ca549f-ezgif-com-optimize.gif"><br>
+  <strong>Componentes necessários para a utilização do projeto.</strong><br><br>
+</div>
+
 ### 🔧 Desafios e Soluções
 - **Memória:** solução com um único módulo `ImageProcessor` acessando uma única ROM.
