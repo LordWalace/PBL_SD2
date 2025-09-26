@@ -1,4 +1,4 @@
-# Coprocessador de Zoom Digital com FPGA
+<img width="1841" height="979" alt="image" src="https://github.com/user-attachments/assets/b99548ce-80a1-4b19-8ebb-aa0dae629d90" /># Coprocessador de Zoom Digital com FPGA
 
 **Universidade Estadual de Feira de Santana (UEFS)**
 
@@ -79,8 +79,8 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 #### Gerar os IPs de Memória
 1. Use a ferramenta **IP Catalog** para gerar os componentes de memória:
-   - **ImgRom.qip** → configurado como **ROM: 1-PORT** e inicializado com o ficheiro `.mif` gerado na conversão de imagem.
-   - **VdRam.qip** → configurada como **RAM: 2-PORT** com **307.200 palavras de 8 bits**.
+   - **ImgRom.qip** → configurado como **ROM: 1-PORT** e inicializado com o ficheiro `.mif` gerado na conversão de imagem. 
+   - **VdRam.qip** → configurada como **RAM: 2-PORT** com **307.200 palavras de 8 bits**. 
 
 > É crucial configurar cada IP corretamente para evitar erros de compilação.
 
@@ -183,5 +183,18 @@ Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
   <strong>Placa DE1-SOC programada pronta para uso.</strong><br><br>
 </div>
 
-### 🔧 Desafios e Soluções
-- **Memória:** solução com um único módulo `ImageProcessor` acessando uma única ROM.
+#### 6.1 Desafios e Soluções
+
+Durante o desenvolvimento do projeto os algoritmos de zoom causam uma distorção da imagem caso a imagem tenha o _zoom-in_ acionado até o máximo (**4x**) e depois receba um _zoom-out_. O mesmo acontece com a ordem das ações invertidas, ou seja, caso o usuário acione o _zoom-out_ até o máximo (**0.25**) e depois tente dar _zoom-in_ na imagem. O problema pode ser evitado caso o usuário decida apertar o botão de "reset" sempre que for testar outro algoritmo de redimensionamento. 
+
+Uma possível futura solução para esse problema é a implementação de um "_reset_ automático" que é ativado sempre que o usuário troca de algoritmo enquanto a imagem está fora do seu estado padrão (**1x**), limitando o usuário a sempre trabalhar com a imagem padrão ao tentar redimensionar com outro tipo de algoritmo.
+
+<div align="center">
+  <img src="https://i.postimg.cc/ZKzjPp96/Whats-App-Image-2025-09-26-at-19-28-17-1.jpg"><br>
+  <strong>Erro com ao acionar zoom-out após zoom-in(**4x**).</strong><br><br>
+</div>
+
+<div align="center">
+  <img src="https://i.postimg.cc/s2X9FSZD/ezgif-7a830649ca549f-ezgif-com-optimize.gif"><br>
+  <strong>Erro com ao acionar zoom-in após zoom-out **(0.25x)**.</strong><br><br>
+</div>
