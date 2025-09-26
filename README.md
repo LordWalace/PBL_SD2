@@ -13,7 +13,7 @@ Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC c
 
 
 <div align="center">
-  <img src="Imagens/de1soc.png"><br>
+  <img src="https://i.postimg.cc/gJq4KpCv/de1soc.png"><br>
   <strong>Imagem do Site da Altera</strong><br><br>
 </div>
 
