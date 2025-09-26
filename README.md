@@ -161,7 +161,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 - **Botão Voltar:**
   Após qualquer operação de zoom, pressione **KEY[1]** para retornar ao nível normal.
   
-> [!NOTE]
+> [!WARNING]
 > **KEY[1]** no produto final não teve um pino atribuido, ou seja, devido à isso, ao pressionar o botão o nível de zoom não retorna ao normal.
 > Entretanto, a lógica para o funcionamento dele ainda está presente no _Verilog_ do projeto, sendo possível fazer com que o botão volte a ter sua funcionalidade após um pino seja atribuido à ele.
 
@@ -194,11 +194,11 @@ Durante o desenvolvimento do projeto os algoritmos de zoom causam uma distorçã
 Uma possível futura solução para esse problema é a implementação de um "_reset_ automático" que é ativado sempre que o usuário troca de algoritmo enquanto a imagem está fora do seu estado padrão (**1x**), limitando o usuário a sempre trabalhar com a imagem padrão ao tentar redimensionar com outro tipo de algoritmo.
 
 <div align="center">
-  <img src="https://i.postimg.cc/ZKzjPp96/Whats-App-Image-2025-09-26-at-19-28-17-1.jpg"><br>
+  <img src="https://i.postimg.cc/QMDvtvD4/ZoomOut.png"><br>
   <strong>Erro de redimensionamento ao acionar zoom-out após zoom-in(4x).</strong><br><br>
 </div>
 
 <div align="center">
-  <img src="https://i.postimg.cc/Fz4cSbPs/Whats-App-Image-2025-09-26-at-19-28-17.jpg"><br>
+  <img src="https://i.postimg.cc/hvvknxnP/Zoomin.png"><br>
   <strong>Erro de redimensionamento com ao acionar zoom-in após zoom-out (0.25x).</strong><br><br>
 </div>
