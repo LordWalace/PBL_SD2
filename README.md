@@ -85,11 +85,9 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 > É crucial configurar cada IP corretamente para evitar erros de compilação.
 
 
-
 #### Atribuição de Pinos (Pin Assignment)
 1. Abra o **Pin Planner**: `Assignments > Pin Planner`.
 2. Atribua as portas do módulo `Coprocessador` aos **pinos físicos** da placa **DE1-SoC**, conforme a documentação da placa.
-
 
 
 #### Compilação do Projeto
@@ -97,11 +95,25 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 - Aguarde a síntese, mapeamento, fitting e geração do bitstream.
 
 
-
 #### Programação da FPGA
 1. Após a compilação bem-sucedida, abra a ferramenta **Programmer**.
 2. Carregue o ficheiro `.sof` localizado na pasta `output_files/`.
 3. Clique em **Start** para programar a FPGA.
+
+<div align="center">
+  <img src="https://i.postimg.cc/T12wKjj4/Captura-de-tela-de-2025-09-26-11-03-20.png"><br>
+  <strong>Janela para carregar o ficheiro '.sof'.</strong><br><br>
+</div>
+
+<div align="center">
+  <img src="https://i.postimg.cc/Ssg4tB8D/Captura-de-tela-de-2025-09-26-11-04-05.png"><br>
+  <strong>Janela para selecionar a configuração de hardware DE1-SOC.</strong><br><br>
+</div>
+
+<div align="center">
+  <img src="https://i.postimg.cc/nh46W8f3/Captura-de-tela-de-2025-09-26-11-03-32.png"><br>
+  <strong>Janela após o _setup_ feito corretamente.</strong><br><br>
+</div>
 
 #### Uso da placa programada.
 1. Ligar a DE1-SOC pelo botão de _Power_.
@@ -154,7 +166,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 ---
 
 
-### 7. Análise dos Resultados
+### 6. Análise dos Resultados
 
 O projeto implementado foi implementado com as seguintes funcionalidades:
 - Suporte a 4 algoritmos de redimensionamento.
