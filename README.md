@@ -153,6 +153,8 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 - **Operação de Zoom Válida:**
   - Com SW[0] ou SW[1], pressione **KEY[2]** para zoom in (2x → 4x).
   - Pressione **KEY[3]** para reduzir ao nível anterior.
+> [!NOTE]  
+> No produto final **KEY[3]** não teve um pino atribuido.
 
 - **Operação de Zoom Inválida:**
   - Com SW[2] ou SW[3], pressionar **KEY[2]** não deve alterar a imagem.
