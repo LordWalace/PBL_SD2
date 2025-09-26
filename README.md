@@ -166,6 +166,8 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 ### 6. Análise dos Resultados
 
+#### 6.1 Resumo do Produto Final
+
 O projeto implementado foi implementado com as seguintes funcionalidades:
 - Suporte a 4 algoritmos de redimensionamento.
 - Níveis de zoom de **0.25x a 4.0x**.
@@ -181,7 +183,7 @@ Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
   <strong>Placa DE1-SOC programada pronta para uso.</strong><br><br>
 </div>
 
-#### 6.1 Desafios e Soluções
+#### 6.2 Desafios e Soluções
 
 Durante o desenvolvimento do projeto os algoritmos de zoom causam uma distorção da imagem caso a imagem tenha o _zoom-in_ acionado até o máximo (**4x**) e depois receba um _zoom-out_. O mesmo acontece com a ordem das ações invertidas, ou seja, caso o usuário acione o _zoom-out_ até o máximo (**0.25**) e depois tente dar _zoom-in_ na imagem. O problema pode ser evitado caso o usuário decida apertar o botão de "reset" sempre que for testar outro algoritmo de redimensionamento. 
 
@@ -189,10 +191,10 @@ Uma possível futura solução para esse problema é a implementação de um "_r
 
 <div align="center">
   <img src="https://i.postimg.cc/ZKzjPp96/Whats-App-Image-2025-09-26-at-19-28-17-1.jpg"><br>
-  <strong>Erro de redimensionamento ao acionar zoom-out após zoom-in(**4x**).</strong><br><br>
+  <strong>Erro de redimensionamento ao acionar zoom-out após zoom-in(4x).</strong><br><br>
 </div>
 
 <div align="center">
   <img src="https://i.postimg.cc/Fz4cSbPs/Whats-App-Image-2025-09-26-at-19-28-17.jpg"><br>
-  <strong>Erro de redimensionamento com ao acionar zoom-in após zoom-out **(0.25x)**.</strong><br><br>
+  <strong>Erro de redimensionamento com ao acionar zoom-in após zoom-out (0.25x).</strong><br><br>
 </div>
