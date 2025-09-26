@@ -1,5 +1,3 @@
-<img width="1841" height="979" alt="image" src="https://github.com/user-attachments/assets/b99548ce-80a1-4b19-8ebb-aa0dae629d90" /># Coprocessador de Zoom Digital com FPGA
-
 **Universidade Estadual de Feira de Santana (UEFS)**
 
 **Disciplina:** Sistemas Digitais (TEC499) - 2025.2
@@ -191,10 +189,10 @@ Uma possível futura solução para esse problema é a implementação de um "_r
 
 <div align="center">
   <img src="https://i.postimg.cc/ZKzjPp96/Whats-App-Image-2025-09-26-at-19-28-17-1.jpg"><br>
-  <strong>Erro com ao acionar zoom-out após zoom-in(**4x**).</strong><br><br>
+  <strong>Erro de redimensionamento ao acionar zoom-out após zoom-in(**4x**).</strong><br><br>
 </div>
 
 <div align="center">
-  <img src="https://i.postimg.cc/s2X9FSZD/ezgif-7a830649ca549f-ezgif-com-optimize.gif"><br>
-  <strong>Erro com ao acionar zoom-in após zoom-out **(0.25x)**.</strong><br><br>
+  <img src="https://i.postimg.cc/Fz4cSbPs/Whats-App-Image-2025-09-26-at-19-28-17.jpg"><br>
+  <strong>Erro de redimensionamento com ao acionar zoom-in após zoom-out **(0.25x)**.</strong><br><br>
 </div>
