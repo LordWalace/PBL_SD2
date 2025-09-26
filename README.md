@@ -112,7 +112,7 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 <div align="center">
   <img src="https://i.postimg.cc/nh46W8f3/Captura-de-tela-de-2025-09-26-11-03-32.png"><br>
-  <strong>Janela após o _setup_ feito corretamente.</strong><br><br>
+  <strong>Janela após o 'setup' ser feito corretamente.</strong><br><br>
 </div>
 
 #### Uso da placa programada.
