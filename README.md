@@ -69,6 +69,8 @@ Sumário
 
 #### Abrir o Projeto
 Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
+Após a seleção do ficheiro, selecionar **DE-SOC** na janela de seleção de _hardware_.
+Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento chegar em **100%**, exibindo a mensagem **"Successful"**.
 
 
 #### Gerar os IPs de Memória
@@ -131,6 +133,8 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 <div align="center">
   <img src="https://i.postimg.cc/ZKQFqN8T/Tutorial6.png"><br>
 </div>
+
+---
 
 #### Uso da placa programada.
 1. Após fazer a conexão dos cabos de alimentação, _VGA_ e _USB_, ligar a DE1-SOC pelo botão de _Power_.
