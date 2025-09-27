@@ -206,6 +206,9 @@ Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
 - Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso.
 - Todos os algoritmos de zoom distorcem a imagem em certo grau.
 
+#### Placa após programada.
+![Image](https://github.com/user-attachments/assets/85f1aef6-5cc3-4cc7-9aa7-43d4ca0aa28b)
+
 #### 6.2. Desafios e Soluções
 
 Durante o desenvolvimento do projeto os algoritmos de zoom causam uma distorção da imagem caso a imagem tenha o _zoom-in_ acionado até o máximo (**4x**) e depois receba um _zoom-out_. O mesmo acontece com a ordem das ações invertidas, ou seja, caso o usuário acione o _zoom-out_ até o máximo (**0.25**) e depois tente dar _zoom-in_ na imagem. O problema pode ser evitado caso o usuário decida apertar o botão de "reset" sempre que for testar outro algoritmo de redimensionamento. 
