@@ -182,8 +182,8 @@ Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento che
   - Com SW[2] ou SW[3], pressionar **KEY[2]** não deve alterar a imagem.
   - Display mostra **"INVALID ZOOM"**.
 
-- **Botão Voltar:**
-  Após qualquer operação de zoom, pressione **KEY[1]** para retornar ao nível normal.
+- **Botão Reset:**
+  Após qualquer operação de zoom, pressione **KEY[0]** para retornar ao nível normal.
   
 > [!WARNING]
 > **KEY[1]** no produto final não teve um pino atribuido, ou seja, devido à isso, ao pressionar o botão o nível de zoom não retorna ao normal.
@@ -205,11 +205,6 @@ O projeto implementado foi implementado com as seguintes funcionalidades:
 Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
 - Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso.
 - Todos os algoritmos de zoom distorcem a imagem em certo grau.
-
-<div align="center">
-  <img src="https://i.postimg.cc/Z5LSz6vv/ezgif-com-animated-gif-maker.gif"><br>
-  <strong>Placa DE1-SOC programada pronta para uso.</strong><br><br>
-</div>
 
 #### 6.2. Desafios e Soluções
 
