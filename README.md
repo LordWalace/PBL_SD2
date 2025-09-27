@@ -235,3 +235,9 @@ Uma possível futura solução para esse problema é a implementação de um "_r
 #### 7. Referências
 
 ALAM, S. Nearest Neighbor Interpolation Algorithm in Matlab. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/software-engineering/nearest-neighbor-interpolation-algorithm-in-matlab/.
+
+TUTORIALSPOINT. Zooming Methods in Digital Image Processing. TutorialsPoint, [S.l.], [s.d.]. Disponível em: https://www.tutorialspoint.com/dip/zooming_methods.htm.
+
+VISION BOOK MIT. Upsampling and Downsampling. Vision Book MIT, [S.l.], [s.d.]. Disponível em: https://visionbook.mit.edu/upsamplig_downsampling_2.html.
+
+COMPUPHASE. Scaling/Zooming of Bitmaps. CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale2.htm.
