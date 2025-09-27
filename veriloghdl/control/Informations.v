@@ -122,11 +122,9 @@ module Informations (
         end
     end
 
-    // =============================================================================
     // FUNÇÃO DE DESCODIFICAÇÃO CORRIGIDA
     // Converte um caracter ASCII para um padrão de 7 segmentos.
-    // O padrão é {g, f, e, d, c, b, a}, e um '0' acende o segmento (ativo baixo).
-    // =============================================================================
+    // O padrão é {g, f, e, d, c, b, a}, e um '0' acende o segmento (ativo baixo).    // =============================================================================
     function [6:0] char_to_segments;
         input [7:0] char;
         begin

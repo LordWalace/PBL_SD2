@@ -23,7 +23,7 @@ module Coprocessador (
     wire zoom_out_press = !KEY[2];
     wire zoom_in_press = !KEY[3];
     
-    // --- SINCRONIZAÇÃO DAS CHAVES (CORREÇÃO DO ERRO) --- // Falta testar a correção na placa
+    // --- SINCRONIZAÇÃO DAS CHAVES (CORREÇÃO DO ERRO)
     reg [3:0] sw_sync_r1, sw_sync_r2;
     always @(posedge CLOCK_50 or posedge reset) begin
         if (reset) begin
