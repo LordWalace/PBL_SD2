@@ -43,6 +43,7 @@ Sumário
 - **RNF02:** A implementação deve utilizar apenas os recursos de hardware disponíveis na placa **DE1-SoC**.
 - **RNF03:** O código deve ser modular, bem organizado e detalhadamente comentado.
 
+---
 
 ### 2. Softwares Utilizados
 - **IDE de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0)*
@@ -51,6 +52,7 @@ Sumário
 - **Ferramenta de Conversão:** *Compilador C (MinGW/GCC 6.3.0)*
 - **Bibliotecas em C:** *stb_image.h* e *stb_image_resize.h*
 
+---
 
 ### 3. Hardware Usado nos Testes
 - **Placa de Desenvolvimento:** Terasic DE1-SoC
@@ -63,12 +65,7 @@ Sumário
 
 ### 4. Instalação e Configuração
 
-#### 4.1. Conversão de Imagem
-Compilar ferramenta de conversão gcc converter.c -o converter -lm
-
-Executar conversão ./converter
-
-#### 4.2. Passos para Compilação no Intel Quartus Prime
+#### 4.1. Passos para Compilação no Intel Quartus Prime
 
 #### Abrir o Projeto
 Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
@@ -76,8 +73,11 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 #### Gerar os IPs de Memória
 1. Use a ferramenta **IP Catalog** para gerar os componentes de memória:
-   - **ImgRom.qip** → configurado como **ROM: 1-PORT** e inicializado com o ficheiro `.mif` gerado na conversão de imagem. 
-   - **VdRam.qip** → configurada como **RAM: 2-PORT** com **307.200 palavras de 8 bits**. 
+   - **ImgRom.qip** → configurado como **ROM: 1-PORT** com **19200 pixels de 8 bits**, inicializado com o ficheiro `.mif` gerado na conversão de imagem. 
+   - **VdRam.qip** → configurada como **RAM: 2-PORT** com **307.200 palavras de 8 bits**.
+  
+> [!NOTE]
+> Não é necessário gerar novas memórias caso todos os arquivos do projetos sejam baixados, já que essas memórias já foram geradas.
 
 > É crucial configurar cada IP corretamente para evitar erros de compilação.
 
@@ -85,6 +85,9 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 #### Atribuição de Pinos (Pin Assignment)
 1. Abra o **Pin Planner**: `Assignments > Pin Planner`.
 2. Atribua as portas do módulo `Coprocessador` aos **pinos físicos** da placa **DE1-SoC**, conforme a documentação da placa.
+
+> [!NOTE]
+> Não há necessidade de realizar a atribuição de pinos caso todos os arquivos do projetos sejam baixados, já que, a atribuição de pinos já foi realizada.
 
 
 #### Compilação do Projeto
@@ -99,6 +102,8 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 > [!NOTE]
 > Não há necessidade de fazer uma _ROM_ nova, já que há uma imagem predefinida para o redimensionamento e testes dos algoritmos implementados.
+
+### As imagens abaixo ilustram o processo
 
 
 
@@ -140,7 +145,6 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 </div>
 
 ---
-
 
 ### 5. Testes de Funcionamento
 
