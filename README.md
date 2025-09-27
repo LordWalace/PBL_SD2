@@ -68,7 +68,7 @@ Sumário
 Essa subseção vai explicar o passo a passo para realizar a compilação do projeto no Intel Quartus Prime. A seção vai apresentar informações por texto e uma seção dedicada com imagens para ilustrar o processo de compilação de maneira mais intuitiva.
 
 #### Abrir o Projeto
-Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
+Após realizar o _download_ do projeto abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 Após a seleção do ficheiro, selecionar **DE-SOC** na janela de seleção de _hardware_.
 Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento chegar em **100%**, exibindo a mensagem **"Successful"**.
 
