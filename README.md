@@ -117,15 +117,15 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 
 <div align="center">
-  <img src="https://postimg.cc/6ydGjyb1"><br>
+  <img src="https://i.postimg.cc/vHKLmnrM/Tutorial4.png"><br>
 </div>
 
 <div align="center">
-  <img src="https://postimg.cc/KRngqRpw"><br>
+  <img src="https://i.postimg.cc/GhfJpDFL/Tutorial5.png"><br>
 </div>
 
 <div align="center">
-  <img src="https://postimg.cc/ykFSQkp5"><br>
+  <img src="https://i.postimg.cc/ZKQFqN8T/Tutorial6.png"><br>
 </div>
 
 #### Uso da placa programada.
