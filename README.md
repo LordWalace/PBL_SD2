@@ -125,6 +125,11 @@ Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento che
 
 
 <div align="center">
+  <img src="https://i.postimg.cc/j2B5pP9r/Tutorial7.png"><br>
+</div>
+
+
+<div align="center">
   <img src="https://i.postimg.cc/vHKLmnrM/Tutorial4.png"><br>
 </div>
 
@@ -194,7 +199,7 @@ Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento che
 
 ### 6. Análise dos Resultados
 
-#### 6.1 Resumo do Produto Final
+#### 6.1. Resumo do Produto Final
 
 O projeto implementado foi implementado com as seguintes funcionalidades:
 - Suporte a 4 algoritmos de redimensionamento.
@@ -204,14 +209,14 @@ O projeto implementado foi implementado com as seguintes funcionalidades:
 
 Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
 - Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso.
-- Todos os algoritmos de zoom distorcem a imagem em certo grau, notavelmente no **nível de zoom 0.25** onde a imagem aparenta ter um espaço maior à esquerda.
+- Todos os algoritmos de zoom distorcem a imagem em certo grau.
 
 <div align="center">
   <img src="https://i.postimg.cc/s2X9FSZD/ezgif-7a830649ca549f-ezgif-com-optimize.gif"><br>
   <strong>Placa DE1-SOC programada pronta para uso.</strong><br><br>
 </div>
 
-#### 6.2 Desafios e Soluções
+#### 6.2. Desafios e Soluções
 
 Durante o desenvolvimento do projeto os algoritmos de zoom causam uma distorção da imagem caso a imagem tenha o _zoom-in_ acionado até o máximo (**4x**) e depois receba um _zoom-out_. O mesmo acontece com a ordem das ações invertidas, ou seja, caso o usuário acione o _zoom-out_ até o máximo (**0.25**) e depois tente dar _zoom-in_ na imagem. O problema pode ser evitado caso o usuário decida apertar o botão de "reset" sempre que for testar outro algoritmo de redimensionamento. 
 
@@ -226,3 +231,7 @@ Uma possível futura solução para esse problema é a implementação de um "_r
   <img src="https://i.postimg.cc/hvvknxnP/Zoomin.png"><br>
   <strong>Erro de redimensionamento com ao acionar zoom-in após zoom-out (0.25x).</strong><br><br>
 </div>
+
+#### 7. Referências
+
+ALAM, S. Nearest Neighbor Interpolation Algorithm in Matlab. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/software-engineering/nearest-neighbor-interpolation-algorithm-in-matlab/.
