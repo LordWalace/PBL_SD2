@@ -202,11 +202,12 @@ O projeto implementado foi implementado com as seguintes funcionalidades:
 - Interface robusta com feedback em display de 7 segmentos.
 - Disponibilização de uma imagem para realizar redimensionamento.
 
-Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
-- Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso.
+Porém, determinados erros e limitações permaneceram na entrega da etapa 1 do produto:
+- Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso. 
 - Todos os algoritmos de zoom distorcem a imagem em certo grau.
+- O zoom da placa apenas realiza o redimensionamento em 2 etapas cada, ampliando e afastando a imagem duas vezes.
 
-#### Placa após programada.
+#### Placa programada preparada para a seleção de algum algoritmo.
 ![Image](https://github.com/user-attachments/assets/85f1aef6-5cc3-4cc7-9aa7-43d4ca0aa28b)
 
 #### 6.2. Desafios e Soluções
@@ -225,14 +226,22 @@ Uma possível futura solução para esse problema é a implementação de um "_r
   <strong>Erro de redimensionamento com ao acionar zoom-in após zoom-out (0.25x).</strong><br><br>
 </div>
 
+Ainda seguindo o desafio da distorção de cada zoom, é importante ressaltar que eles são limitados em realizar zoom-in e zoom-out de 2 etapas cada. Ou seja, para uma futura versão do projeto, uma possível melhora seria a remoção dessa limitação imposta, permitindo com que o usuário amplie ou afaste a imagem quantas vezes necessárias.
+
 #### 7. Referências
 
-ALAM, S. Nearest Neighbor Interpolation Algorithm in Matlab. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/software-engineering/nearest-neighbor-interpolation-algorithm-in-matlab/.
+ALAM, S. Nearest Neighbor Interpolation Algorithm in Matlab. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/software-engineering/nearest-neighbor-interpolation-algorithm-in-matlab/. Acesso em 06 de Setembro.
 
-TUTORIALSPOINT. Zooming Methods in Digital Image Processing. TutorialsPoint, [S.l.], [s.d.]. Disponível em: https://www.tutorialspoint.com/dip/zooming_methods.htm.
+TUTORIALSPOINT. Zooming Methods in Digital Image Processing. TutorialsPoint, [S.l.], [s.d.]. Disponível em: https://www.tutorialspoint.com/dip/zooming_methods.htm. Acesso em 06 de Setembro.
 
-VISION BOOK MIT. Upsampling and Downsampling. Vision Book MIT, [S.l.], [s.d.]. Disponível em: https://visionbook.mit.edu/upsamplig_downsampling_2.html.
+VISION BOOK MIT. Upsampling and Downsampling. Vision Book MIT, [S.l.], [s.d.]. Disponível em: https://visionbook.mit.edu/upsamplig_downsampling_2.html. Acesso em 06 de Setembro.
 
-COMPUPHASE. Scaling/Zooming of Bitmaps. CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale2.htm.
+COMPUPHASE. Scaling/Zooming of Bitmaps. CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale2.htm. Acesso em 08 de Setembro.
 
-COMPUPHASE. Scaling/Zooming of Bitmaps (Part 2). CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale3.htm.
+COMPUPHASE. Scaling/Zooming of Bitmaps (Part 2). CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale3.htm. Acesso em 08 de Setembro.
+
+SUTHERLAND, S. Verilog-2001: The New Features Part 1. Sutherland-HDL, [S.l.], 2001. Disponível em: https://sutherland-hdl.com/papers/2001-Wescon-tutorial_using_Verilog-2001_part1.pdf. Acesso em 02 de Setembro.
+
+GURU99. Co-processor in Computer Architecture. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/computer-organization-architecture/co-processor-computer-architecture/. Acesso em 27 de Agosto.
+
+ALAM, S. Introduction of Control Unit and its Design. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/computer-organization-architecture/introduction-of-control-unit-and-its-design/.  Acesso em 30 de Agosto.
