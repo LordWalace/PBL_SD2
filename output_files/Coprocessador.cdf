@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(5CSEMA5) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("/home/aluno/Downloads/PBL_Co-processador+PATH/output_files/") File("Coprocessador.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/Users/Walace/Documents/PBL_Co-processador/output_files/") File("Coprocessador.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
