@@ -152,10 +152,10 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 | Voltar Zoom | KEY[1] | Reverte para nível anterior |
 | Zoom In | KEY[2] | Reduz em 2x |
 | Zoom Out | KEY[3] | Amplia em 2x |
-| Alg. 1 | SW[9] | Nearest Neighbor |
-| Alg. 2 | SW[8] | Pixel Replication |
-| Alg. 3 | SW[7] | Decimation |
-| Alg. 4 | SW[6] | Block Averaging |
+| Alg. 1 | SW[0] | Nearest Neighbor |
+| Alg. 2 | SW[1] | Pixel Replication |
+| Alg. 3 | SW[2] | Decimation |
+| Alg. 4 | SW[3] | Block Averaging |
 
 ---
 
