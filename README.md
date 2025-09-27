@@ -228,7 +228,7 @@ Uma possível futura solução para esse problema é a implementação de um "_r
 
 Ainda seguindo o desafio da distorção de cada zoom, é importante ressaltar que eles são limitados em realizar zoom-in e zoom-out de 2 etapas cada. Ou seja, para uma futura versão do projeto, uma possível melhora seria a remoção dessa limitação imposta, permitindo com que o usuário amplie ou afaste a imagem quantas vezes necessárias.
 
-#### 7. Referências
+### 7. Referências
 
 ALAM, S. Nearest Neighbor Interpolation Algorithm in Matlab. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/software-engineering/nearest-neighbor-interpolation-algorithm-in-matlab/. Acesso em 06 de Setembro.
 
