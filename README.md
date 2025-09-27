@@ -74,7 +74,6 @@ Executar conversão ./converter
 Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 
 
-
 #### Gerar os IPs de Memória
 1. Use a ferramenta **IP Catalog** para gerar os componentes de memória:
    - **ImgRom.qip** → configurado como **ROM: 1-PORT** e inicializado com o ficheiro `.mif` gerado na conversão de imagem. 
@@ -98,19 +97,35 @@ Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
 2. Carregue o ficheiro `.sof` localizado na pasta `output_files/`.
 3. Clique em **Start** para programar a FPGA.
 
+> [!NOTE]
+> Não há necessidade de fazer uma _ROM_ nova, já que há uma imagem predefinida para o redimensionamento e testes dos algoritmos implementados.
+
+
+
 <div align="center">
-  <img src="https://i.postimg.cc/T12wKjj4/Captura-de-tela-de-2025-09-26-11-03-20.png"><br>
-  <strong>Janela para carregar o ficheiro '.sof'.</strong><br><br>
+  <img src="https://i.postimg.cc/MHXrjSXd/Tutorial1.png"><br>
 </div>
 
 <div align="center">
-  <img src="https://i.postimg.cc/Ssg4tB8D/Captura-de-tela-de-2025-09-26-11-04-05.png"><br>
-  <strong>Janela para selecionar a configuração de hardware DE1-SOC.</strong><br><br>
+  <img src="https://i.postimg.cc/gjrB6Wr7/Tutorial2.png"><br>
 </div>
 
 <div align="center">
-  <img src="https://i.postimg.cc/nh46W8f3/Captura-de-tela-de-2025-09-26-11-03-32.png"><br>
-  <strong>Janela após o 'setup' ser feito corretamente.</strong><br><br>
+  <img src="https://i.postimg.cc/Bbtw10tR/Tutorial3.png"><br>
+</div>
+
+
+
+<div align="center">
+  <img src="https://postimg.cc/6ydGjyb1"><br>
+</div>
+
+<div align="center">
+  <img src="https://postimg.cc/KRngqRpw"><br>
+</div>
+
+<div align="center">
+  <img src="https://postimg.cc/ykFSQkp5"><br>
 </div>
 
 #### Uso da placa programada.
