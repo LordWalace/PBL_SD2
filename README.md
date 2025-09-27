@@ -207,7 +207,7 @@ Porém, determinados erros permaneceram na entrega da etapa 1 do produto:
 - Todos os algoritmos de zoom distorcem a imagem em certo grau.
 
 <div align="center">
-  <img src="https://i.postimg.cc/s2X9FSZD/ezgif-7a830649ca549f-ezgif-com-optimize.gif"><br>
+  <img src="https://i.postimg.cc/Z5LSz6vv/ezgif-com-animated-gif-maker.gif"><br>
   <strong>Placa DE1-SOC programada pronta para uso.</strong><br><br>
 </div>
 
