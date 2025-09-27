@@ -102,9 +102,6 @@ Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento che
 2. Carregue o ficheiro `.sof` localizado na pasta `output_files/`.
 3. Clique em **Start** para programar a FPGA.
 
-> [!NOTE]
-> Não há necessidade de fazer uma _ROM_ nova, já que há uma imagem predefinida para o redimensionamento e testes dos algoritmos implementados.
-
 ### As imagens abaixo ilustram o processo
 
 
