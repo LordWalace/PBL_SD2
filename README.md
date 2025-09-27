@@ -49,8 +49,6 @@ Sumário
 - **IDE de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0)*
 - **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*
 - **Linguagem HDL:** *Verilog-2001*
-- **Ferramenta de Conversão:** *Compilador C (MinGW/GCC 6.3.0)*
-- **Bibliotecas em C:** *stb_image.h* e *stb_image_resize.h*
 
 ---
 
@@ -241,3 +239,5 @@ TUTORIALSPOINT. Zooming Methods in Digital Image Processing. TutorialsPoint, [S.
 VISION BOOK MIT. Upsampling and Downsampling. Vision Book MIT, [S.l.], [s.d.]. Disponível em: https://visionbook.mit.edu/upsamplig_downsampling_2.html.
 
 COMPUPHASE. Scaling/Zooming of Bitmaps. CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale2.htm.
+
+COMPUPHASE. Scaling/Zooming of Bitmaps (Part 2). CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale3.htm.
