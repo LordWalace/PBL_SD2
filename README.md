@@ -141,7 +141,7 @@ Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento che
 #### Uso da placa programada.
 1. Após fazer a conexão dos cabos de alimentação, _VGA_ e _USB_, ligar a DE1-SOC pelo botão de _Power_.
 2. Esperar o _Display_ de sete segmentos exibir uma mensagem de **"SELECT AN ALGORITHM"** ou esperar a imagem ser exibida no monitor.
-3. Selecionar um algoritmo de redimensionamento pelos os _Switches_ da placa. (Do SW[9] até o SW[6], à seleção fonrece os algoritmos _Nearest Neighbor_, _Pixel Replication_, _Decimation_ e _Block Averaging_ respectivamente.
+3. Selecionar um algoritmo de redimensionamento pelos os _Switches_ da placa. (Do SW[0] até o SW[3], à seleção fonrece os algoritmos _Nearest Neighbor_, _Pixel Replication_, _Decimation_ e _Block Averaging_ respectivamente.
 4. Fazer uso dos botões KEY[2] e KEY[3] para aplicar o redimensionamento da imagem. Vale ressaltar que, KEY[2] é responsável em aplicar _zoom-out_ enquanto o KEY[3] aplica o _zoom-in_.
 5. Caso a imagem esteja distorcida ou o usuário queira voltar à imagem original, apertar o botão KEY[0] para reiniciar o sistema e voltar para a imagem original.
 
