@@ -1,3 +1,5 @@
+//Novas alterações devem ser feitas para que ele fique adapitavel para o segundo projeto
+
 module Coprocessador (
     input           CLOCK_50,
     input   [3:0]   KEY,
