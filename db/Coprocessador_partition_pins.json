@@ -284,11 +284,23 @@
 					"strict" : false
 				},
 				{
-					"name" : "KEY[2]",
+					"name" : "hps_readdata_control[0]",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[3]",
+					"name" : "hps_address_control[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_read_control",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_control[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_chipselect_control",
 					"strict" : false
 				},
 				{
@@ -296,27 +308,135 @@
 					"strict" : false
 				},
 				{
-					"name" : "KEY[0]",
+					"name" : "hps_reset",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[1]",
+					"name" : "hps_writedata_control[1]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[1]",
+					"name" : "hps_clk",
 					"strict" : false
 				},
 				{
-					"name" : "SW[0]",
+					"name" : "hps_write_control",
 					"strict" : false
 				},
 				{
-					"name" : "SW[3]",
+					"name" : "hps_writedata_control[0]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[2]",
+					"name" : "hps_chipselect_img",
+					"strict" : false
+				},
+				{
+					"name" : "hps_write_img",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_control[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_control[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_control[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[13]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[14]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[6]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[7]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[8]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[9]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[10]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[11]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_address_img[12]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[6]",
+					"strict" : false
+				},
+				{
+					"name" : "hps_writedata_img[7]",
 					"strict" : false
 				}
 			]

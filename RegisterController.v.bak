@@ -1,0 +1,3 @@
+// API de comunicaçaõ do HPS e FPGA
+
+module RegisterController();

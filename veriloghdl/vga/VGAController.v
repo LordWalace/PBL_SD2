@@ -1,5 +1,5 @@
 module VGAController(
-    input           pclk,         // Clock do sistema (pode ser 50MHz)
+    input           pclk,         // Clock do sistema (50MHz)
     input           reset,
     input   [2:0]   zoom_level,   // Nível de zoom atual (vindo da FSM)
     input   [9:0]   current_x,    // Coordenada X atual (vinda do vga_driver)

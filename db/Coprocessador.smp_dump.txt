@@ -12,3 +12,9 @@ h_state.H_ACTIVE_STATE 0 0 0 0
 h_state.H_FRONT_STATE 0 0 1 1 
 h_state.H_PULSE_STATE 0 1 0 1 
 h_state.H_BACK_STATE 1 0 0 1 
+
+State Machine - |Coprocessador|Controller:main_fsm|current_state
+Name current_state.S_IDLE current_state.S_MEMORY current_state.S_PROCESS 
+current_state.S_IDLE 0 0 0 
+current_state.S_PROCESS 1 0 1 
+current_state.S_MEMORY 1 1 0 
