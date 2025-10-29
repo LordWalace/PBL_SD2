@@ -10,16 +10,17 @@
 .global FILE_DESCRIPTOR
 .global FPGA_BRIDGE
 
-DEV_MEM:          .asciz "/dev/mem"
-FPGA_SPAN:        .word 0x1000        @ tamanho mapeado 4KB
-FPGA_ADDRS:       .word 0
-FILE_DESCRIPTOR:  .word 0
-FPGA_BRIDGE:      .word 0xFF200000    @ base bridge LWHPS2FPGA
+DEV_MEM:         .asciz "/dev/mem"
+FPGA_SPAN:       .word 0x1000         @ tamanho mapeado 4KB
+FPGA_ADDRS:      .word 0
+FILE_DESCRIPTOR: .word 0
+FPGA_BRIDGE:     .word 0xFF200000     @ base bridge LWHPS2FPGA
 
 @ --- OFFSETS DOS 3 PIOS (UNIDIRECIONAIS) ---
+@ Endereços corretos fornecidos pelo utilizador
 .equ PIO_DATA_IN,    0x00  @ HPS -> FPGA (Dados)
 .equ PIO_DATA_OUT,   0x10  @ FPGA -> HPS (Status + Dados de Leitura)
-.equ PIO_CONTROL_IN, 0x20  @ HPS -> FPGA (Controlo + Endereço ImgRam)
+.equ PIO_CONTROL_IN,  0x20  @ HPS -> FPGA (Controlo + Endereço ImgRam)
 @ --- FIM DOS OFFSETS ---
 
 .section .text
@@ -43,27 +44,12 @@ FPGA_BRIDGE:      .word 0xFF200000    @ base bridge LWHPS2FPGA
 .global resetCoprocessor
 .type resetCoprocessor, %function
 
-@ <<< INÍCIO DA NOVA FUNÇÃO DE DELAY >>>
-@ delay_loop
-@ Insere um atraso de software para dar tempo ao barramento assíncrono
-@ de estabilizar.
-delay_loop:
-    push {r0}
-    mov  r0, #0x1FFFFF @ Carrega um contador (ajuste este valor se for muito rápido/lento)
-delay_inner:
-    subs r0, r0, #1
-    bne  delay_inner
-    pop  {r0}
-    bx   lr
-@ <<< FIM DA NOVA FUNÇÃO DE DELAY >>>
-
-
 @ iniciarCoprocessor (Sem alterações)
 iniciarCoprocessor:
     push {r4, r5, r7, lr}
     movw    r0, #:lower16:DEV_MEM
     movt    r0, #:upper16:DEV_MEM
-    mov     r1, #2          @ O_RDWR
+    mov     r1, #2           @ O_RDWR
     mov     r2, #0
     mov     r7, #5
     svc     0
@@ -75,14 +61,14 @@ iniciarCoprocessor:
     movw    r1, #:lower16:FPGA_SPAN
     movt    r1, #:upper16:FPGA_SPAN
     ldr     r1, [r1]
-    mov     r2, #3          @ PROT_READ | PROT_WRITE
-    mov     r3, #1          @ MAP_SHARED
+    mov     r2, #3           @ PROT_READ | PROT_WRITE
+    mov     r3, #1           @ MAP_SHARED
     movw    r5, #:lower16:FPGA_BRIDGE
     movt    r5, #:upper16:FPGA_BRIDGE
     ldr     r5, [r5]
-    lsr     r5, r5, #12     @ offset em páginas
+    lsr     r5, r5, #12      @ offset em páginas
     mov     r6, r4
-    mov     r7, #192        @ mmap2
+    mov     r7, #192         @ mmap2
     svc     0
     movw    r1, #:lower16:FPGA_ADDRS
     movt    r1, #:upper16:FPGA_ADDRS
@@ -99,12 +85,12 @@ encerrarCoprocessor:
     movw    r1, #:lower16:FPGA_SPAN
     movt    r1, #:upper16:FPGA_SPAN
     ldr     r1, [r1]
-    mov     r7, #91         @ munmap
+    mov     r7, #91          @ munmap
     svc     0
     movw    r0, #:lower16:FILE_DESCRIPTOR
     movt    r0, #:upper16:FILE_DESCRIPTOR
     ldr     r0, [r0]
-    mov     r7, #6          @ close
+    mov     r7, #6           @ close
     svc     0
     pop {r4, r7, lr}
     bx lr
@@ -131,97 +117,80 @@ read_pio:
     pop {r2, lr}
     bx lr
 
-@ resetCoprocessor (ALTERADO com delays)
+@ resetCoprocessor (Sem alterações)
 resetCoprocessor:
     push {r1, lr}
     ldr     r0, =PIO_CONTROL_IN
     mov     r1, #0x00000000      @ Ativa o reset (bit 31=0)
     bl      write_pio
-    
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
-    
     ldr     r0, =PIO_CONTROL_IN
     ldr     r1, =0x80000000      @ Desativa o reset (bit 31=1)
     bl      write_pio
-    
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
-    
     pop {r1, lr}
     bx lr
 
-@ configurar_algoritmo_zoom (ALTERADO com delays)
+@ configurar_algoritmo_zoom (CORRIGIDO)
 @ r0=algoritmo, r1=zoom
 configurar_algoritmo_zoom:
     push {r2, r3, r4, lr}
     
-    @ Prepara a palavra de dados
-    mov     r2, r1              @ r2 = zoom (ex: 4)
-    lsl     r2, r2, #2          @ Alinha zoom para bits [4:2]
-    mov     r3, r0              @ r3 = algoritmo (ex: 1)
-    orr     r2, r2, r3          @ Combina dados (ex: 0b10001 = 0x11)
+    @ Prepara a palavra de dados conforme RegisterController.v espera
+    mov     r2, r1                  @ r2 = zoom (ex: 4)
+    lsl     r2, r2, #2              @ CORRIGIDO: Alinha zoom para bits [4:2]
+    mov     r3, r0                  @ r3 = algoritmo (ex: 1)
+                                    @ (Não precisa de LSL, já está nos bits [1:0])
+    orr     r2, r2, r3              @ Combina dados (ex: 0b10001 = 0x11)
     
     @ 1. Escreve os dados (zoom/algoritmo)
     ldr     r0, =PIO_DATA_IN
     mov     r1, r2
     bl      write_pio
     
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
-    
-    @ 2. Envia pulso de escrita (Address 0, WR=1)
+    @ 2. Envia pulso de escrita para o RegisterController (Address 0)
     ldr     r0, =PIO_CONTROL_IN
-    ldr     r4, =0x8000000C      @ Máscara: Reset_n(31)|WR(3)|CS(2)|Addr(0)
+    ldr     r4, =0x8000000C         @ Máscara: Reset_n(31)|WR(3)|CS(2)|Addr(0)
     mov     r1, r4
     bl      write_pio
     
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
-    
-    @ 3. Termina o pulso de escrita (Address 0, WR=0)
+    @ 3. Termina o pulso de escrita
     ldr     r0, =PIO_CONTROL_IN
-    ldr     r4, =0x80000004      @ Máscara: Reset_n(31)|CS(2)|Addr(0)
+    ldr     r4, =0x80000004         @ Máscara: Reset_n(31)|CS(2)|Addr(0)
     mov     r1, r4
     bl      write_pio
-    
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
     
     pop {r2, r3, r4, lr}
     bx lr
 
-@ escrever_pixel (ALTERADO com delays)
+@ escrever_pixel (Sem alterações)
 escrever_pixel:
     push {r2, r3, r4, lr}
-    mov     r2, r0              @ r2 = endereço (ex: 5)
-    mov     r3, r1              @ r3 = pixel (ex: 100)
+    mov     r2, r0               @ r2 = endereço (ex: 5)
+    mov     r3, r1               @ r3 = pixel (ex: 100)
     
     @ 1. Escreve o dado (pixel) em PIO_DATA_IN
     ldr     r0, =PIO_DATA_IN
     mov     r1, r3
     bl      write_pio
     
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
-    
     @ 2. Prepara o endereço alinhado (base) em r2
-    lsl     r2, r2, #15         @ r2 = endereço_alinhado (ex: 0x000A8000)
+    lsl     r2, r2, #15          @ r2 = endereço_alinhado (ex: 0x000A8000)
     
     @ 3. Envia pulso de escrita (WR=1)
     ldr     r0, =PIO_CONTROL_IN
     ldr     r4, =0x80000300      @ Máscara: Reset_n(31)|WR_img(9)|CS_img(8)
-    orr     r1, r2, r4          @ r1 = endereço_alinhado | Máscara ON
+    orr     r1, r2, r4           @ r1 = endereço_alinhado | Máscara ON
     bl      write_pio
-    
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
     
     @ 4. Termina o pulso de escrita (WR=0)
     ldr     r0, =PIO_CONTROL_IN
     ldr     r4, =0x80000100      @ Máscara: Reset_n(31)|CS_img(8)
-    orr     r1, r2, r4          @ r1 = endereço_alinhado | Máscara OFF
+    orr     r1, r2, r4           @ r1 = endereço_alinhado | Máscara OFF
     bl      write_pio
-    
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
     
     pop {r2, r3, r4, lr}
     bx lr
 
-@ start_processing (ALTERADO com delays)
+@ start_processing (Sem alterações)
 start_processing:
     push {r1, r4, lr}
     
@@ -230,28 +199,22 @@ start_processing:
     mov     r1, #1
     bl      write_pio
     
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
-    
-    @ 2. Envia pulso de escrita (Address 1, WR=1)
+    @ 2. Envia pulso de escrita para o RegisterController (Address 1)
     ldr     r0, =PIO_CONTROL_IN
-    ldr     r4, =0x8000000D      @ Máscara: Reset_n(31)|WR(3)|CS(2)|Addr(1)
+    ldr     r4, =0x8000000D         @ Máscara: Reset_n(31)|WR(3)|CS(2)|Addr(1)
     mov     r1, r4
     bl      write_pio
     
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
-    
-    @ 3. Termina o pulso de escrita (Address 1, WR=0)
+    @ 3. Termina o pulso de escrita
     ldr     r0, =PIO_CONTROL_IN
-    ldr     r4, =0x80000005      @ Máscara: Reset_n(31)|CS(2)|Addr(1)
+    ldr     r4, =0x80000005         @ Máscara: Reset_n(31)|CS(2)|Addr(1)
     mov     r1, r4
     bl      write_pio
-    
-    bl      delay_loop           @ <<< ATRASO ADICIONADO
     
     pop {r1, r4, lr}
     bx lr
 
-@ aguardar_processamento (Sem alterações - já é um loop de espera)
+@ aguardar_processamento (Sem alterações)
 aguardar_processamento:
     push {r1, lr}
     ldr     r0, =PIO_DATA_OUT
