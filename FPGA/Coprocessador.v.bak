@@ -1,5 +1,5 @@
 // Top-Level
-// Devo modificar o imageprocessor para evitar erros
+
 module Coprocessador (
     // ---- Entradas Físicas da Placa ----
     input           CLOCK_50,

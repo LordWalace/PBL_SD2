@@ -31,20 +31,20 @@ h_state.H_FRONT_STATE 0 0 1 1
 h_state.H_PULSE_STATE 0 1 0 1 
 h_state.H_BACK_STATE 1 0 0 1 
 
-State Machine - |ghrd_top|Coprocessador:coprocessor_inst|Controller:main_fsm|current_state
-Name current_state.S_IDLE current_state.S_MEMORY current_state.S_PROCESS 
-current_state.S_IDLE 0 0 0 
-current_state.S_PROCESS 1 0 1 
-current_state.S_MEMORY 1 1 0 
+State Machine - |ghrd_top|Coprocessador:coprocessor_inst|Interface:interface_inst|fsm_state
+Name fsm_state.STATE_IDLE fsm_state.STATE_BUSY fsm_state.STATE_DECODE 
+fsm_state.STATE_IDLE 0 0 0 
+fsm_state.STATE_DECODE 1 0 1 
+fsm_state.STATE_BUSY 1 1 0 
 
-State Machine - |ghrd_top|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:control_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+State Machine - |ghrd_top|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_out_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
 Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
 state.ST_IDLE 0 0 0 0 
 state.ST_COMP_TRANS 1 0 0 1 
 state.ST_UNCOMP_TRANS 1 0 1 0 
 state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
 
-State Machine - |ghrd_top|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_out_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+State Machine - |ghrd_top|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:status_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
 Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
 state.ST_IDLE 0 0 0 0 
 state.ST_COMP_TRANS 1 0 0 1 

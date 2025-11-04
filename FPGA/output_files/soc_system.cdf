@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("/home/aluno/Documentos/PBL_Co-processador+API/output_files/") File("soc_system.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("/home/aluno/Imagens/PBL_Co-processador++Foda/FPGA/output_files/") File("soc_system.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

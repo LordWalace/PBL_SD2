@@ -17,32 +17,11 @@
          type = "int";
       }
    }
-   element control
-   {
-      datum _sortIndex
-      {
-         value = "12";
-         type = "int";
-      }
-   }
-   element control.s1
-   {
-      datum _lockedAddress
-      {
-         value = "0";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "262144";
-         type = "String";
-      }
-   }
    element data_in
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "8";
          type = "int";
       }
    }
@@ -50,7 +29,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "10";
          type = "int";
       }
    }
@@ -83,14 +62,6 @@
       datum _sortIndex
       {
          value = "1";
-         type = "int";
-      }
-   }
-   element img_ram_0
-   {
-      datum _sortIndex
-      {
-         value = "8";
          type = "int";
       }
    }
@@ -157,28 +128,12 @@
          type = "String";
       }
    }
-   element register_controller_fpga_0
+   element status
    {
       datum _sortIndex
       {
          value = "9";
          type = "int";
-      }
-   }
-   element register_controller_fpga_0.avalon_slave_0
-   {
-      datum baseAddress
-      {
-         value = "0";
-         type = "String";
-      }
-   }
-   element soc_system
-   {
-      datum _originalDeviceFamily
-      {
-         value = "Cyclone V";
-         type = "String";
       }
    }
    element sysid_qsys
@@ -225,17 +180,12 @@
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
-   name="control_external_connection"
-   internal="control.external_connection"
-   type="conduit"
-   dir="end" />
- <interface
-   name="data_in_external_connection"
+   name="data_in"
    internal="data_in.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="data_out_external_connection"
+   name="data_out"
    internal="data_out.external_connection"
    type="conduit"
    dir="end" />
@@ -268,25 +218,16 @@
  <interface name="hps_0_hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="status"
+   internal="status.external_connection"
+   type="conduit"
+   dir="end" />
  <module name="clk_0" kind="clock_source" version="23.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
- </module>
- <module name="control" kind="altera_avalon_pio" version="23.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="32" />
  </module>
  <module name="data_in" kind="altera_avalon_pio" version="23.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
@@ -874,7 +815,6 @@
   <parameter name="PLI_PORT" value="50000" />
   <parameter name="USE_PLI" value="0" />
  </module>
- <module name="img_ram_0" kind="img_ram" version="1.0" enabled="0" />
  <module
    name="intr_capturer_0"
    kind="intr_capturer"
@@ -934,11 +874,20 @@
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
  </module>
- <module
-   name="register_controller_fpga_0"
-   kind="register_controller_fpga"
-   version="1.0"
-   enabled="0" />
+ <module name="status" kind="altera_avalon_pio" version="23.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
  <module
    name="sysid_qsys"
    kind="altera_avalon_sysid_qsys"
@@ -946,15 +895,6 @@
    enabled="1">
   <parameter name="id" value="-1395322110" />
  </module>
- <connection
-   kind="avalon"
-   version="23.1"
-   start="hps_0.h2f_axi_master"
-   end="register_controller_fpga_0.avalon_slave_0">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
  <connection
    kind="avalon"
    version="23.1"
@@ -995,18 +935,18 @@
    kind="avalon"
    version="23.1"
    start="hps_0.h2f_lw_axi_master"
-   end="data_out.s1">
+   end="status.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0010" />
+  <parameter name="baseAddress" value="0x0020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="23.1"
    start="hps_0.h2f_lw_axi_master"
-   end="control.s1">
+   end="data_out.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0020" />
+  <parameter name="baseAddress" value="0x0010" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1066,9 +1006,9 @@
    start="clk_0.clk"
    end="fpga_only_master.clk" />
  <connection kind="clock" version="23.1" start="clk_0.clk" end="jtag_uart.clk" />
+ <connection kind="clock" version="23.1" start="clk_0.clk" end="status.clk" />
  <connection kind="clock" version="23.1" start="clk_0.clk" end="data_in.clk" />
  <connection kind="clock" version="23.1" start="clk_0.clk" end="data_out.clk" />
- <connection kind="clock" version="23.1" start="clk_0.clk" end="control.clk" />
  <connection
    kind="clock"
    version="23.1"
@@ -1079,12 +1019,6 @@
    version="23.1"
    start="clk_0.clk"
    end="intr_capturer_0.clock" />
- <connection kind="clock" version="23.1" start="clk_0.clk" end="img_ram_0.clock" />
- <connection
-   kind="clock"
-   version="23.1"
-   start="clk_0.clk"
-   end="register_controller_fpga_0.clock" />
  <connection
    kind="clock"
    version="23.1"
@@ -1138,12 +1072,7 @@
    kind="reset"
    version="23.1"
    start="clk_0.clk_reset"
-   end="img_ram_0.reset" />
- <connection
-   kind="reset"
-   version="23.1"
-   start="clk_0.clk_reset"
-   end="register_controller_fpga_0.reset" />
+   end="data_in.reset" />
  <connection
    kind="reset"
    version="23.1"
@@ -1153,12 +1082,7 @@
    kind="reset"
    version="23.1"
    start="clk_0.clk_reset"
-   end="data_in.reset" />
- <connection
-   kind="reset"
-   version="23.1"
-   start="clk_0.clk_reset"
-   end="control.reset" />
+   end="status.reset" />
  <connection
    kind="reset"
    version="23.1"

@@ -315,22 +315,20 @@ soc_system u0 (
     .hps_0_hps_io_hps_io_gpio_inst_GPIO54  ( HPS_KEY),                  //                               .hps_io_gpio_inst_GPIO54
     .hps_0_hps_io_hps_io_gpio_inst_GPIO61  ( HPS_GSENSOR_INT),          //                               .hps_io_gpio_inst_GPIO61
 
-    .hps_0_f2h_stm_hw_events_stm_hwevents  (stm_hw_events),             //      hps_0_f2h_stm_hw_events.stm_hwevents
-    .hps_0_h2f_reset_reset_n               (hps_fpga_reset_n),          //      hps_0_h2f_reset.reset_n
-    .hps_0_f2h_warm_reset_req_reset_n      (~hps_warm_reset),           //      hps_0_f2h_warm_reset_req.reset_n
+    .hps_0_f2h_stm_hw_events_stm_hwevents  (stm_hw_events),             //        hps_0_f2h_stm_hw_events.stm_hwevents
+    .hps_0_h2f_reset_reset_n               (hps_fpga_reset_n),          //                hps_0_h2f_reset.reset_n
+    .hps_0_f2h_warm_reset_req_reset_n      (~hps_warm_reset),           //       hps_0_f2h_warm_reset_req.reset_n
     .hps_0_f2h_debug_reset_req_reset_n     (~hps_debug_reset),          //      hps_0_f2h_debug_reset_req.reset_n
-    .hps_0_f2h_cold_reset_req_reset_n      (~hps_cold_reset),            //      hps_0_f2h_cold_reset_req.reset_n
+    .hps_0_f2h_cold_reset_req_reset_n      (~hps_cold_reset),            //       hps_0_f2h_cold_reset_req.reset_n
 
 //Novo
-     .data_in_external_connection_export    (data_in),    //  data_in_external_connection.export
-     .data_out_external_connection_export   (data_out),   // data_out_external_connection.export
-     .control_external_connection_export    (control)     //  control_external_connection.export
-    
-//Novo
+	 .data_in_export                        (data_in),                        //                   data_in.export
+    .status_export                         (status),                         //                    status.export
+    .data_out_export                       (data_out)                        //                  data_out.export
+//Novo    
+
 );
-  
 
-  
 //Novo
 	 Coprocessador coprocessor_inst (
         // Clock
@@ -355,15 +353,14 @@ soc_system u0 (
         
 		  .LEDR (LEDR),
 		  
-        // Interface PIOs (conectadas aos sinais internos)
-        .PIO_CONTROL_IN  (control),
-        .PIO_DATA_IN     (data_in),
-        .PIO_DATA_OUT    (data_out),
+        // Interface PIOs (conectadas aos sinais internos) //Tem que corrigir o nome e a ordem das variaveis.
+        .hps_data_in(data_in),      // PIO 1 (IN): Dados/Comandos 0x00
+        .hps_control_in(status),   // PIO 2 (IN): Strobe "data_valid" 0x20
+        .fpga_status_out(data_out)   // PIO 3 (OUT): Status/Resultado 0x10
     );
 //Novo  
   
-  
-  // Source/Probe megawizard instance
+// Source/Probe megawizard instance
 hps_reset hps_reset_inst (
     .source_clk (CLOCK_50),
     .source     (hps_reset_req)
@@ -399,4 +396,8 @@ defparam pulse_debug_reset.PULSE_EXT = 32;
 defparam pulse_debug_reset.EDGE_TYPE = 1;
 defparam pulse_debug_reset.IGNORE_RST_WHILE_BUSY = 1;
 
+
+
 endmodule
+
+  

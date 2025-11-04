@@ -1,81 +1,100 @@
 module Controller(
-    input         clk,
-    input         reset,
-    
-    // --- NOVAS ENTRADAS/SAÍDAS DO PROTOCOLO ---
-    input         enable_from_hps,    // <<< NOVO: Sinal 'ENABLE' vindo do HPS (nível)
-    input         done_from_processor,  // <<< Novo: Sinal 'DONE' vindo do ImageProcessor
-    output reg    done_to_hps,        // <<< NOVO: Sinal 'DONE' indo para o HPS
-
-    // --- Sinais para o ImageProcessor ---
-    output reg    enable,             // (Sinal para o ImageProcessor)
-    output reg    wren,               // (Sinal para o ImageProcessor)
-    
-    output reg    processing_has_run_once
+    input           clk,
+    input           reset,
+    input           zoom_in,
+    input           zoom_out,
+    input           return_to_previous,  
+    input   [1:0]   algorithm_select,
+    input           multiple_switches_error,
+    input           no_switch_selected_error,
+    input           done,
+    output reg      enable,
+    output reg      wren,
+    output reg [2:0]  zoom_level,
+    output reg      invalid_zoom_error,
+    output reg      processing_has_run_once
 );
 
-    // --- Estados da FSM ---
-    localparam S_IDLE      = 2'b00;
-    localparam S_PROCESS   = 2'b01;
-    localparam S_DONE_WAIT = 2'b10; // <<< NOVO ESTADO: Espera HPS baixar o ENABLE
+    // --- Estados da FSM (Simplificada e Corrigida) ---
+    localparam S_IDLE    = 1'b0;
+    localparam S_PROCESS = 1'b1;
+    
+    reg current_state, next_state;
 
-    reg [1:0] current_state;
+    // --- Fios e Registadores para Lógica de Controlo ---
+    wire is_zoom_in_request;
+    wire is_zoom_out_request;
+    wire start_condition;
+    reg [2:0] prev_zoom_level; // <<< NOVA MEMÓRIA PARA O ZOOM ANTERIOR
 
-    // --- Lógica da Máquina de Estados e Saídas (Síncrono) ---
+    // --- Lógica de Controlo de Estado (Sequencial) ---
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            current_state <= S_IDLE;
-            enable <= 1'b0;
-            wren <= 1'b0;
-            done_to_hps <= 1'b0;
+            zoom_level <= 3'd2; // Começa em 1.0x (nível 2)
+            prev_zoom_level <= 3'd2; // Inicializa a memória do zoom anterior
             processing_has_run_once <= 1'b0;
         end else begin
-            
-            case(current_state)
-                S_IDLE: begin
-                    // Reseta os sinais
-                    enable <= 1'b0;
-                    wren <= 1'b0;
-                    done_to_hps <= 1'b0;
-
-                    // Espera o HPS ativar o 'enable'
-                    if (enable_from_hps) begin
-                        current_state <= S_PROCESS;
-                    end
+            // A lógica de zoom e de "voltar atrás" só é executada no estado IDLE
+            if (current_state == S_IDLE) begin
+                if (return_to_previous) begin
+                    zoom_level <= prev_zoom_level; // Restaura o zoom anterior						
                 end
-                
-                S_PROCESS: begin
-                    // Ativa o ImageProcessor
-                    enable <= 1'b1;
-                    wren <= 1'b1;
-
-                    // Espera o ImageProcessor terminar
-                    if (done_from_processor) begin
-                        current_state <= S_DONE_WAIT;
-                        processing_has_run_once <= 1'b1; // Marca que já rodou
-                    end
+                else if (is_zoom_in_request && zoom_level < 4) begin
+                    prev_zoom_level <= zoom_level; // Guarda o estado atual ANTES de mudar
+                    zoom_level <= zoom_level + 1;
+                end else if (is_zoom_out_request && zoom_level > 0) begin
+                    prev_zoom_level <= zoom_level; // Guarda o estado atual ANTES de mudar
+                    zoom_level <= zoom_level - 1;
                 end
-                
-                S_DONE_WAIT: begin
-                    // Desliga o ImageProcessor
-                    enable <= 1'b0;
-                    wren <= 1'b0;
-                    
-                    // Sinaliza ao HPS que terminamos
-                    done_to_hps <= 1'b1;
-
-                    // Espera o HPS baixar o 'enable' para 0 (confirmando o 'done')
-                    if (!enable_from_hps) begin
-                        current_state <= S_IDLE;
-                    end
-                end
-                
-                default: begin
-                    current_state <= S_IDLE;
-                end
-                
-            endcase
+            end
+            // Ativa a "bandeira" que indica que um processamento já ocorreu
+            if (current_state == S_PROCESS && done) begin
+                processing_has_run_once <= 1'b1;
+            end
         end
+    end
+
+    // --- Lógica da Máquina de Estados (Sequencial) ---
+    always @(posedge clk or posedge reset) begin
+        if (reset) current_state <= S_IDLE;
+        else current_state <= next_state;
+    end
+
+    // --- Lógica Combinacional ---
+    assign is_zoom_in_request = zoom_in && (algorithm_select == 2'b00 || algorithm_select == 2'b01);
+    assign is_zoom_out_request = zoom_out && (algorithm_select == 2'b10 || algorithm_select == 2'b11);
+    
+    // O processamento agora também é acionado pelo botão de "voltar atrás"
+    assign start_condition = !multiple_switches_error && !no_switch_selected_error && 
+                           (return_to_previous || (is_zoom_in_request && zoom_level < 4) || (is_zoom_out_request && zoom_level > 0));
+
+    always @(*) begin
+        next_state = current_state;
+        invalid_zoom_error = 1'b0;
+
+        // Gera o erro de "Zoom Inválido"
+        if ((zoom_in && (algorithm_select == 2'b10 || algorithm_select == 2'b11)) || 
+            (zoom_out && (algorithm_select == 2'b00 || algorithm_select == 2'b01))) begin
+            invalid_zoom_error = 1'b1;
+        end
+
+        // Lógica de transição da FSM
+        case(current_state)
+            S_IDLE: 
+                if (start_condition) 
+                    next_state = S_PROCESS;
+            S_PROCESS: 
+                if (done) 
+                    next_state = S_IDLE;
+        endcase
+    end
+
+    // Geração das saídas de controlo - CORRIGIDO
+    always @(*) begin
+        // A habilitação do processador E da escrita na RAM ocorrem
+        // durante todo o estado de processamento.
+        enable = (current_state == S_PROCESS);
+        wren = (current_state == S_PROCESS);
     end
 
 endmodule
