@@ -72,6 +72,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "VGA_HS",
+					"strict" : false
+				},
+				{
 					"name" : "VGA_R[0]",
 					"strict" : false
 				},
@@ -101,6 +105,10 @@
 				},
 				{
 					"name" : "VGA_R[7]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_VS",
 					"strict" : false
 				},
 				{

@@ -322,25 +322,25 @@ soc_system u0 (
     .hps_0_f2h_cold_reset_req_reset_n      (~hps_cold_reset),            //       hps_0_f2h_cold_reset_req.reset_n
 	 
 
-// 1. INSTÂNCIA DO SEU SISTEMA QSYS (JÁ FORNECIDA)
+// 1. INSTÂNCIA DO SISTEMA QSYS NOVO CRIADO MANUALMENTE
 
     // PIOs exportados pelo sistema Qsys
     .pio_instruct_export            (instruct), // Conectado ao wire [31:0]
     .pio_enable_export              (enable),   // Conectado ao wire [0:0]
     .pio_flags_export               (flags),    // Conectado ao wire [3:0]
-	 .pio_data_out_export            (data_out)  // Conectado ao wire [7:0]
+    .pio_data_out_export            (data_out)  // Conectado ao wire [7:0]
 );
 
-//
-// 2. WIRES (FIOS) DE CONEXÃO
-//
+
+// 2. WIRES (FIOS) DE CONEXÃO ENTRE OS PIOS E O "main"
+
 wire [31:0] instruct; // Fio que VEM do PIO
 wire        enable;   // Fio que VEM do PIO
 wire [3:0]  flags;    // Fio que VAI PARA o PIO
 wire [7:0] data_out;  // Fio que VAI PARA o PIO
-//======================================================================
-// 3. "LÓGICA DE COLA" (A PARTE QUE FALTAVA)
-//======================================================================
+
+// 3. DECODIFICAÇÃO E CODIFICAÇÃO DOS SINAIS 
+
 
 // --- A. Decodificação (PIO -> 'main') ---
 //    Decodifica o barramento 'instruct' de 32 bits para as
@@ -371,9 +371,8 @@ wire [7:0] main_data_out;
 assign data_out = main_data_out;  // Conecta saída do main ao PIO
 
 
-//======================================================================
-// 4. INSTÂNCIA DO 'main' (CORRIGIDA)
-//======================================================================
+// 4. INSTÂNCIA DO 'main' (Coprocessador)
+
 
 main u_main (
     // Portas de Entrada
@@ -396,10 +395,10 @@ main u_main (
     .VGA_B         ( VGA_B ),
     .VGA_G         ( VGA_G ),
     .VGA_BLANK_N   ( VGA_BLANK_N ),
-    .VGA_HS        ( VGA_HS ),
-    .VGA_VS        ( VGA_VS ),
+    .VGA_H_SYNC_N        ( VGA_HS ),
+    .VGA_V_SYNC_N        ( VGA_VS ),
     .VGA_CLK       ( VGA_CLK ),
-    .VGA_SYNC_N    ( VGA_SYNC_N )
+    .VGA_SYNC    ( VGA_SYNC_N )
 );
   
 // Source/Probe megawizard instance

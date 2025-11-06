@@ -1,32 +1,27 @@
-# 📦 PROJETO FINAL - COPROCESSADOR DE ZOOM
+# Makefile para compilação nativa no DE1-SoC
+# (Baseado no seu ficheiro)
 
-## ✅ Arquivos Prontos
+# Alvo de ajuda
+help:
+	@echo "Comandos:"
+	@echo "run: Roda código (compila tudo, executa e limpa)"
+	@echo "clean: Remove os ficheiros compilados"
 
-### 1. **lib.s** (Biblioteca Assembly)
-- Comunicação com PIOs
-- Endereços: 0x00, 0x10, 0x20, 0x30
-- Funções de zoom (4 algoritmos)
-- Leitura de flags
+# Regra 'run': Compila tudo, executa e limpa
+run:
+	@echo "--- Montando (Assembly) lib.s ---"
+	@as lib.s -o lib.o
+	@echo "--- Compilando e Ligando (C) main.c ---"
+	@gcc main.c lib.o -z noexecstack -std=c99 -lm -o exe
+	@echo "--- Executando Aplicação ---"
+	@./exe
+	@echo "--- Limpando ficheiros temporários ---"
+	@rm -f exe lib.o
 
-### 2. **LibCoprocessador.h** (Header C)
-- Interface da biblioteca
-- Protótipos de funções
-- Constantes e definições
-- Include: `#include "LibCoprocessador.h"`
+# <<< REGRA 'CLEAN' ADICIONADA >>>
+# Limpa todos os ficheiros compilados (objetos e executável)
+clean:
+	@echo "--- Limpando ficheiros compilados ---"
+	rm -f exe *.o
 
-### 3. **main.c** (Programa Principal)
-- Menu interativo (8 opções)
-- Carregamento de BMP
-- Testes de zoom
-- Conversão RGB → cinza
-
-### 4. **Makefile** (Compilação)
-- `make` - Compila
-- `make run` - Compila e executa com sudo
-- `make clear` - Limpa tudo
-- `make help` - Mostra ajuda
-
----
-
-## Falta fazer os testes finais e ajustes finos no código!.
-
+.PHONY: help run clean

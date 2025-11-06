@@ -1,3 +1,4 @@
+@ Finalizado
 .equ PIO_INSTRUCT,      0x00
 .equ PIO_ENABLE,        0x10
 .equ PIO_DATA_OUT,      0x20
@@ -18,8 +19,8 @@
 .equ FLAG_ZOOM_Min_MASK, 0x04
 .equ FLAG_ZOOM_Max_MASK, 0x08
 
-
 .equ TIMEOUT_COUNT,     0x3000
+.equ EXTRA_DELAY_COUNT, 0x1000   @ b Delay extra para sincronização
 
 .section .rodata
 .LC0:           .asciz "/dev/mem"
@@ -88,9 +89,9 @@ Lib:
     pop     {r4-r7, pc}
 .size Lib, .-Lib
 
-.global encerrarLib
-.type encerrarLib, %function
-encerrarLib:
+.global encerraLib
+.type encerraLib, %function
+encerraLib:
     push    {r4-r7, lr}
     ldr     r0, =FPGA_ADRS
     ldr     r0, [r0]
@@ -113,7 +114,7 @@ encerrarLib:
     mov     r0, #0
 .STATUS_BIB:
     pop     {r4-r7, pc}
-.size encerrarLib, .-encerrarLib
+.size encerraLib, .-encerraLib
 
 .global write_pixel
 .type write_pixel, %function
@@ -151,6 +152,13 @@ write_pixel:
     tst     r2, #FLAG_ERROR_MASK
     bne     .HW_ERROR_WR
     mov     r0, #0
+
+    @ Delay extra para sincronizar hofps x fpga (comparar clocks 800Mhz vs 50Mhz)
+    mov     r5, #EXTRA_DELAY_COUNT
+.DELAY_LOOP:
+    subs    r5, r5, #1
+    bne     .DELAY_LOOP
+
     b       .EXIT_WR
 .ADDR_INVALID_WR:
     mov     r0, #-1
@@ -160,6 +168,7 @@ write_pixel:
 .EXIT_WR:
     pop     {r4-r6, pc}
 .size write_pixel, .-write_pixel
+
 
 .global read_pixel
 .type read_pixel, %function
@@ -204,6 +213,7 @@ read_pixel:
     pop     {r4-r6, pc}
 .size read_pixel, .-read_pixel
 
+
 .global send_refresh
 .type send_refresh, %function
 send_refresh:
@@ -218,6 +228,7 @@ send_refresh:
     str     r2, [r4, #PIO_ENABLE]
     pop     {r4, pc}
 .size send_refresh, .-send_refresh
+
 
 .global Vizinho_Prox
 .type Vizinho_Prox, %function
@@ -234,6 +245,7 @@ Vizinho_Prox:
     pop     {r7, pc}
 .size Vizinho_Prox, .-Vizinho_Prox
 
+
 .global Replicacao 
 .type Replicacao, %function 
 Replicacao:
@@ -248,6 +260,7 @@ Replicacao:
     str     r2, [r3, #PIO_ENABLE]
     pop     {r7, pc}
 .size Replicacao, .-Replicacao
+
 
 .global Decimacao 
 .type Decimacao, %function 
@@ -264,6 +277,7 @@ Decimacao:
     pop     {r7, pc}
 .size Decimacao, .-Decimacao
 
+
 .global Media 
 .type Media, %function 
 Media:
@@ -278,6 +292,7 @@ Media:
     str     r2, [r3, #PIO_ENABLE]
     pop     {r7, pc}
 .size Media, .-Media
+
 
 .global Reset
 .type Reset, %function
@@ -294,6 +309,7 @@ Reset:
     pop     {r7, pc}
 .size Reset, .-Reset
 
+
 .global Flag_Done
 .type Flag_Done, %function
 Flag_Done:
@@ -304,6 +320,7 @@ Flag_Done:
     and     r0, r0, #FLAG_DONE_MASK
     pop     {r7, pc}
 .size Flag_Done, .-Flag_Done
+
 
 .global Flag_Error
 .type Flag_Error, %function
@@ -316,6 +333,7 @@ Flag_Error:
     pop     {r7, pc}
 .size Flag_Error, .-Flag_Error
 
+
 .global Flag_Max
 .type Flag_Max, %function
 Flag_Max:
@@ -326,6 +344,7 @@ Flag_Max:
     and     r0, r0, #FLAG_ZOOM_Max_MASK
     pop     {r7, pc}
 .size Flag_Max, .-Flag_Max
+
 
 .global Flag_Min
 .type Flag_Min, %function
