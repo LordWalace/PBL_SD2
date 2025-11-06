@@ -77,10 +77,11 @@
 			memory_mem_odt                        : out   std_logic;                                        -- mem_odt
 			memory_mem_dm                         : out   std_logic_vector(3 downto 0);                     -- mem_dm
 			memory_oct_rzqin                      : in    std_logic                     := 'X';             -- oct_rzqin
+			pio_enable_export                     : out   std_logic;                                        -- export
+			pio_flags_export                      : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
+			pio_instruct_export                   : out   std_logic_vector(31 downto 0);                    -- export
 			reset_reset_n                         : in    std_logic                     := 'X';             -- reset_n
-			data_in_export                        : in    std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			status_export                         : in    std_logic                     := 'X';             -- export
-			data_out_export                       : out   std_logic_vector(31 downto 0)                     -- export
+			pio_data_out_export                   : out   std_logic_vector(7 downto 0)                      -- export
 		);
 	end component soc_system;
 
@@ -163,9 +164,10 @@
 			memory_mem_odt                        => CONNECTED_TO_memory_mem_odt,                        --                          .mem_odt
 			memory_mem_dm                         => CONNECTED_TO_memory_mem_dm,                         --                          .mem_dm
 			memory_oct_rzqin                      => CONNECTED_TO_memory_oct_rzqin,                      --                          .oct_rzqin
+			pio_enable_export                     => CONNECTED_TO_pio_enable_export,                     --                pio_enable.export
+			pio_flags_export                      => CONNECTED_TO_pio_flags_export,                      --                 pio_flags.export
+			pio_instruct_export                   => CONNECTED_TO_pio_instruct_export,                   --              pio_instruct.export
 			reset_reset_n                         => CONNECTED_TO_reset_reset_n,                         --                     reset.reset_n
-			data_in_export                        => CONNECTED_TO_data_in_export,                        --                   data_in.export
-			status_export                         => CONNECTED_TO_status_export,                         --                    status.export
-			data_out_export                       => CONNECTED_TO_data_out_export                        --                  data_out.export
+			pio_data_out_export                   => CONNECTED_TO_pio_data_out_export                    --              pio_data_out.export
 		);
 

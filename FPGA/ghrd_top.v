@@ -320,45 +320,87 @@ soc_system u0 (
     .hps_0_f2h_warm_reset_req_reset_n      (~hps_warm_reset),           //       hps_0_f2h_warm_reset_req.reset_n
     .hps_0_f2h_debug_reset_req_reset_n     (~hps_debug_reset),          //      hps_0_f2h_debug_reset_req.reset_n
     .hps_0_f2h_cold_reset_req_reset_n      (~hps_cold_reset),            //       hps_0_f2h_cold_reset_req.reset_n
+	 
 
-//Novo
-	 .data_in_export                        (data_in),                        //                   data_in.export
-    .status_export                         (status),                         //                    status.export
-    .data_out_export                       (data_out)                        //                  data_out.export
-//Novo    
+// 1. INSTÂNCIA DO SEU SISTEMA QSYS (JÁ FORNECIDA)
 
+    // PIOs exportados pelo sistema Qsys
+    .pio_instruct_export            (instruct), // Conectado ao wire [31:0]
+    .pio_enable_export              (enable),   // Conectado ao wire [0:0]
+    .pio_flags_export               (flags),    // Conectado ao wire [3:0]
+	 .pio_data_out_export            (data_out)  // Conectado ao wire [7:0]
 );
 
-//Novo
-	 Coprocessador coprocessor_inst (
-        // Clock
-        .CLOCK_50               (CLOCK_50),
-        
-        // Saídas VGA (conectadas aos pinos da placa)
-        .VGA_CLK                (VGA_CLK),
-        .VGA_HS                 (VGA_HS),
-        .VGA_VS                 (VGA_VS),
-        .VGA_BLANK_N            (VGA_BLANK_N),
-        .VGA_R                  (VGA_R),
-        .VGA_G                  (VGA_G),
-        .VGA_B                  (VGA_B),
-        
-        // Saídas Display (conectadas aos pinos da placa) 
-        .HEX0                   (HEX0),
-        .HEX1                   (HEX1),
-        .HEX2                   (HEX2),
-        .HEX3                   (HEX3),
-        .HEX4                   (HEX4),
-        .HEX5                   (HEX5),
-        
-		  .LEDR (LEDR),
-		  
-        // Interface PIOs (conectadas aos sinais internos) //Tem que corrigir o nome e a ordem das variaveis.
-        .hps_data_in(data_in),      // PIO 1 (IN): Dados/Comandos 0x00
-        .hps_control_in(status),   // PIO 2 (IN): Strobe "data_valid" 0x20
-        .fpga_status_out(data_out)   // PIO 3 (OUT): Status/Resultado 0x10
-    );
-//Novo  
+//
+// 2. WIRES (FIOS) DE CONEXÃO
+//
+wire [31:0] instruct; // Fio que VEM do PIO
+wire        enable;   // Fio que VEM do PIO
+wire [3:0]  flags;    // Fio que VAI PARA o PIO
+wire [7:0] data_out;  // Fio que VAI PARA o PIO
+//======================================================================
+// 3. "LÓGICA DE COLA" (A PARTE QUE FALTAVA)
+//======================================================================
+
+// --- A. Decodificação (PIO -> 'main') ---
+//    Decodifica o barramento 'instruct' de 32 bits para as
+//    portas individuais do seu módulo 'main', baseado no Assembly.
+wire [2:0]  main_instruction = instruct[2:0];
+wire [7:0]  main_data_in     = (main_instruction == 3'b010) ? instruct[28:21] : 8'h00; // 'b010 = STORE
+wire [16:0] main_mem_addr    = (main_instruction == 3'b010 || main_instruction == 3'b001) // STORE ou LOAD
+                             ? instruct[19:3] 
+                             : 17'h00;
+wire        main_sel_mem     = 1'b0;    // Valor fixo, já que não é controlado pelo PIO
+wire        main_enable_level = enable; // Conexão direta do 'enable' (1-bit)
+
+// --- B. Codificação ('main' -> PIO) ---
+//    Agrupa as flags de saída do 'main' no barramento 'flags' de 4 bits.
+wire main_flag_done;
+wire main_flag_error;
+wire main_flag_zoom_max;
+wire main_flag_zoom_min;
+
+assign flags[0] = main_flag_done;      // FLAG_DONE_MASK (0x01)
+assign flags[1] = main_flag_error;     // FLAG_ERROR_MASK (0x02)
+assign flags[2] = main_flag_zoom_min;  // FLAG_ZOOM_MIN_MASK (0x04)
+assign flags[3] = main_flag_zoom_max;  // FLAG_ZOOM_MAX_MASK (0x08)
+
+// --- C. Saída de Dados (LOAD) ---
+wire [7:0] main_data_out;
+
+assign data_out = main_data_out;  // Conecta saída do main ao PIO
+
+
+//======================================================================
+// 4. INSTÂNCIA DO 'main' (CORRIGIDA)
+//======================================================================
+
+main u_main (
+    // Portas de Entrada
+    .CLOCK_50      ( CLOCK_50 ),
+    .INSTRUCTION   ( main_instruction ),
+    .DATA_IN       ( main_data_in ),
+    .MEM_ADDR      ( main_mem_addr ),
+    .SEL_MEM       ( main_sel_mem ),
+    .ENABLE        ( main_enable_level ),
+
+    // Portas de Saída e Debug
+    .DATA_OUT      ( main_data_out ),
+    .FLAG_DONE     ( main_flag_done ),
+    .FLAG_ERROR    ( main_flag_error ),
+    .FLAG_ZOOM_MAX ( main_flag_zoom_max ),
+    .FLAG_ZOOM_MIN ( main_flag_zoom_min ),
+    
+    // Saídas VGA
+    .VGA_R         ( VGA_R ),
+    .VGA_B         ( VGA_B ),
+    .VGA_G         ( VGA_G ),
+    .VGA_BLANK_N   ( VGA_BLANK_N ),
+    .VGA_HS        ( VGA_HS ),
+    .VGA_VS        ( VGA_VS ),
+    .VGA_CLK       ( VGA_CLK ),
+    .VGA_SYNC_N    ( VGA_SYNC_N )
+);
   
 // Source/Probe megawizard instance
 hps_reset hps_reset_inst (

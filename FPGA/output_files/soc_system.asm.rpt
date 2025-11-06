@@ -1,5 +1,5 @@
 Assembler report for soc_system
-Fri Oct 31 14:02:11 2025
+Wed Nov  5 10:56:09 2025
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -39,7 +39,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri Oct 31 14:02:11 2025 ;
+; Assembler Status      ; Successful - Wed Nov  5 10:56:09 2025 ;
 ; Revision Name         ; soc_system                            ;
 ; Top-level Entity Name ; ghrd_top                              ;
 ; Family                ; Cyclone V                             ;
@@ -64,13 +64,13 @@ https://fpgasoftware.intel.com/eula.
 +--------+------------------------+--------------+
 
 
-+-------------------------------------------------------------------------------+
-; Assembler Generated Files                                                     ;
-+-------------------------------------------------------------------------------+
-; File Name                                                                     ;
-+-------------------------------------------------------------------------------+
-; /home/aluno/Imagens/PBL_Co-processador++Foda/FPGA/output_files/soc_system.sof ;
-+-------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+; Assembler Generated Files                                                    ;
++------------------------------------------------------------------------------+
+; File Name                                                                    ;
++------------------------------------------------------------------------------+
+; /home/aluno/Imagens/PBL_Co-processador+Foda/FPGA/output_files/soc_system.sof ;
++------------------------------------------------------------------------------+
 
 
 +------------------------------------------+
@@ -78,8 +78,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------+-------------------------+
 ; Option         ; Setting                 ;
 +----------------+-------------------------+
-; JTAG usercode  ; 0x02CC6745              ;
-; Checksum       ; 0x02CC6745              ;
+; JTAG usercode  ; 0x03FA8A39              ;
+; Checksum       ; 0x03FA8A39              ;
 +----------------+-------------------------+
 
 
@@ -89,17 +89,17 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Fri Oct 31 14:02:05 2025
+    Info: Processing started: Wed Nov  5 10:56:02 2025
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off soc_system -c soc_system
-Warning (125092): Tcl Script File ImgRam.qip not found
-    Info (125063): set_global_assignment -name QIP_FILE ImgRam.qip
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
-Info (11878): Hard Processor Subsystem configuration has not changed and a Preloader software update is not required
+Warning (11713): The configuration of the Hard Processor Subsystem (HPS) within this design has changed.
+The Preloader software that initializes the HPS requires an update.
+Using hps_isw_handoff/soc_system_hps_0/, run the Preloader Support Package Generator to update your Preloader software
 Info: Quartus Prime Assembler was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 598 megabytes
-    Info: Processing ended: Fri Oct 31 14:02:11 2025
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Peak virtual memory: 616 megabytes
+    Info: Processing ended: Wed Nov  5 10:56:09 2025
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 
