@@ -10,91 +10,90 @@ Este projeto consiste no desenvolvimento de um **módulo de redimensionamento de
 
 ---
 
-## 💻 2. Detalhes de Implementação
+## 💻 Navegação e Interfaces
 
-### 2.1. Requisitos Funcionais e Algoritmos
-  
-O sistema implementa quatro algoritmos distintos, controlados pelas **chaves SW[0] a SW[3]**:
+O sistema é operado através de um **menu de texto interativo**.
 
-| Chave | Função | Algoritmo | Tipo de Zoom | Nível de Zoom |
-| :---: | :--- | :--- | :--- | :--- |
-| **SW[0]** | Ampliação | Vizinho Mais Próximo | Zoom In | 1x → 2x → 4x |
-| **SW[1]** | Ampliação | Replicação de Pixel | Zoom In | 1x → 2x → 4x |
-| **SW[2]** | Redução | Decimação | Zoom Out | 1x → 0.5x → 0.25x |
-| **SW[3]** | Redução | Média de Blocos | Zoom Out | 1x → 0.5x → 0.25x |
+### 1. Menu Principal
 
-### 2.2. Hardware e Software
+Ao iniciar o programa, este menu será exibido. Digite o número da opção desejada e pressione **ENTER**.
 
-| Categoria | Componente/Software | Especificação |
+| Opção | Ação | Descrição |
 | :--- | :--- | :--- |
-| **Placa** | Terasic DE1-SoC | FPGA Intel Cyclone V SE 5CSEMA5F31C6N |
-| **Linguagem** | Verilog HDL | Verilog-2001 (Código modular e comentado) |
-| **IDE** | Intel Quartus Prime Lite Edition | Versão 23.1std.0 |
-| **Simulador** | ModelSim - Intel FPGA Edition | Versão 2020.1 |
-| **Exibição** | Saída VGA | Resolução 640x480 @ 60Hz |
+| **[1] Carregar Imagem** | Vai para o menu de seleção de imagens. **Passo obrigatório** antes de aplicar o zoom. |
+| **[2] Aplicar Zoom** | Vai para o menu de algoritmos de zoom. Só é possível após carregar uma imagem. |
+| **[3] Reset do Sistema** | Limpa o estado atual do coprocessador FPGA, preparando-o para uma nova operação. |
+| **[4] Status** | Exibe as flags e informações sobre o estado atual do sistema e dimensões suportadas. |
+| **[0] Sair** | Encerra o programa. |
 
-### 2.3. Mapeamento de Controles Físicos
+### 2. Menu de Seleção de Imagens
 
-| Função | Componente | Descrição |
+Após escolher a opção **[1]**, uma lista de arquivos BMP disponíveis na pasta será exibida.
+
+* Digite o número correspondente à imagem que deseja carregar (Ex: **1** para `Xadrez.bmp`).
+* Pressione **ENTER**.
+* A imagem selecionada será carregada e enviada para o coprocessador FPGA.
+
+
+### 3. Menu de Zoom
+
+Após carregar uma imagem, a opção **[2]** levará a este menu, que lista os algoritmos disponíveis:
+
+| Opção | Algoritmo | Fator de Escala (Exemplos) | Efeito |
+| :--- | :--- | :--- | :--- |
+| **[1]** | **Vizinho Mais Próximo** | 2x, 4x, 8x | Zoom In (Aumentar) |
+| **[2]** | **Replicação de Pixel** | 2x, 4x, 8x | Zoom In (Aumentar) |
+| **[3]** | **Decimação** | 0.5x, 0.25x, 0.125x | Zoom Out (Diminuir) |
+| **[4]** | **Média de Blocos** | 0.5x, 0.25x, 0.125x | Zoom Out (Diminuir) |
+| **[0]** | **Voltar** | Retorna ao Menu Principal. |
+
+* Selecione o número do algoritmo e pressione **ENTER**.
+* O sistema irá processar a imagem no FPGA e exibir o resultado no monitor VGA (se conectado).
+* Um passo de zoom é aplicado a cada execução (ex: se o fator é 1x, um zoom in resultará em 2x; se for 2x, resultará em 4x, e assim por diante).
+
+---
+
+## 🛑 Erros Comuns e Mensagens de Alerta
+
+O sistema foi desenhado para reportar problemas de forma clara:
+
+| Categoria | Mensagem de Erro | Ocorrência Comum | Ação Recomendada |
+| :--- | :--- | :--- | :--- |
+| **Arquivos** | `❌ Erro ao abrir 'nome_do_arquivo'` | O arquivo BMP selecionado não está na pasta correta. | Verifique se a imagem está no mesmo diretório do programa e tente novamente. |
+| | `❌ Arquivo não é BMP válido` | O arquivo selecionado não segue o formato BMP ou está corrompido. | Use apenas arquivos BMP válidos. |
+| | `❌ Dimensão incorreta: DxH (esperado 320x240)` | A imagem não tem a resolução de **320x240 pixels** esperada. | Utilize apenas imagens BMP com a dimensão correta. |
+| | `❌ Formato X bits não suportado` | O formato de cor da imagem (8, 24 ou 32 bits) é diferente do suportado. | Utilize imagens BMP com 8, 24 ou 32 bits por pixel. |
+| **Sistema** | `❌ Erro ao enviar imagem para FPGA` | Falha de comunicação ao transferir os dados da imagem para o hardware. | Tente a operação novamente e, se o problema persistir, verifique a conexão do hardware. |
+| | `❌ Hardware reportou erro!` | O coprocessador FPGA indicou uma falha interna. | Tente a operação novamente e/ou utilize a opção **[3] Reset do Sistema**. |
+| | `❌ Operação não concluiu no tempo esperado TIMEOUT!` | O algoritmo de zoom não terminou no tempo limite (5 segundos). | Aumentar o tempo de espera pode ser necessário para operações complexas. |
+| **Zoom** | `⚠️ Zoom máximo atingido (8x)` | Tentativa de aplicar zoom in (aumentar) após atingir o limite de 8x. | O zoom in só pode ser aplicado até 8x (2x -> 4x -> 8x). |
+| | `⚠️ Zoom mínimo atingido (0.125x)` | Tentativa de aplicar zoom out (diminuir) após atingir o limite de 0.125x. | O zoom out só pode ser aplicado até 0.125x (0.5x -> 0.25x -> 0.125x). |
+
+---
+
+## 💻 Navegação e Interfaces
+
+O sistema é operado através de um **menu de texto interativo**.
+
+### 1. Menu Principal
+
+Ao iniciar o programa, este menu será exibido. Digite o número da opção desejada e pressione **ENTER**.
+
+| Opção | Ação | Descrição |
 | :--- | :--- | :--- |
-| **Reset Geral** | **KEY[0]** | Reinicia o sistema e retorna a imagem ao estado padrão (1x). |
-| **Zoom Out** | **KEY[2]** | Aplica o zoom do algoritmo selecionado (ex.: 1x → 2x). |
-| **Zoom In** | **KEY[3]** | Aplica o zoom reverso do algoritmo selecionado (ex.: 2x → 1x). |
-| Voltar Zoom | KEY[1] | *Lógica presente no código, mas pino não atribuído no projeto final.* |
-| Seleção Alg. | SW[0]-SW[3] | Seleção do algoritmo de redimensionamento. |
+| **[1] Carregar Imagem** | Vai para o menu de seleção de imagens. **Passo obrigatório** antes de aplicar o zoom. |
+| **[2] Aplicar Zoom** | Vai para o menu de algoritmos de zoom. Só é possível após carregar uma imagem. |
+| **[3] Reset do Sistema** | Limpa o estado atual do coprocessador FPGA, preparando-o para uma nova operação. |
+| **[4] Status** | Exibe as flags e informações sobre o estado atual do sistema e dimensões suportadas. |
+| **[0] Sair** | Encerra o programa. |
 
----
+### 2. Menu de Seleção de Imagens
 
-## 🛠️ 3. Guia de Instalação e Uso
+Após escolher a opção **[1]**, uma lista de arquivos BMP disponíveis na pasta será exibida.
 
-### 3.1. Compilação e Programação no Quartus
+* Digite o número correspondente à imagem que deseja carregar (Ex: **1** para `Xadrez.bmp`).
+* Pressione **ENTER**.
+* A imagem selecionada será carregada e enviada para o coprocessador FPGA.
 
-1.  **Abrir o Projeto:** Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**. Certifique-se de que o *hardware* selecionado é o **DE-SOC**.
-2.  **Geração de IPs de Memória:** Caso esteja configurando o projeto pela primeira vez, utilize o **IP Catalog** para gerar:
-    * **ImgRom.qip:** ROM: 1-PORT (19200x8 bits), inicializada com o ficheiro `.mif` da imagem.
-    * **VdRam.qip:** RAM: 2-PORT (307.200x8 bits).
-    > **NOTA:** Se todos os arquivos do projeto foram baixados, esta etapa e a atribuição de pinos não são necessárias.
-3.  **Compilação:** No menu, selecione **Processing > Start Compilation**. Aguarde a mensagem **"Successful"** na barra de progresso.
-4.  **Programação:** Abra a ferramenta **Programmer**, carregue o ficheiro **`.sof`** (localizado em `output_files/`) e clique em **Start** para programar a FPGA.
 
-### 3.2. Uso da Placa Programada 🎮
 
-1.  **Conexões:** Conecte os cabos de **alimentação**, **VGA** (para monitor) e **USB** (para programação) na DE1-SoC.
-2.  **Ligar:** Ligue a placa pelo botão de **Power**. A imagem inicial (1x) deve ser exibida no monitor.
-3.  **Seleção:** Use as chaves **SW[0] a SW[3]** para selecionar **apenas um** algoritmo:
-    * **Seleção Válida:** Display de 7 segmentos deve mostrar **"SELECT AN ALGORITHM"**.
-    * **Erro de Seleção:** Se mais de uma chave estiver ligada, o display mostrará **"SELECTION ERROR"**.
-4.  **Operação de Zoom:**
-    * Pressione **KEY[2]** para aplicar o **Zoom IN** (se selecionado SW[0] ou SW[1]).
-    * Pressione **KEY[3]** para aplicar o **Zoom OUT** (se selecionado SW[2] ou SW[3]).
-5.  **Reset:** Pressione **KEY[0]** a qualquer momento para reiniciar o sistema e retornar a imagem ao seu estado original (1x).
-
----
-
-## ⚠️ 4. Análise e Limitações
-
-### 4.1. Feedback Visual dos Displays (7 Segmentos)
-
-| Mensagem do Display | Significado |
-| :--- | :--- |
-| **"SELECT AN ALGORITHM"** | Estado inicial, esperando a seleção de um único algoritmo (SW). |
-| **"SELECTION ERROR"** | Mais de uma chave de algoritmo (SW[0] - SW[3]) está ligada. |
-| **"INVALID ZOOM"** | Tentativa de aplicar Zoom Out (KEY[3]) em um algoritmo de Zoom In (SW[0]/SW[1]), ou vice-versa. |
-
-### 4.2. Limitações e Desafios (Etapa 1)
-
-O projeto final desta etapa apresenta as seguintes limitações de uso, que podem ser abordadas em futuras iterações:
-
-* **Distorção ao Trocar Algoritmos:** A **troca de algoritmo** enquanto a imagem está em um nível de zoom diferente de 1x (padrão) causa **distorção severa**.
-    * ***Solução Proposta:*** Recomenda-se apertar **KEY[0] (Reset)** sempre antes de trocar o algoritmo para garantir a imagem padrão (1x). Uma solução futura seria implementar um "reset automático" ao detectar a troca de SW fora do nível 1x.
-* **Limitação do Nível de Zoom:** Os algoritmos são limitados a **duas etapas** de ampliação (até 4x) e duas de redução (até 0.25x).
-* **Botão KEY[1]:** A funcionalidade de "Voltar Zoom" está implementada no Verilog, mas **o pino físico não foi atribuído** no projeto final, desativando o botão.
-
-| Erro Visível no Monitor | Causa |
-| :---: | :--- |
-|  | Acionar Zoom Out (KEY[3]) após atingir o zoom máximo (4x) com um algoritmo de Zoom In (SW[0] ou SW[1]) causa distorção. |
-|  | Acionar Zoom In (KEY[2]) após atingir o zoom mínimo (0.25x) com um algoritmo de Zoom Out (SW[2] ou SW[3]) causa distorção. |
-
----
-
-O que mais você gostaria de adicionar ou detalhar neste README?
