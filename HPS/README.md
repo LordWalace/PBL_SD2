@@ -1,247 +1,100 @@
-**Universidade Estadual de Feira de Santana (UEFS)**
+# 🔎 Sistema de Zoom Embarcado - DE1-SoC (Cyclone V)
 
-**Disciplina:** Sistemas Digitais (TEC499) - 2025.2
+**Disciplina:** Sistemas Digitais (TEC499) - 2025.2, UEFS
 
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
 
+## 🎯 Descrição e Objetivo do Projeto
 
-## Descrição do Projeto
-
-Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC com o processador Cyclone V, permitindo a leitura e escrita de dados diretamente na memória RAM do dispositivo, o ambiente de desenvolvimento utilizado foi o Quartus Lite na versão 23.1 e para linguagem de descrição de hardware foi lidado com Verilog. O objetivo do problema é projetar um módulo embarcado de redimensionamento de imagens para sistemas de vigilância e exibição em tempo real, o hardware deve aplicar o efeito de zoom-in (Ampliação) e zoom-out (Redução) simulando um comportamento básico de interpolação.
-
-
-<div align="center">
-  <img src="https://i.postimg.cc/gJq4KpCv/de1soc.png"><br>
-  <strong>Imagem do Site da Altera</strong><br><br>
-</div>
-
-Sumário
-=================
-  * [1. Levantamento de Requisitos](#1-levantamento-de-requisitos)
-  * [2. Softwares Utilizados](#2-softwares-utilizados)
-  * [3. Hardware Usado nos Testes](#3-hardware-usado-nos-testes)
-  * [4. Instalação e Configuração](#4-instalacão-e-configuração)
-  * [5. Testes de Funcionamento](#5-testes-de-funcionamento)
-  * [6. Análise dos Resultados](#6-análise-dos-resultados)
-
-### 1. Levantamento de Requisitos
-
-#### 1.1. Requisitos Funcionais
-- **RF01:** O sistema deve implementar quatro algoritmos distintos de redimensionamento de imagem.
-- **RF02:** Dois algoritmos devem ser para ampliação (Zoom In): *Vizinho Mais Próximo* e *Replicação de Pixel*.
-- **RF03:** Dois algoritmos devem ser para redução (Zoom Out): *Decimação* e *Média de Blocos*.
-- **RF04:** Todas as operações de zoom devem ser aplicadas em passos de 2X.
-- **RF05:** A seleção do algoritmo deve ser feita através de chaves físicas (SW) na placa.
-- **RF06:** O controle do nível de zoom (ampliar, reduzir, voltar ao estado anterior) deve ser feito através de botões físicos (KEY).
-- **RF07:** A imagem original deve ser exibida na tela assim que o sistema é ligado.
-- **RF08:** A imagem processada deve ser exibida numa saída de vídeo VGA padrão (640x480).
-- **RF09:** O sistema deve fornecer feedback visual ao utilizador através dos displays de 7 segmentos.
-- **RF10:** O sistema deve implementar validações para impedir operações inválidas.
-
-#### 1.2. Requisitos Não-Funcionais
-- **RNF01:** O projeto deve ser desenvolvido inteiramente em linguagem **Verilog (2001)**.
-- **RNF02:** A implementação deve utilizar apenas os recursos de hardware disponíveis na placa **DE1-SoC**.
-- **RNF03:** O código deve ser modular, bem organizado e detalhadamente comentado.
+Este projeto consiste no desenvolvimento de um **módulo de redimensionamento de imagens (zoom)** embarcado na placa **DE1-SoC (FPGA Cyclone V)**. O hardware foi projetado para simular um sistema básico de vigilância e exibição em tempo real, aplicando algoritmos de ampliação (Zoom In) e redução (Zoom Out) em passos de 2X. Todo o controle e *feedback* ao usuário são realizados através dos componentes físicos da placa e do proprio programa feito em C.
 
 ---
 
-### 2. Softwares Utilizados
-- **IDE de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0)*
-- **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*
-- **Linguagem HDL:** *Verilog-2001*
+## 💻 2. Detalhes de Implementação
 
----
-
-### 3. Hardware Usado nos Testes
-- **Placa de Desenvolvimento:** Terasic DE1-SoC
-- **FPGA:** Intel Cyclone V SE 5CSEMA5F31C6N
-- **Memória da Imagem Original:** ROM (19.200 palavras x 8 bits)
-- **Memória de Vídeo (Frame Buffer):** RAM de dupla porta (307.200 palavras x 8 bits)
-- **Monitor:** Philips VGA (640x480 @ 60Hz)
-
----
-
-### 4. Instalação e Configuração
-
-#### 4.1. Passos para Compilação no Intel Quartus Prime
-
-Essa subseção vai explicar o passo a passo para realizar a compilação do projeto no Intel Quartus Prime. A seção vai apresentar informações por texto e uma seção dedicada com imagens para ilustrar o processo de compilação de maneira mais intuitiva.
-
-#### Abrir o Projeto
-Após realizar o _download_ do projeto abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**.
-Após a seleção do ficheiro, selecionar **DE-SOC** na janela de seleção de _hardware_.
-Ao realizar as etapas, pressionar _start_ e aguardar a barra de carregamento chegar em **100%**, exibindo a mensagem **"Successful"**.
-
-
-#### Gerar os IPs de Memória
-1. Use a ferramenta **IP Catalog** para gerar os componentes de memória:
-   - **ImgRom.qip** → configurado como **ROM: 1-PORT** com **19200 pixels de 8 bits**, inicializado com o ficheiro `.mif` gerado na conversão de imagem. 
-   - **VdRam.qip** → configurada como **RAM: 2-PORT** com **307.200 palavras de 8 bits**.
+### 2.1. Requisitos Funcionais e Algoritmos
   
-> [!NOTE]
-> Não é necessário gerar novas memórias caso todos os arquivos do projetos sejam baixados, já que essas memórias já foram geradas.
+O sistema implementa quatro algoritmos distintos, controlados pelas **chaves SW[0] a SW[3]**:
 
-> É crucial configurar cada IP corretamente para evitar erros de compilação.
+| Chave | Função | Algoritmo | Tipo de Zoom | Nível de Zoom |
+| :---: | :--- | :--- | :--- | :--- |
+| **SW[0]** | Ampliação | Vizinho Mais Próximo | Zoom In | 1x → 2x → 4x |
+| **SW[1]** | Ampliação | Replicação de Pixel | Zoom In | 1x → 2x → 4x |
+| **SW[2]** | Redução | Decimação | Zoom Out | 1x → 0.5x → 0.25x |
+| **SW[3]** | Redução | Média de Blocos | Zoom Out | 1x → 0.5x → 0.25x |
 
+### 2.2. Hardware e Software
 
-#### Atribuição de Pinos (Pin Assignment)
-1. Abra o **Pin Planner**: `Assignments > Pin Planner`.
-2. Atribua as portas do módulo `Coprocessador` aos **pinos físicos** da placa **DE1-SoC**, conforme a documentação da placa.
+| Categoria | Componente/Software | Especificação |
+| :--- | :--- | :--- |
+| **Placa** | Terasic DE1-SoC | FPGA Intel Cyclone V SE 5CSEMA5F31C6N |
+| **Linguagem** | Verilog HDL | Verilog-2001 (Código modular e comentado) |
+| **IDE** | Intel Quartus Prime Lite Edition | Versão 23.1std.0 |
+| **Simulador** | ModelSim - Intel FPGA Edition | Versão 2020.1 |
+| **Exibição** | Saída VGA | Resolução 640x480 @ 60Hz |
 
-> [!NOTE]
-> Não há necessidade de realizar a atribuição de pinos caso todos os arquivos do projetos sejam baixados, já que, a atribuição de pinos já foi realizada.
-
-
-#### Compilação do Projeto
-- No menu, selecione **Processing > Start Compilation**.
-- Aguarde a síntese, mapeamento, fitting e geração do bitstream.
-
-
-#### Programação da FPGA
-1. Após a compilação bem-sucedida, abra a ferramenta **Programmer**.
-2. Carregue o ficheiro `.sof` localizado na pasta `output_files/`.
-3. Clique em **Start** para programar a FPGA.
-
-### As imagens abaixo ilustram o processo
-
-
-
-<div align="center">
-  <img src="https://i.postimg.cc/MHXrjSXd/Tutorial1.png"><br>
-</div>
-
-<div align="center">
-  <img src="https://i.postimg.cc/gjrB6Wr7/Tutorial2.png"><br>
-</div>
-
-<div align="center">
-  <img src="https://i.postimg.cc/Bbtw10tR/Tutorial3.png"><br>
-</div>
-
-
-<div align="center">
-  <img src="https://i.postimg.cc/j2B5pP9r/Tutorial7.png"><br>
-</div>
-
-
-<div align="center">
-  <img src="https://i.postimg.cc/vHKLmnrM/Tutorial4.png"><br>
-</div>
-
-<div align="center">
-  <img src="https://i.postimg.cc/GhfJpDFL/Tutorial5.png"><br>
-</div>
-
-<div align="center">
-  <img src="https://i.postimg.cc/ZKQFqN8T/Tutorial6.png"><br>
-</div>
-
----
-
-#### Uso da placa programada.
-1. Após fazer a conexão dos cabos de alimentação, _VGA_ e _USB_, ligar a DE1-SOC pelo botão de _Power_.
-2. Esperar o _Display_ de sete segmentos exibir uma mensagem de **"SELECT AN ALGORITHM"** ou esperar a imagem ser exibida no monitor.
-3. Selecionar um algoritmo de redimensionamento pelos os _Switches_ da placa. (Do SW[0] até o SW[3], à seleção fonrece os algoritmos _Nearest Neighbor_, _Pixel Replication_, _Decimation_ e _Block Averaging_ respectivamente.
-4. Fazer uso dos botões KEY[2] e KEY[3] para aplicar o redimensionamento da imagem. Vale ressaltar que, KEY[2] é responsável em aplicar _zoom-out_ enquanto o KEY[3] aplica o _zoom-in_.
-5. Caso a imagem esteja distorcida ou o usuário queira voltar à imagem original, apertar o botão KEY[0] para reiniciar o sistema e voltar para a imagem original.
-
-<div align="center">
-  <img src="https://i.postimg.cc/yY0r3BPP/DE1-SOCGUIA.jpg"><br>
-  <strong>Componentes necessários para a utilização do projeto.</strong><br><br>
-</div>
-
----
-
-### 5. Testes de Funcionamento
-
-#### 5.1. Mapeamento de Controles
+### 2.3. Mapeamento de Controles Físicos
 
 | Função | Componente | Descrição |
-|---|---|---|
-| Reset Geral | KEY[0] | Reinicia o sistema |
-| Voltar Zoom | KEY[1] | Reverte para nível anterior |
-| Zoom In | KEY[2] | Reduz em 2x |
-| Zoom Out | KEY[3] | Amplia em 2x |
-| Alg. 1 | SW[0] | Nearest Neighbor |
-| Alg. 2 | SW[1] | Pixel Replication |
-| Alg. 3 | SW[2] | Decimation |
-| Alg. 4 | SW[3] | Block Averaging |
+| :--- | :--- | :--- |
+| **Reset Geral** | **KEY[0]** | Reinicia o sistema e retorna a imagem ao estado padrão (1x). |
+| **Zoom Out** | **KEY[2]** | Aplica o zoom do algoritmo selecionado (ex.: 1x → 2x). |
+| **Zoom In** | **KEY[3]** | Aplica o zoom reverso do algoritmo selecionado (ex.: 2x → 1x). |
+| Voltar Zoom | KEY[1] | *Lógica presente no código, mas pino não atribuído no projeto final.* |
+| Seleção Alg. | SW[0]-SW[3] | Seleção do algoritmo de redimensionamento. |
 
 ---
 
-#### 5.2. Sequência de Verificação
-- **Inicialização:**
-  O display de 7 segmentos deve mostrar **"SELECT AN ALGORITHM"**.
-  - Mais de uma chave ligada → display mostra **"SELECTION ERROR"**.
+## 🛠️ 3. Guia de Instalação e Uso
 
-- **Operação de Zoom Válida:**
-  - Com SW[0] ou SW[1], pressione **KEY[2]** para zoom in (2x → 4x).
-  - Pressione **KEY[3]** para reduzir ao nível anterior (2x → 1x).
+### 3.1. Compilação e Programação no Quartus
 
-- **Operação de Zoom Inválida:**
-  - Com SW[2] ou SW[3], pressionar **KEY[2]** não deve alterar a imagem.
-  - Display mostra **"INVALID ZOOM"**.
+1.  **Abrir o Projeto:** Abra o ficheiro `Coprocessador.qpf` no **Intel Quartus Prime**. Certifique-se de que o *hardware* selecionado é o **DE-SOC**.
+2.  **Geração de IPs de Memória:** Caso esteja configurando o projeto pela primeira vez, utilize o **IP Catalog** para gerar:
+    * **ImgRom.qip:** ROM: 1-PORT (19200x8 bits), inicializada com o ficheiro `.mif` da imagem.
+    * **VdRam.qip:** RAM: 2-PORT (307.200x8 bits).
+    > **NOTA:** Se todos os arquivos do projeto foram baixados, esta etapa e a atribuição de pinos não são necessárias.
+3.  **Compilação:** No menu, selecione **Processing > Start Compilation**. Aguarde a mensagem **"Successful"** na barra de progresso.
+4.  **Programação:** Abra a ferramenta **Programmer**, carregue o ficheiro **`.sof`** (localizado em `output_files/`) e clique em **Start** para programar a FPGA.
 
-- **Botão Reset:**
-  Após qualquer operação de zoom, pressione **KEY[0]** para retornar ao nível normal.
-  
-> [!WARNING]
-> **KEY[1]** no produto final não teve um pino atribuido, ou seja, devido à isso, ao pressionar o botão o nível de zoom não retorna ao normal.
-> Entretanto, a lógica para o funcionamento dele ainda está presente no _Verilog_ do projeto, sendo possível fazer com que o botão volte a ter sua funcionalidade após um pino seja atribuido à ele.
+### 3.2. Uso da Placa Programada 🎮
+
+1.  **Conexões:** Conecte os cabos de **alimentação**, **VGA** (para monitor) e **USB** (para programação) na DE1-SoC.
+2.  **Ligar:** Ligue a placa pelo botão de **Power**. A imagem inicial (1x) deve ser exibida no monitor.
+3.  **Seleção:** Use as chaves **SW[0] a SW[3]** para selecionar **apenas um** algoritmo:
+    * **Seleção Válida:** Display de 7 segmentos deve mostrar **"SELECT AN ALGORITHM"**.
+    * **Erro de Seleção:** Se mais de uma chave estiver ligada, o display mostrará **"SELECTION ERROR"**.
+4.  **Operação de Zoom:**
+    * Pressione **KEY[2]** para aplicar o **Zoom IN** (se selecionado SW[0] ou SW[1]).
+    * Pressione **KEY[3]** para aplicar o **Zoom OUT** (se selecionado SW[2] ou SW[3]).
+5.  **Reset:** Pressione **KEY[0]** a qualquer momento para reiniciar o sistema e retornar a imagem ao seu estado original (1x).
 
 ---
 
+## ⚠️ 4. Análise e Limitações
 
-### 6. Análise dos Resultados
+### 4.1. Feedback Visual dos Displays (7 Segmentos)
 
-#### 6.1. Resumo do Produto Final
+| Mensagem do Display | Significado |
+| :--- | :--- |
+| **"SELECT AN ALGORITHM"** | Estado inicial, esperando a seleção de um único algoritmo (SW). |
+| **"SELECTION ERROR"** | Mais de uma chave de algoritmo (SW[0] - SW[3]) está ligada. |
+| **"INVALID ZOOM"** | Tentativa de aplicar Zoom Out (KEY[3]) em um algoritmo de Zoom In (SW[0]/SW[1]), ou vice-versa. |
 
-O projeto implementado foi implementado com as seguintes funcionalidades:
-- Suporte a 4 algoritmos de redimensionamento.
-- Níveis de zoom de **0.25x a 4.0x**.
-- Interface robusta com feedback em display de 7 segmentos.
-- Disponibilização de uma imagem para realizar redimensionamento.
+### 4.2. Limitações e Desafios (Etapa 1)
 
-Porém, determinados erros e limitações permaneceram na entrega da etapa 1 do produto:
-- Alteração entre algoritmos de zoom causa uma distorção severa à imagem, tornado-se necessário fazer uso do botão de _Reset_ para evitar isso. 
-- Todos os algoritmos de zoom distorcem a imagem em certo grau.
-- O zoom da placa apenas realiza o redimensionamento em 2 etapas cada, ampliando e afastando a imagem duas vezes.
+O projeto final desta etapa apresenta as seguintes limitações de uso, que podem ser abordadas em futuras iterações:
 
-#### Placa programada preparada para a seleção de algum algoritmo.
-![Image](https://github.com/user-attachments/assets/85f1aef6-5cc3-4cc7-9aa7-43d4ca0aa28b)
+* **Distorção ao Trocar Algoritmos:** A **troca de algoritmo** enquanto a imagem está em um nível de zoom diferente de 1x (padrão) causa **distorção severa**.
+    * ***Solução Proposta:*** Recomenda-se apertar **KEY[0] (Reset)** sempre antes de trocar o algoritmo para garantir a imagem padrão (1x). Uma solução futura seria implementar um "reset automático" ao detectar a troca de SW fora do nível 1x.
+* **Limitação do Nível de Zoom:** Os algoritmos são limitados a **duas etapas** de ampliação (até 4x) e duas de redução (até 0.25x).
+* **Botão KEY[1]:** A funcionalidade de "Voltar Zoom" está implementada no Verilog, mas **o pino físico não foi atribuído** no projeto final, desativando o botão.
 
-#### 6.2. Desafios e Soluções
+| Erro Visível no Monitor | Causa |
+| :---: | :--- |
+|  | Acionar Zoom Out (KEY[3]) após atingir o zoom máximo (4x) com um algoritmo de Zoom In (SW[0] ou SW[1]) causa distorção. |
+|  | Acionar Zoom In (KEY[2]) após atingir o zoom mínimo (0.25x) com um algoritmo de Zoom Out (SW[2] ou SW[3]) causa distorção. |
 
-Durante o desenvolvimento do projeto os algoritmos de zoom causam uma distorção da imagem caso a imagem tenha o _zoom-in_ acionado até o máximo (**4x**) e depois receba um _zoom-out_. O mesmo acontece com a ordem das ações invertidas, ou seja, caso o usuário acione o _zoom-out_ até o máximo (**0.25**) e depois tente dar _zoom-in_ na imagem. O problema pode ser evitado caso o usuário decida apertar o botão de "reset" sempre que for testar outro algoritmo de redimensionamento. 
+---
 
-Uma possível futura solução para esse problema é a implementação de um "_reset_ automático" que é ativado sempre que o usuário troca de algoritmo enquanto a imagem está fora do seu estado padrão (**1x**), limitando o usuário a sempre trabalhar com a imagem padrão ao tentar redimensionar com outro tipo de algoritmo.
-
-<div align="center">
-  <img src="https://i.postimg.cc/QMDvtvD4/ZoomOut.png"><br>
-  <strong>Erro de redimensionamento ao acionar zoom-out após zoom-in(4x).</strong><br><br>
-</div>
-
-<div align="center">
-  <img src="https://i.postimg.cc/hvvknxnP/Zoomin.png"><br>
-  <strong>Erro de redimensionamento com ao acionar zoom-in após zoom-out (0.25x).</strong><br><br>
-</div>
-
-Ainda seguindo o desafio da distorção de cada zoom, é importante ressaltar que eles são limitados em realizar zoom-in e zoom-out de 2 etapas cada. Ou seja, para uma futura versão do projeto, uma possível melhora seria a remoção dessa limitação imposta, permitindo com que o usuário amplie ou afaste a imagem quantas vezes necessárias.
-
-### 7. Referências
-
-ALAM, S. Nearest Neighbor Interpolation Algorithm in Matlab. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/software-engineering/nearest-neighbor-interpolation-algorithm-in-matlab/. Acesso em 06 de Setembro.
-
-TUTORIALSPOINT. Zooming Methods in Digital Image Processing. TutorialsPoint, [S.l.], [s.d.]. Disponível em: https://www.tutorialspoint.com/dip/zooming_methods.htm. Acesso em 06 de Setembro.
-
-VISION BOOK MIT. Upsampling and Downsampling. Vision Book MIT, [S.l.], [s.d.]. Disponível em: https://visionbook.mit.edu/upsamplig_downsampling_2.html. Acesso em 06 de Setembro.
-
-COMPUPHASE. Scaling/Zooming of Bitmaps. CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale2.htm. Acesso em 08 de Setembro.
-
-COMPUPHASE. Scaling/Zooming of Bitmaps (Part 2). CompuPhase, [S.l.], [s.d.]. Disponível em: https://www.compuphase.com/graphic/scale3.htm. Acesso em 08 de Setembro.
-
-SUTHERLAND, S. Verilog-2001: The New Features Part 1. Sutherland-HDL, [S.l.], 2001. Disponível em: https://sutherland-hdl.com/papers/2001-Wescon-tutorial_using_Verilog-2001_part1.pdf. Acesso em 02 de Setembro.
-
-GURU99. Co-processor in Computer Architecture. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/computer-organization-architecture/co-processor-computer-architecture/. Acesso em 27 de Agosto.
-
-ALAM, S. Introduction of Control Unit and its Design. GeeksforGeeks, [S.l.], [s.d.]. Disponível em: https://www.geeksforgeeks.org/computer-organization-architecture/introduction-of-control-unit-and-its-design/.  Acesso em 30 de Agosto.
+O que mais você gostaria de adicionar ou detalhar neste README?
