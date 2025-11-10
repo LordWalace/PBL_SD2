@@ -20,7 +20,7 @@ Ao iniciar o programa, este menu será exibido. Digite o número da opção dese
 
 | Opção | Ação | Descrição |
 | :--- | :--- | :--- |
-| **[1] Carregar Imagem** | Vai para o menu de seleção de imagens. **Passo obrigatório** antes de aplicar o zoom. |
+| **[1] Carregar Imagem** | Vai para o menu de seleção de imagens. Caso nenhuma imagem seja selecionada uma imagem "padrão" já é carregada. |
 | **[2] Aplicar Zoom** | Vai para o menu de algoritmos de zoom. Só é possível após carregar uma imagem. |
 | **[3] Reset do Sistema** | Limpa o estado atual do coprocessador FPGA, preparando-o para uma nova operação. |
 | **[4] Status** | Exibe as flags e informações sobre o estado atual do sistema e dimensões suportadas. |
