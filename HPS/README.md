@@ -26,6 +26,11 @@ Ao iniciar o programa, este menu será exibido. Digite o número da opção dese
 | **[4] Status** | Faz o terminal exibir as propriedades atuais do sistema. | Exibe flags e informações sobre o estado atual do sistema e dimensões suportadas. |
 | **[0] Sair** | Encerra o programa. | |
 
+<div align="center">
+  <img src="https://i.postimg.cc/wBKD3kQg/Menu.png"><br>
+  <strong>Imagem do menu principal</strong><br><br>
+</div>
+
 ### 2. Menu de Seleção de Imagens
 
 Após escolher a opção **[1]**, uma lista de arquivos BMP disponíveis na pasta será exibida.
@@ -34,6 +39,11 @@ Após escolher a opção **[1]**, uma lista de arquivos BMP disponíveis na past
 * Pressione **ENTER**.
 * A imagem selecionada será carregada e enviada para o coprocessador FPGA.
 
+
+<div align="center">
+  <img src="https://i.postimg.cc/6QdnZGMX/Imagem-Select.png"><br>
+  <strong>Imagem do menu principal</strong><br><br>
+</div>
 
 ### 3. Menu de Zoom
 
@@ -50,6 +60,33 @@ Após carregar uma imagem, a opção **[2]** levará a este menu, que lista os a
 * Selecione o número do algoritmo e pressione **ENTER**.
 * O sistema irá processar a imagem no FPGA e exibir o resultado no monitor VGA (se conectado).
 * Um passo de zoom é aplicado a cada execução (ex: se o fator é 1x, um zoom in resultará em 2x; se for 2x, resultará em 4x, e assim por diante).
+
+
+
+<div align="center">
+  <img src="https://i.postimg.cc/yNFcRSL9/Imagem-Normal.jpg"><br>
+  <strong>Imagem no seu estado padrão.</strong><br><br>
+</div>
+
+<div align="center">
+  <img src="https://i.postimg.cc/PqmYD8S5/Aplicar-Zoom-In.png"><br>
+  <strong>Imagem do menu após selecionar um algoritmo Zoom-In 8x.</strong><br><br>
+</div>
+
+<div align="center">
+  <img src="https://i.postimg.cc/9fGZ9qLf/Imagem-Zoom-In.jpg"><br>
+  <strong>Imagem com um algoritmo de Zoom-In 8x aplicado.</strong><br><br>
+</div>
+
+<div align="center">
+  <img src="https://i.postimg.cc/yNFcRSLV/Aplicar-Zoom-Out.png"><br>
+  <strong>Imagem do menu após selecionar um algoritmo Zoom-Out 0.125x.</strong><br><br>
+</div>
+
+<div align="center">
+  <img src="https://i.postimg.cc/cJQw38XV/Imagem-Zoom-Out.jpg"><br>
+  <strong>Imagem com um algoritmo de Zoom-Out 0.125x aplicado.</strong><br><br>
+</div>
 
 ---
 
