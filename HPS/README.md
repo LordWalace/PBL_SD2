@@ -4,13 +4,13 @@
 
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
 
-## 🎯 Descrição e Objetivo do Projeto
+## Descrição e Objetivo do Projeto
 
 Este projeto consiste no desenvolvimento de um **módulo de redimensionamento de imagens (zoom)** embarcado na placa **DE1-SoC (FPGA Cyclone V)**. O hardware foi projetado para simular um sistema básico de vigilância e exibição em tempo real, aplicando algoritmos de ampliação (Zoom In) e redução (Zoom Out) em passos de 2X. Todo o controle e *feedback* ao usuário são realizados através dos componentes físicos da placa e do proprio programa feito em C.
 
 ---
 
-## 💻 Navegação e Interfaces
+## Navegação e Interfaces
 
 O sistema é operado através de um **menu de texto interativo**.
 
@@ -53,7 +53,7 @@ Após carregar uma imagem, a opção **[2]** levará a este menu, que lista os a
 
 ---
 
-## 🛑 Erros Comuns e Mensagens de Alerta
+## Erros Comuns e Mensagens de Alerta
 
 O sistema foi desenhado para reportar problemas de forma clara:
 
