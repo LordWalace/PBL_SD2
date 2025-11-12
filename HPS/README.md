@@ -1,4 +1,4 @@
-# 🔎 Sistema de Zoom Embarcado - DE1-SoC (Cyclone V)
+# Sistema de Zoom Embarcado - DE1-SoC (Cyclone V)
 
 **Disciplina:** Sistemas Digitais (TEC499) - 2025.2, UEFS
 
@@ -10,7 +10,7 @@ Este projeto consiste no desenvolvimento de um **módulo de redimensionamento de
 
 ---
 
-## Navegação e Interfaces
+## Navegação e Interfaces e Guia de Usuário
 
 O sistema é operado através de um **menu de texto interativo**.
 
