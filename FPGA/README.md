@@ -8,9 +8,7 @@
 1. [Visão Geral do Sistema](#visão-geral-do-sistema)
 
 ---
-
 Coprocessador FPGA para Processamento de Imagens em Tons de Cinza
-
 ---
 
 ### 1. Visão Geral do Sistema.
