@@ -14,8 +14,10 @@ Coprocessador FPGA para Processamento de Imagens em Tons de Cinza
 ---
 
 ### 1. Visão Geral do Sistema.
-Este projeto se baseia no desenvolvimento de uma API (Application Programming Interface) feita em **Assembly** para um coprocessador customizado pela equipe, esse que vai ser destinado ao processamento de imagens em escala de cinza. A solução deve ser executada em um hardware embarcado utilizando um Hard Processor System (HPS) ARM como processador principal para comunicação e gerenciamento. As imagens fornecidas pelo usuário devem ser recebidas primeiramente pelo programa e então passadas para o processador para a devida aplicação dos algortimos de zoom fornecidos pelo sistema, elas devem estar em uma resolução especifica de 320x240 _pixels_ e devem estar na escala cinza.
-É claro! Aqui está o conteúdo para o arquivo README.md, formatado em Markdown, com base na descrição do projeto que você forneceu.
+
+Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC com o processador Cyclone V, o ambiente de desenvolvimento utilizado foi o Quartus Lite na versão 23.1 e para linguagem de descrição de hardware foi lidado com Verilog. As linguagens de programação utilizadas foram C (C23) e Assembly para a conexão entre a placa FPGA e o HPS, permitindo com que o programa consiga carregar imagens pelo HPS e modifique elas fazendo uso dos algoritmos de zoom presentes na placa. 
+
+Está é a segunda etapa do projeto, o objetivo da etapa é realizar o desenvolvimento de uma API para um coprocessador dedicada ao processamento de imagens em escala de cinza (8 bits/pixel), utilizando a linguagem Assembly e restringindo-se estritamente aos componentes de hardware disponíveis na placa. Aplicando a ISA (Instruction Set Architecture) do coprocessador, incorporando as operações de processamento previamente controladas por botões e chaves durante a primeira etapa do projeto.
 
 ---
 
@@ -52,21 +54,24 @@ A arquitetura se baseia em uma divisão clara entre software e hardware para iso
 
 O código C rodando no HPS é o controlador mestre. Ele:
 
-    Lê e prepara a imagem.
+- Lê e prepara a imagem.
 
-    Monta comandos na forma da ISA definida (palavras de 32 bits).
+- Monta comandos na forma da ISA definida (palavras de 32 bits).
 
-    Escreve os comandos nos registradores PIO (instructIn).
+- Escreve os comandos nos registradores PIO (instructIn).
 
-    Aciona o pulso de ativação (enableIn).
+- Aciona o pulso de ativação (enableIn).
 
-    Aguarda pelas flags de resposta (flagsOut) e lê o resultado (data_out).
+- Aguarda pelas flags de resposta (flagsOut) e lê o resultado (data_out).
+
+---
 
 ### 4. Funcionalidades e ISA (Instruction Set Architecture).
 
 O coprocessador implementa uma ISA enxuta com três classes de instrução, focadas em transferência de dados e execução de zoom:
 
-| Classe |	Descrição | 
+| Classe | Descrição |
+| --- | --- |
 | LOAD	| Leitura de dado da memória de imagem. |
 | STORE	| Escrita de dado na memória de imagem. | 
 | ZOOM	| Execução da operação de ampliação/redução sobre uma região. |
@@ -74,6 +79,7 @@ O coprocessador implementa uma ISA enxuta com três classes de instrução, foca
 #### 4.1. Formato da Instrução (Palavra de 32 bits).
 
 | Bits	| Função |
+| --- | --- |
 | [2:0]	| Código da operação (OpCode) |
 | [19:3]	| Endereço de memória|
 | [28:21]	| Dado de entrada (apenas para STORE) |
@@ -82,6 +88,8 @@ O coprocessador implementa uma ISA enxuta com três classes de instrução, foca
 #### 4.2. Algoritmos de Zoom
 
 O algoritmo empregado é o "Nearest Neighbor" (Vizinho Mais Próximo). Ele é ideal para hardware embarcado por sua baixa complexidade e bom desempenho, realizando o zoom através da replicação de pixels conforme um fator definido.
+
+---
 
 ### 5. Barramentos PIO e Sinais de Comunicação.
 
@@ -105,6 +113,8 @@ Os 4 bits do sinal flagsOut indicam o status da operação:
 
 - Protocolo de Comunicação: É mandatório que o sinal enableIn seja desativado após cada operação para garantir a sincronização entre software (HPS) e hardware (FPGA).
 
+---
+
 ### 6. Estrutura de Pastas e Arquivos.
 
 O código fonte de hardware e a estrutura de integração estão localizados na pasta FPGA/:
@@ -117,8 +127,7 @@ O código fonte de hardware e a estrutura de integração estão localizados na 
 
 - Outros Arquivos: Utilitários e componentes auxiliares (reset, detectores de borda, scripts de simulação).
 
-
-
+---
 
 ### 7. Análise de resultados.
 
