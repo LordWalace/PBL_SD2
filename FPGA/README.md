@@ -1,19 +1,11 @@
-# README - Documentação Técnica do Projeto PBL_SD2
+**Universidade Estadual de Feira de Santana (UEFS)**
+
+**Disciplina:** Sistemas Digitais (TEC499) - 2025.2
+
+**Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
 
 ## Sumário
 1. [Visão Geral do Sistema](#visão-geral-do-sistema)
-2. [Arquitetura FPGA (Verilog)](#arquitetura-fpga-verilog)
-   - [Estrutura de Módulos](#estrutura-de-módulos)
-   - [Interfaces de Comunicação](#interfaces-de-comunicação)
-   - [Blocos Funcionais](#blocos-funcionais)
-3. [Arquitetura HPS (C)](#arquitetura-hps-c)
-   - [Estrutura do Código C](#estrutura-do-código-c)
-   - [Mapeamento de Memória](#mapeamento-de-memória)
-4. [Integração HPS-FPGA](#integração-hps-fpga)
-   - [Bridges de Comunicação](#bridges-de-comunicação)
-   - [Fluxo de Dados](#fluxo-de-dados)
-   - [Protocolo de Comunicação](#protocolo-de-comunicação)
-5. [Referências](#referências)
 
 ---
 
