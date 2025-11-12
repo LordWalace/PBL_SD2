@@ -10,8 +10,7 @@
 ---
 Coprocessador FPGA para Processamento de Imagens em Tons de Cinza
 ---
-
-### 1. Visão Geral do Sistema.
+## Descrição do projeto.
 
 Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC com o processador Cyclone V, o ambiente de desenvolvimento utilizado foi o Quartus Lite na versão 23.1 e para linguagem de descrição de hardware foi lidado com Verilog. As linguagens de programação utilizadas foram C (C23) e Assembly para a conexão entre a placa FPGA e o HPS, permitindo com que o programa consiga carregar imagens pelo HPS e modifique elas fazendo uso dos algoritmos de zoom presentes na placa. 
 
@@ -19,14 +18,14 @@ Está é a segunda etapa do projeto, o objetivo da etapa é realizar o desenvolv
 
 ---
 
-### 2. Softwares Utilizados.
+### 1. Softwares Utilizados.
 - **IDE de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0)*
 - **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*
 - **Linguagem HDL:** *Verilog-2001*
 
 ---
 
-### 3. Hardware Usado nos Testes.
+### 2. Hardware Usado nos Testes.
 - **Placa de Desenvolvimento:** Terasic DE1-SoC
 - **FPGA:** Intel Cyclone V SE 5CSEMA5F31C6N
 - **Memória da Imagem Original:** ROM (19.200 palavras x 8 bits)
