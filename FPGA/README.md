@@ -22,12 +22,14 @@ A segunda etapa do projeto **Zoom Digital** Sistemas Digitais (MI) concentra-se 
 
 O cooprocessador e sua implementação em verilog pode ser visualizado no [Repositório da etapa 1](https://github.com/LordWalace/PBL_SD1/blob/main/README.md).
 
+Nessa etapa os arquivos "*main.v*", "*mem1.v*" e "*memory_control.v*" assim como o contéudo presente na pasta "*aux_files*" vem de um repósitorio externo usado para a elaboração do Verilog desse projeto. Origem dos arquivos não feitos pela equipe que foram citados: [Repositório externo](https://github.com/DestinyWolf/Problema-SD-2025-2?tab=readme-ov-file#estrutura-do-coprocessador)
+
 ---
 
 ## 1. Softwares Utilizados.
 - **IDEs de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0),Visual Studio Code*
 - **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*
-- **Linguganes de programação:*Verilog-2001*
+- **Linguagem HDL:*** Verilog-2001*
 
 ---
 
@@ -133,7 +135,7 @@ O coprocessador implementa uma ISA enxuta com três classes de instrução, foca
 | --- | --- |
 | LOAD	| Leitura de dado da memória de imagem. |
 | STORE	| Escrita de dado na memória de imagem. | 
-| ZOOM	| Execução da operação de ampliação/redução sobre uma região. |
+| ZOOM	| Execução da operação de ampliação/redução sobre uma região. |README HPS](https://github.com/LordWalace/PBL_SD2/blob/main/HPS/README.md)
 
 #### 4.1. Formato da Instrução (Palavra de 32 bits).
 
@@ -173,8 +175,18 @@ Os 4 bits do sinal flags indicam o status da operação:
 
 ## 6. Análise de resultados.
 
-Essa seção vai detalhar erros, desafios e resultados do projeto.
+Essa seção vai detalhar os resultados do projeto.
 
-### 6.1 Resumo do Produto Final
+O projeto final demonstrou conseguir ser capaz de cumprir todas as tarefas que foram requisitadas pelo problema. Ou seja, imagens podem ser carregadas, exibidas e transformadas corretamente desde que estejam na escala cinza e na resolução correta, o projeto oferece os mesmos algoritmos de zoom que foram providos na etapa 1, ou seja, duas opções de *Zoom-In* e duas opções de *Zoom-Out*. O usuário consegue interagir de maneira simples e simplificada com o projeto a partir do Makefile
+
+**Resumo.**
+O projeto foi implementado com as seguintes funcionalidades:
+- Suporte à uma interface de usuário prática
+- Execução e ligação dos arquivos a partir de um "Makefile"
+- Tratamento de erro para imagens incompatíveis
+
+É possível saber mais dos testes realizados e dos resultados a partir do [README HPS](https://github.com/LordWalace/PBL_SD2/blob/main/HPS/README.md).
+###
+
 
 
