@@ -1,4 +1,4 @@
-# Programação assembly e construção de driver de software.
+# Programação Assembly e Construção de Driver de Software.
 
 **Disciplina:** Sistemas Digitais (TEC499) - 2025.2, UEFS
 
