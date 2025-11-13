@@ -5,10 +5,12 @@
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
 
 ---
+
 Coprocessador FPGA para Processamento de Imagens em Tons de Cinza
+
 ---
 
-Sumário
+## Sumário
 =================
   * [1. Softwares Utilizados](#1-softwares-utilizados)
   * [2. Hardware Usado nos Testes](#2-hardware-usado-nos-testes))
