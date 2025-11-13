@@ -5,10 +5,15 @@
 
 ## Índice
 
+- [Índice](#índice)
 - [1. Descrição e Objetivo do Projeto](#1-descrição-e-objetivo-do-projeto)
 - [2. Levantamento de Requisitos e Solução](#2-levantamento-de-requisitos-e-solução)
+  - [Requisitos Gerais](#requisitos-gerais)
+  - [Solução Adotada](#solução-adotada)
 - [3. Arquitetura Geral da Solução](#3-arquitetura-geral-da-solução)
 - [4. Estrutura dos Módulos (HPS e FPGA)](#4-estrutura-dos-módulos-hps-e-fpga)
+  - [HPS (ARM)](#hps-arm)
+  - [FPGA (Cyclone V)](#fpga-cyclone-v)
 - [5. Instalação, Configuração e Integração](#5-instalação-configuração-e-integração)
 - [6. Fluxo de Dados Entre HPS e FPGA](#6-fluxo-de-dados-entre-hps-e-fpga)
 - [7. Testes, Resultados e Validação](#7-testes-resultados-e-validação)
@@ -47,8 +52,7 @@ Mais detalhes sobre os requisitos e solução específica em cada componente est
 
 ## 3. Arquitetura Geral da Solução
 
-```bash
-graph TD
+```mermaid
     U[Usuário]
     M[Menu de Alta Nível (HPS)]
     BMP[BMP Loader]
