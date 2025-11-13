@@ -1,3 +1,5 @@
+**Universidade Estadual de Feira de Santana (UEFS)**
+
 **Disciplina:** Sistemas Digitais (TEC499) - 2025.2, UEFS
 
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
