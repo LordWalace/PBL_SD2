@@ -10,6 +10,8 @@ Sumário
   * [2. Menu de Seleção de Imagens](#2-menu-de-seleção-de-imagens)
   * [3. Menu de Zoom](#3-menu-de-zoom)
   * [4. Funções do código Assembly](#4-funções-do-código-assembly)
+  * [5. Makefile](#5-makefile)
+  * [6. Erros Comuns e Mensagens de Alerta](#6-erros-comuns-e-mensagens-de-alerta)
 
 ## Descrição e Objetivo do Projeto
 
@@ -151,7 +153,51 @@ Lê o valor de um pixel da VRAM.
 > [!NOTE]
 > Retorna o valor do pixel (sucesso), -1 (endereço inválido), ou -3 (erro de hardware/timeout).
 
-## Erros Comuns e Mensagens de Alerta
+---
+
+### 5. MakeFile
+
+Essa seção vai ser dedicada em explicar o funcionamento do MakeFile do projeto e suas características.
+
+#### 5.1. Função do MakeFile
+
+O propósito principal deste *Makefile* é simplificar o processo de construção do projeto. Simplificando o processo de execução do projeto para um usúario ao fazer uso de um único comando (make <alvo>). Sendo assim, o *Makefile* fica responsável por:
+- Compilar o código em Assembly (lib.s) e C (main.c).
+- Ligar (linking) os ficheiros objeto para criar um executável.
+- Executar o programa resultante.
+- Limpar os ficheiros temporários e o executável.
+
+#### 5.2. Alvos do Makefile
+
+O *Makefile* do projeto define três alvos para um uso mais direto e explicado do programa.
+
+**1. help** (Alvo Padrão Informativo)
+- Ação: Imprime uma lista dos comandos (alvos) disponíveis (run e clean) e uma breve descrição do que fazem.
+
+Comando: make help
+
+---
+
+**2. run** (Compilação, Execução e Limpeza)
+- Ação: Este é o alvo principal para construir e testar o programa. Ele executa uma sequência de quatro passos:
+- Montagem (Assembly): O ficheiro lib.s é processado pelo montador (as) para criar o ficheiro objeto lib.o.
+- Compilação e Ligação (C): O compilador C (gcc) compila o main.c e, em seguida, liga-o ao lib.o para criar o executável final chamado exe. As flags -z noexecstack, -std=c99, e -lm são usadas para configurar a compilação (segurança, padrão C e biblioteca matemática, respetivamente).
+- Execução: O programa é executado com ./exe.
+- Limpeza (Parcial): O executável exe e o ficheiro objeto lib.o são removidos para limpar o ambiente de trabalho.
+
+Comando: make run
+
+---
+
+**3. clean** (Limpeza Completa)
+- Ação: Remove todos os ficheiros compilados que foram gerados.
+- Isto inclui o executável (exe) e todos os ficheiros objeto (*.o).
+
+Comando: make clean
+
+--- 
+
+### 6. Erros Comuns e Mensagens de Alerta
 
 O sistema foi desenhado para reportar problemas de forma clara:
 
