@@ -15,6 +15,11 @@ Sumário
 
 Este projeto consiste no desenvolvimento de uma **Interface de Programação de Aplicações (API)**, escrita em linguagem Assembly, para controlar um coprocessador de processamento de imagens embarcado em um sistema com o processador **ARM (HPS)**. A **API** deve implementar a **ISA** do coprocessador, reutilizando as operações previamente definidas via componentes físicos da placa, para manipular imagens em escala de cinza (8 bits por pixel) que são lidas de um arquivo e transferidas do HPS para o coprocessador.
 
+Esse documento está voltado em descrever como foi o desenvolvimento da parte Assembly dessa segunda etapa do projeto. Um guia do usuário também se encontra nesse documento visto que é possível explicar os testes efetuados e conseguir demonstrar como replicar eles para que o programa apresente os resultados esperados. O processo de programação Assembly
+
+> [!NOTE]
+> O desenvolvimento da parte Assembly do projeto foi realizado primeiramente fazendo uso da linguagem C e depois convertendo os arquivos para Assembly.
+
 ---
 
 ## Navegação e Interfaces e Guia de Usuário
