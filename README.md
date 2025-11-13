@@ -52,7 +52,7 @@ Mais detalhes sobre os requisitos e solução específica em cada componente est
 
 ## 3. Arquitetura Geral da Solução
 
-```bash
+```graph
     U[Usuário]
     M[Menu de Alta Nível (HPS)]
     BMP[BMP Loader]
