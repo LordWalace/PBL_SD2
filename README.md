@@ -1,4 +1,4 @@
-# Sistema de Zoom Embarcado - DE1-SoC (Cyclone V)
+# Programação assembly e construção de driver de software.
 
 **Disciplina:** Sistemas Digitais (TEC499) - 2025.2, UEFS
 
