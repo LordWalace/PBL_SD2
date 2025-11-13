@@ -22,6 +22,9 @@ A segunda etapa do projeto **Zoom Digital** Sistemas Digitais (MI) concentra-se 
 
 O cooprocessador e sua implementação em verilog pode ser visualizado no [Repositório da etapa 1](https://github.com/LordWalace/PBL_SD1/blob/main/README.md).
 
+<img src="imagens/fpga-hps.png"><br>
+<strong>Conexão HPS ↔ FPGA via PIOs AXI</strong><br><br>
+
 
 ---
 
