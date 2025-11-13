@@ -18,7 +18,7 @@ O sistema é operado através de um **menu de texto interativo**.
 
 Ao iniciar o programa, este menu será exibido. Digite o número da opção desejada e pressione **ENTER**.
 
-> [!NOTE]
+> [!WARNING]
 > A **primeira** inicialização do programa apresenta uma imagem, entretanto, essa imagem não consegue ser alterada fazendo uso dos algoritmos de zoom.
 
 | Opção | Ação | Observação |
