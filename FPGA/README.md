@@ -13,7 +13,9 @@ Sumário
   * [1. Softwares Utilizados](#1-softwares-utilizados)
   * [2. Hardware Usado nos Testes](#2-hardware-usado-nos-testes)
   * [3. Arquitetura do Sistema](#3-arquitetura-do-sistema)
-  * [4. Instalação e Configuração](#4-instalacão-e-configuração)
+  * [4. Funcionalidades e ISA](#4-funcionalidades-e-isa)
+  * [5. Barramentos PIO e Sinais de Comunicação](#5-barramentos-pio-e-sinais-de-comunicação)
+  * [6. Análise de resultados](#6-análise-de-resultados)
 
 
 ## Descrição do projeto.
@@ -127,7 +129,7 @@ A lógica de processamento de imagem é executada sequencialmente dentro do esta
 
 ---
 
-## 4. Funcionalidades e ISA.
+## 4. Funcionalidades e ISA
 
 O coprocessador implementa uma ISA enxuta com três classes de instrução, focadas em transferência de dados e execução de zoom:
 
@@ -148,7 +150,7 @@ O coprocessador implementa uma ISA enxuta com três classes de instrução, foca
 
 ---
 
-## 5. Barramentos PIO e Sinais de Comunicação.
+## 5. Barramentos PIO e Sinais de Comunicação
 
 Nesse projeto, os barramentos PIO servem como a ponte de comunicação entre o processador HPS (ARM) e o coprocessador FPGA, permitindo que o código Assembly realize operações diretas sobre o hardware customizado via mapeamento de memória. 
 
@@ -173,7 +175,7 @@ Os 4 bits do sinal flags indicam o status da operação:
 
 ---
 
-## 6. Análise de resultados.
+## 6. Análise de resultados
 
 Essa seção vai detalhar os resultados do projeto.
 
