@@ -4,12 +4,18 @@
 
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
 
-## Sumário
-1. [Visão Geral do Sistema](#visão-geral-do-sistema)
-
 ---
 Coprocessador FPGA para Processamento de Imagens em Tons de Cinza
 ---
+
+Sumário
+=================
+  * [1. Softwares Utilizados](#1-softwares-utilizados)
+  * [2. Hardware Usado nos Testes](#2-hardware-usado-nos-testes))
+  * [3. Arquitetura do Sistema](#3-arquitetura-do-sistema)
+  * [4. Instalação e Configuração](#4-instalacão-e-configuração)
+
+
 ## Descrição do projeto.
 
 Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC com o processador Cyclone V, o ambiente de desenvolvimento utilizado foi o Quartus Lite na versão 23.1 e para linguagem de descrição de hardware foi lidado com Verilog. As linguagens de programação utilizadas foram C (C23) e Assembly para a conexão entre a placa FPGA e o HPS, permitindo com que o programa consiga carregar imagens pelo HPS e modifique elas fazendo uso dos algoritmos de zoom presentes na placa. 
@@ -19,29 +25,31 @@ Está é a segunda etapa do projeto, o objetivo da etapa é realizar o desenvolv
 ---
 
 ### 1. Softwares Utilizados.
-- **IDE de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0)*
+- **IDEs de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0),Visual Studio Code*
 - **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*
 - **Linguagem HDL:** *Verilog-2001*
+- **Linguganes de programação:** *C, Assembly*
 
 ---
 
 ### 2. Hardware Usado nos Testes.
 - **Placa de Desenvolvimento:** Terasic DE1-SoC
 - **FPGA:** Intel Cyclone V SE 5CSEMA5F31C6N
-- **Memória da Imagem Original:** ROM (19.200 palavras x 8 bits)
 - **Memória de Vídeo (Frame Buffer):** RAM de dupla porta (307.200 palavras x 8 bits)
 - **Monitor:** Philips VGA (640x480 @ 60Hz)
 
 ---
 
-
 ### 3. Arquitetura do Sistema
 
-A arquitetura se baseia em uma divisão clara entre software e hardware para isolar o processamento de pixels e as operações de deslocamento/zoom. A comunicação entre o HPS e o Coprocessador é realizada através de Barramentos PIO (Parallel Input/Output).
+A arquitetura se baseia em uma divisão clara entre software e hardware para isolar o processamento de pixels das operações de deslocamento/zoom. A comunicação entre o HPS e o Coprocessador é realizada através de Barramentos PIO (Parallel Input/Output).
+
+Nessa estapa do projeto fizemos uso de uma arquitetura externa para o desenvolvimento da 
 
 #### 3.1. Blocos Principais.
 
-| Bloco	| Descrição	| Implementação Principal
+| Bloco	| Descrição	| Implementação Principal |
+| --- | --- | --- |
 | Qsys System (soc_system) | Integra o processador ARM (HPS), módulos PIO, e lógicas auxiliares (clocks, reset) | Integração do processador |
 | Coprocessador | Lógica dedicada para interpretar a ISA, gerenciar memória de imagem, e executar as operações de zoom. | Contém uma FSM e um datapath dedicado. |
 | VGA Output | Interface para exibição das imagens ampliadas em um monitor padrão.	| Módulo da placa DE1-SoC |
@@ -63,7 +71,7 @@ O código C rodando no HPS é o controlador mestre. Ele:
 
 ---
 
-### 4. Funcionalidades e ISA (Instruction Set Architecture).
+### 4. Funcionalidades e ISA.
 
 O coprocessador implementa uma ISA enxuta com três classes de instrução, focadas em transferência de dados e execução de zoom:
 
@@ -90,11 +98,16 @@ O algoritmo empregado é o "Nearest Neighbor" (Vizinho Mais Próximo). Ele é id
 
 ### 5. Barramentos PIO e Sinais de Comunicação.
 
-Sinal	Direção	Função	Largura
-instructIn	Entrada	Palavra de comando (ISA, endereço, dado)	32
-enableIn	Entrada	Pulso de ativação do coprocessador	1
-flagsOut	Saída	Sinalização de status (done, erro, limites)	4
-data_out	Saída	Retorno para leitura de dados (LOAD)	8
+Nesse projeto, os barramentos PIO servem como a ponte de comunicação entre o processador HPS (ARM) e o coprocessador FPGA, permitindo que o código Assembly realize operações diretas sobre o hardware customizado via mapeamento de memória. 
+
+Cada função em Assembly acessa registradores PIO específicos que foram cuidadosamente definidos em Verilog, escrevendo ou lendo comandos, dados e flags para executar ações, verificar resultados ou controlar estados internos da FPGA. Essa arquitetura, baseada em leitura e escrita sequencial de offsets de memória correspondentes aos registradores, permite que o software de alto nível desencadeie e sincronize operações especializadas. Essa seção vai exibir elaborar mais afundo sobre os Barramentos PIO.
+
+ | Sinal |	Direção	Função |	Largura |
+ | --- | --- | --- |
+| instructIn |	Entrada	Palavra de comando (ISA, endereço, dado) |	32 |
+| enableIn |	Entrada	Pulso de ativação do coprocessador |	1 |
+| flagsOut |	Saída	Sinalização de status (done, erro, limites) |	4 |
+| data_out |	Saída	Retorno para leitura de dados (LOAD) |	8 |
 
 #### 5.1. Detalhamento dos Sinais de Saída.
 
@@ -109,20 +122,6 @@ Os 4 bits do sinal flagsOut indicam o status da operação:
 - ZOOM_MAX: Tentativa de zoom acima do limite permitido.
 
 - Protocolo de Comunicação: É mandatório que o sinal enableIn seja desativado após cada operação para garantir a sincronização entre software (HPS) e hardware (FPGA).
-
----
-
-### 6. Estrutura de Pastas e Arquivos.
-
-O código fonte de hardware e a estrutura de integração estão localizados na pasta FPGA/:
-
-- ghrd_top.v: Módulo superior de integração, interliga o sistema Qsys e o coprocessador principal.
-
-- main.v: Contém a implementação do coprocessador, incluindo o interpretador da ISA, FSM de controle, acesso à memória e o algoritmo de zoom.
-
-- soc_system.qsys: Projeto do sistema Qsys, definindo a interconexão (barramentos, PIOs, clocks) entre o HPS e a lógica FPGA.
-
-- Outros Arquivos: Utilitários e componentes auxiliares (reset, detectores de borda, scripts de simulação).
 
 ---
 
