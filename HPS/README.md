@@ -18,6 +18,9 @@ O sistema é operado através de um **menu de texto interativo**.
 
 Ao iniciar o programa, este menu será exibido. Digite o número da opção desejada e pressione **ENTER**.
 
+> [!NOTE]
+> A **primeira** inicialização do programa apresenta uma imagem, entretanto, essa imagem não consegue ser alterada fazendo uso dos algoritmos de zoom.
+
 | Opção | Ação | Observação |
 | :--- | :--- | :--- |
 | **[1] Carregar Imagem** | Vai para o menu de seleção de imagens. | Caso nenhuma imagem seja selecionada uma imagem "padrão" já é carregada. |
@@ -89,6 +92,52 @@ Após carregar uma imagem, a opção **[2]** levará a este menu, que lista os a
 </div>
 
 ---
+
+### 4. Funções do código Assembly
+
+Nessa seção as funções do código serão explicadas, cada uma tem um papel essencial para que o projeto demonstre resultados corretos.
+
+#### 1. Lib (Inicialização).
+Função de inicialização da biblioteca.
+
+- Responsável por abrir o arquivo especial /dev/mem (usando a syscall 5 - open) para ter acesso direto à memória física do sistema.
+- Mapeia (usando a syscall 192 - mmap) a região de memória do hardware Light-Weight (LW) Bridges do FPGA na memória virtual do processo.
+- O endereço retornado pelo mmap é armazenado em FPGA_ADRS e será o endereço base usado para acessar todos os registradores do coprocessador.
+> [!NOTE]
+> Retorna 0 em caso de sucesso ou -1 em caso de erro (open ou mmap falharem).
+
+#### 2. encerraLib (Encerramento).
+Função de encerramento da biblioteca.
+
+- Desfaz o mapeamento de memória (usando a syscall 91 - munmap), liberando o espaço de memória virtual que apontava para o FPGA.
+- Fecha o descritor de arquivo de /dev/mem (usando a syscall 6 - close).
+> [!NOTE]
+> Retorna 0 em caso de sucesso ou -1 se o munmap falhar.
+
+#### 3. write_pixel.
+Escreve um valor de pixel na VRAM do coprocessador.
+
+- **Recebe o endereço do pixel (r0) e o valor do pixel (cor, r1).**
+- Verifica se o endereço (r0) é válido (menor que VRAM_MAX_ADDR).
+- Monta a instrução e a escreve no registrador PIO_INSTRUCT. O Assembly indica que o endereço é deslocado em 3 bits e o valor do pixel é deslocado em 21 bits (além de um bit de controle em 20).
+- Dispara a operação escrevendo 1 e depois 0 no registrador PIO_ENABLE.
+- Entra em um loop de espera (WAIT_LOOP_WR), verificando o flag FLAG_DONE_MASK no registrador PIO_FLAGS até que a operação seja concluída ou o timeout (TIMEOUT_COUNT) expire.
+- Após a conclusão, verifica se ocorreu um erro (FLAG_ERROR_MASK).
+- Inclui um delay extra (EXTRA_DELAY_COUNT) para sincronizar o HPS (800MHz) e o FPGA (50MHz).
+> [!NOTE]
+> Retorna 0 (sucesso), -1 (endereço inválido), ou -3 (erro de hardware/timeout).
+
+#### 4. read_pixel.
+Lê o valor de um pixel da VRAM.
+
+- **Recebe o endereço do pixel (r0) e um valor de controle (r1).**
+- Verifica a validade do endereço (r0).
+- Monta a instrução (opcode LOAD_OPCODE + endereço + valor de controle) e a envia para PIO_INSTRUCT.
+- Dispara a operação via PIO_ENABLE.
+- Entra em um loop de espera (WAIT_LOOP_RD) pelo flag FLAG_DONE_MASK.
+- Se for concluída sem erro, lê o valor do pixel do registrador de saída (PIO_DATA_OUT) e o retorna em r0.
+> [!NOTE]
+> Retorna o valor do pixel (sucesso), -1 (endereço inválido), ou -3 (erro de hardware/timeout).
 
 ## Erros Comuns e Mensagens de Alerta
 
