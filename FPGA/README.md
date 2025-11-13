@@ -73,6 +73,8 @@ A solução resolve o problema de processamento de imagem permitindo que a CPU (
 **Processamento:** O módulo pll (implícito, geralmente um *Megafunction* da Altera/Intel FPGA) gera clocks derivados.
 **Dados de Saída:** *outclk_0* (*clk_100*, 100 MHz): Usado para a FSM e lógica principal ; *outclk_1* (clk_25_vga, 25 MHz): Usado para o controlador VGA.
 
+---
+
 #### Sistema de Gerenciamento de Memórias.
 Três instâncias de memória mem1 (assumidas como RAM de porta simples) são utilizadas: 
 | Memória | Função | Endereçamento (Bits) | Tamanho Máx (Bytes) |
@@ -82,6 +84,8 @@ Três instâncias de memória mem1 (assumidas como RAM de porta simples) são ut
 | memory3 | Memória de Trabalho (Algoritmo) | 17 ([16:0]) | 131072 |
 
 Processamento de Dados: Cada memória recebe um endereço de leitura (*rdaddress*), um endereço de escrita (*wraddress*), o dado de entrada (*data*) e um sinal de escrita (*wren*) no clock (*clk_100*), retornando o dado de saída (q) no clock seguinte.
+
+---
 
 #### Unidade de Controle (FSM - Registrador uc_state).
 
@@ -98,6 +102,8 @@ Processamento de Dados: Cada memória recebe um endereço de leitura (*rdaddress
 Entrada de Dados: INSTRUCTION[2:0], ENABLE (pulso).
 Saída de Dados: FLAG_DONE, FLAG_ERROR, sinais de wren das memórias.
 
+---
+
 #### Pipeline do Algoritmo (Lógica no estado ALGORITHM).
 
 A lógica de processamento de imagem é executada sequencialmente dentro do estado ALGORITHM, controlada por um sub-estado op_step.
@@ -107,6 +113,8 @@ A lógica de processamento de imagem é executada sequencialmente dentro do esta
 
 **NH_ALG/NHI_ALG (Nearest Neighbor/Crop):** Processamento: Para NHI_ALG (Zoom In), duplica pixels de forma análoga a PR_ALG. Para NH_ALG (Zoom Out/Crop), implementa um corte (crop) na imagem, lendo os pixels apenas de uma região central de memory1 para memory3. Fora da área de corte (o resto da tela 320x240), é escrito um valor de pixel preto (8'b0).
 
+---
+
 #### Lógica do VGA.
 **Função:** Mapeia coordenadas de tela para endereços de memória, garantindo que apenas a imagem seja lida na área de exibição.
 
@@ -115,6 +123,7 @@ A lógica de processamento de imagem é executada sequencialmente dentro do esta
 
 **Processamento:** O bloco verifica se as coordenadas (next_x, next_y) estão dentro da "caixa" de exibição (exemplo: X_START=159, Y_START=119 a X_END=479, Y_END=359 para uma imagem de 320x240 no centro). Se estiverem, calcula o endereço de memória vga_offset para memory2. O dado (data_out_mem2) é pipelineado para a saída de cor VGA.
 
+---
 
 ## 4. Funcionalidades e ISA.
 
