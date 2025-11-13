@@ -144,10 +144,6 @@ O coprocessador implementa uma ISA enxuta com três classes de instrução, foca
 | [28:21]	| Dado de entrada (apenas para STORE) |
 | [31:29]	| Reservado |
 
-### 4.2. Algoritmos de Zoom
-
-O algoritmo empregado é o "Nearest Neighbor" (Vizinho Mais Próximo). Ele é ideal para hardware embarcado por sua baixa complexidade e bom desempenho, realizando o zoom através da replicação de pixels conforme um fator definido.
-
 ---
 
 ## 5. Barramentos PIO e Sinais de Comunicação.
@@ -158,24 +154,20 @@ Cada função em Assembly acessa registradores PIO específicos que foram cuidad
 
  | Sinal |	Direção	Função |	Largura |
  | --- | --- | --- |
-| instruct |	Entrada	Palavra de comando (ISA, endereço, dado) |	32 |
-| enable |	Entrada	Pulso de ativação do coprocessador |	1 |
-| flags |	Saída	Sinalização de status (done, erro, limites) |	4 |
-| data_out |	Saída	Retorno para leitura de dados (LOAD) |	8 |
+| INSTRUCT |	Entrada	Palavra de comando (ISA, endereço, dado) |	32 |
+| ENABLE |	Entrada	Pulso de ativação do coprocessador |	1 |
+| FLAGS |	Saída	Sinalização de status (done, erro, limites) |	4 |
+| DATA_OUT |	Saída	Retorno para leitura de dados (LOAD) |	8 |
 
 ### 5.1. Detalhamento dos Sinais de Saída.
 
 Os 4 bits do sinal flags indicam o status da operação:
 
-- DONE: Processamento da instrução concluído.
-
-- ERROR: Instrução incorreta, endereço fora do mapeamento ou dado inválido.
-
-- ZOOM_MIN: Tentativa de zoom abaixo do limite permitido.
-
-- ZOOM_MAX: Tentativa de zoom acima do limite permitido.
-
-- Protocolo de Comunicação: É mandatório que o sinal enable seja desativado após cada operação para garantir a sincronização entre software (HPS) e hardware (FPGA).
+- **DONE:** Processamento da instrução concluído.
+- **ERROR:** Instrução incorreta, endereço fora do mapeamento ou dado inválido.
+- **ZOOM_MIN:** Tentativa de zoom abaixo do limite permitido.
+- **ZOOM_MAX:** Tentativa de zoom acima do limite permitido.
+- **Protocolo de Comunicação:** É mandatório que o sinal enable seja desativado após cada operação para garantir a sincronização entre software (HPS) e hardware (FPGA).
 
 ---
 
