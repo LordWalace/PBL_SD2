@@ -83,7 +83,7 @@ Após carregar uma imagem, a opção **[2]** levará a este menu, que lista os a
 
 <div align="center">
   <img src="https://i.postimg.cc/yNFcRSLV/Aplicar-Zoom-Out.png"><br>
-  <strong>Imagem do menu após selecionar um algoritmo Zoom-Out 0.125x.</strong><br><br>
+  <strong>Imagem do menu após selecionar um algoritmo Zoom-Out 0.50x.</strong><br><br>
 </div>
 
 <div align="center">
