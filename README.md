@@ -40,9 +40,11 @@ O objetivo é criar uma solução robusta, modular e expansível, documentada de
 - Resultados visíveis em monitor VGA.
 
 ### Solução Adotada
-- HPS e FPGA conectados via sistema Qsys.
+- HPS e FPGA conectados via sistema Qsys(Platform Designer).
 - Separação total entre lógica de interface/controle (HPS) e lógica de processamento (FPGA).
 - Estrutura modular, favorecendo manutenção e expansão.
+
+![Diagrama de Interconexão HPS ↔️ FPGA via AXI BRIDGE](https://raw.githubusercontent.com/Marcelosgc1/SistemasDigitais_Problema2/refs/heads/main/imagens/fpga-hps.png)
 
 Mais detalhes sobre os requisitos e solução específica em cada componente estão nos seus respectivos READMEs:  
 • [README HPS](https://github.com/LordWalace/PBL_SD2/blob/main/HPS/README.md)  
