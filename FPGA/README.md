@@ -125,9 +125,10 @@ Os 4 bits do sinal flagsOut indicam o status da operação:
 
 ---
 
-### 7. Análise de resultados.
+### 6. Análise de resultados.
 
-Status (Flag Ativa)	Causa Comum	Ação Recomendada
-ERROR	Instrução desconhecida; Endereço fora do mapeamento; Dado inválido (STORE).	Verifique a codificação do OpCode e os limites de endereço.
-ZOOM_MIN/MAX	Fator de zoom solicitado excede os limites estabelecidos pelo hardware.	Ajuste o fator de zoom dentro dos parâmetros válidos.
-Sem Resposta em DATA_OUT	enableIn não foi acionado ou o protocolo de handshake falhou.	Certifique-se de que o enableIn é setado e desativado corretamente em cada ciclo.
+Essa seção vai detalhar erros, desafios e resultados do projeto.
+
+#### 6.1 Resumo do Produto Final
+
+
