@@ -52,7 +52,7 @@ Mais detalhes sobre os requisitos e solução específica em cada componente est
 
 ## 3. Arquitetura Geral da Solução
 
-```mermaid
+```bash
     U[Usuário]
     M[Menu de Alta Nível (HPS)]
     BMP[BMP Loader]
