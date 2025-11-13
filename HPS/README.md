@@ -172,33 +172,30 @@ O propósito principal deste *Makefile* é simplificar o processo de construçã
 O *Makefile* do projeto define três alvos para um uso mais direto e explicado do programa.
 
 **1. Help** (Alvo Padrão Informativo)
-- Ação: Imprime uma lista dos comandos (alvos) disponíveis (run e clean) e uma breve descrição do que fazem.
+ - Ação: Imprime uma lista dos comandos (alvos) disponíveis (run e clean) e uma breve descrição do que fazem.
 
-Comando: make help
+**Comando:** make help
 
----
 
 **2. Run** (Compilação, Execução e Limpeza)
-- Ação: Este é o alvo principal para construir e testar o programa. Ele executa uma sequência de quatro passos:
-- Montagem (Assembly): O ficheiro lib.s é processado pelo montador (as) para criar o ficheiro objeto lib.o.
-- Compilação e Ligação (C): O compilador C (gcc) compila o main.c e, em seguida, liga-o ao lib.o para criar o executável final chamado exe. As flags -z noexecstack, -std=c99, e -lm são usadas para configurar a compilação (segurança, padrão C e biblioteca matemática, respetivamente).
-- Execução: O programa é executado com ./exe.
-- Limpeza (Parcial): O executável exe e o ficheiro objeto lib.o são removidos para limpar o ambiente de trabalho.
+ - Ação: Este é o alvo principal para construir e testar o programa. Ele executa uma sequência de quatro passos:
+ - Montagem (Assembly): O ficheiro lib.s é processado pelo montador (as) para criar o ficheiro objeto lib.o.
+ - Compilação e Ligação (C): O compilador C (gcc) compila o main.c e, em seguida, liga-o ao lib.o para criar o executável final chamado exe. As flags -z noexecstack, -std=c99, e -lm são usadas para configurar a compilação (segurança, padrão C e biblioteca matemática, respetivamente).
+ - Execução: O programa é executado com ./exe.
+ - Limpeza (Parcial): O executável exe e o ficheiro objeto lib.o são removidos para limpar o ambiente de trabalho.
 
-Comando: make run
+**Comando:** make run
 
 > [!WARNING]
 > O usuário apenas conseguira executar corretamente o "make run" apeans após entrar no "Super Usuário" do sistema. Caso contrario, um erro de "*segment faul*" vai ser exibido.
 
----
 
 **3. Clean** (Limpeza Completa)
-- Ação: Remove todos os ficheiros compilados que foram gerados.
-- Isto inclui o executável (exe) e todos os ficheiros objeto (*.o).
+ - Ação: Remove todos os ficheiros compilados que foram gerados.
+ - Isto inclui o executável (exe) e todos os ficheiros objeto (*.o).
 
-Comando: make clean
+**Comando:** make clean
 
---- 
 
 ### 6. Erros Comuns e Mensagens de Alerta
 
