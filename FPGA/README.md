@@ -18,9 +18,10 @@ Sumário
 
 ## Descrição do projeto.
 
-Para a elaboração do projeto, foi utilizado o kit de desenvolvimento DE1-SoC com o processador Cyclone V, o ambiente de desenvolvimento utilizado foi o Quartus Lite na versão 23.1 e para linguagem de descrição de hardware foi lidado com Verilog. As linguagens de programação utilizadas foram C (C23) e Assembly para a conexão entre a placa FPGA e o HPS, permitindo com que o programa consiga carregar imagens pelo HPS e modifique elas fazendo uso dos algoritmos de zoom presentes na placa. 
+A segunda etapa do projeto **Zoom Digital** Sistemas Digitais (MI) concentra-se na interação entre a unidade de processamento principal, o HPS (Hard Processor System), e o chip reconfigurável, o FPGA (Field Programmable Gate Array), ambos presentes na placa DE1-SoC. A conexão entre essas duas áreas foi estabelecida utilizando interfaces PIOs (Parallel Input/Output) customizadas, definidas pelo Platform Designer e integradas através da arquitetura de barramento AXI. Essa transmissão de dados otimizada entre os dois componentes viabiliza o encaminhamento de comandos, informações e sinais de feedback para a execução das tarefas de processamento de matrizes. 
 
-Está é a segunda etapa do projeto, o objetivo da etapa é realizar o desenvolvimento de uma API para um coprocessador dedicada ao processamento de imagens em escala de cinza (8 bits/pixel), utilizando a linguagem Assembly e restringindo-se estritamente aos componentes de hardware disponíveis na placa. Aplicando a ISA (Instruction Set Architecture) do coprocessador, incorporando as operações de processamento previamente controladas por botões e chaves durante a primeira etapa do projeto.
+O cooprocessador e sua implementação em verilog pode ser visualizado no [Repositório da etapa 1](https://github.com/LordWalace/PBL_SD1/blob/main/README.md).
+
 
 ---
 
