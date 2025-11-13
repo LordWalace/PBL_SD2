@@ -5,9 +5,7 @@
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
 
 ---
-
 Coprocessador FPGA para Processamento de Imagens em Tons de Cinza
-
 ---
 
 ## Sumário
