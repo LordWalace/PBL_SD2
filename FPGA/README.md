@@ -27,15 +27,14 @@ Está é a segunda etapa do projeto, o objetivo da etapa é realizar o desenvolv
 ### 1. Softwares Utilizados.
 - **IDEs de Desenvolvimento:** *Intel Quartus Prime Lite Edition (23.1std.0),Visual Studio Code*
 - **Simulador:** *ModelSim - Intel FPGA Edition (2020.1)*
-- **Linguagem HDL:** *Verilog-2001*
-- **Linguganes de programação:** *C, Assembly*
+- **Linguganes de programação:*Verilog-2001*
 
 ---
 
 ### 2. Hardware Usado nos Testes.
 - **Placa de Desenvolvimento:** Terasic DE1-SoC
 - **FPGA:** Intel Cyclone V SE 5CSEMA5F31C6N
-- **Memória de Vídeo (Frame Buffer):** RAM de dupla porta (307.200 palavras x 8 bits)
+- **Memória de Vídeo (Frame Buffer):** RAM de dupla porta (76.800 palavras x 8 bits)
 - **Monitor:** Philips VGA (640x480 @ 60Hz)
 
 ---
@@ -55,21 +54,6 @@ Nessa estapa do projeto fizemos uso de uma arquitetura externa para o desenvolvi
 | VGA Output | Interface para exibição das imagens ampliadas em um monitor padrão.	| Módulo da placa DE1-SoC |
 | Barramentos PIO | Estruturas para troca de sinais de controle, endereço, dados e flags entre HPS e Coprocessador.	| Mapeado via Qsys. |
 
-#### 3.2. Interação com o Código em C.
-
-O código C rodando no HPS é o controlador mestre. Ele:
-
-- Lê e prepara a imagem.
-
-- Monta comandos na forma da ISA definida (palavras de 32 bits).
-
-- Escreve os comandos nos registradores PIO (instructIn).
-
-- Aciona o pulso de ativação (enableIn).
-
-- Aguarda pelas flags de resposta (flagsOut) e lê o resultado (data_out).
-
----
 
 ### 4. Funcionalidades e ISA.
 
@@ -104,14 +88,14 @@ Cada função em Assembly acessa registradores PIO específicos que foram cuidad
 
  | Sinal |	Direção	Função |	Largura |
  | --- | --- | --- |
-| instructIn |	Entrada	Palavra de comando (ISA, endereço, dado) |	32 |
-| enableIn |	Entrada	Pulso de ativação do coprocessador |	1 |
-| flagsOut |	Saída	Sinalização de status (done, erro, limites) |	4 |
+| instruct |	Entrada	Palavra de comando (ISA, endereço, dado) |	32 |
+| enable |	Entrada	Pulso de ativação do coprocessador |	1 |
+| flags |	Saída	Sinalização de status (done, erro, limites) |	4 |
 | data_out |	Saída	Retorno para leitura de dados (LOAD) |	8 |
 
 #### 5.1. Detalhamento dos Sinais de Saída.
 
-Os 4 bits do sinal flagsOut indicam o status da operação:
+Os 4 bits do sinal flags indicam o status da operação:
 
 - DONE: Processamento da instrução concluído.
 
@@ -121,7 +105,7 @@ Os 4 bits do sinal flagsOut indicam o status da operação:
 
 - ZOOM_MAX: Tentativa de zoom acima do limite permitido.
 
-- Protocolo de Comunicação: É mandatório que o sinal enableIn seja desativado após cada operação para garantir a sincronização entre software (HPS) e hardware (FPGA).
+- Protocolo de Comunicação: É mandatório que o sinal enable seja desativado após cada operação para garantir a sincronização entre software (HPS) e hardware (FPGA).
 
 ---
 
