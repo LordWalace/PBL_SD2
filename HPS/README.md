@@ -4,6 +4,13 @@
 
 **Equipe:** Luis Felipe Carneiro Pimentel e Walace de Jesus Venas
 
+Sumário
+=================
+  * [1. Menu Principal](#1-menu-principal)
+  * [2. Menu de Seleção de Imagens](#2-menu-de-seleção-de-imagens)
+  * [3. Menu de Zoom](#3-menu-de-zoom)
+  * [4. Funções do código Assembly](#4-funções-do-código-assembly)
+
 ## Descrição e Objetivo do Projeto
 
 Este projeto consiste no desenvolvimento de uma **Interface de Programação de Aplicações (API)**, escrita em linguagem Assembly, para controlar um coprocessador de processamento de imagens embarcado em um sistema com o processador **ARM (HPS)**. A **API** deve implementar a **ISA** do coprocessador, reutilizando as operações previamente definidas via componentes físicos da placa, para manipular imagens em escala de cinza (8 bits por pixel) que são lidas de um arquivo e transferidas do HPS para o coprocessador.
